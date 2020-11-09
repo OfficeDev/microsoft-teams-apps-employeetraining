@@ -10,7 +10,7 @@ urlFragment: microsoft-teams-apps-employeetraining
 
 ## Employee Training App Template
 
-| [Documentation](https://github.com/OfficeDev/microsoft-teams-apps-employeetraining/wiki) | [Deployment guide](https://github.com/OfficeDev/microsoft-teams-apps-employeetraining/wiki/Deployment-Guide.md) | [Architecture](https://github.com/OfficeDev/microsoft-teams-apps-employeetraining/wiki/Solution-Overview) |
+| [Documentation](https://github.com/OfficeDev/microsoft-teams-apps-employeetraining/wiki) | [Deployment guide](https://github.com/OfficeDev/microsoft-teams-apps-employeetraining/wiki/Deployment-Guide) | [Architecture](https://github.com/OfficeDev/microsoft-teams-apps-employeetraining/wiki/Solution-Overview) |
 
 Using the Employee Training app in Microsoft Teams, enables organizers to easily publish and distribute new events to targeted groups, keep track of interests for capacity planning, and send updates or reminders. With reminders, attendees stay updated about registered events, indicate interest, and user can share event details with other co-workers.
 
