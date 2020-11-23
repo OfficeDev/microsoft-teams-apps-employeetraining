@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.7",
+  "version": "1.0.0",
+  "id": "eb3d22e5-1645-4334-a625-19249df25173",
+  "packageName": "com.microsoft.teams.employeetraining",
+  "developer": {
+    "name": "<<companyName>>",
+    "websiteUrl": "<<websiteUrl>>",
+    "privacyUrl": "<<privacyUrl>>",
+    "termsOfUseUrl": "<<termsOfUseUrl>>"
+  },
+  "localizationInfo": {
+    "defaultLanguageTag": "en",
+    "additionalLanguages": [
+      {
+        "languageTag": "en-US",
+        "file": "en-US.json"
+      }
+    ]
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Employee Training (L&D Team)",
+    "full": "Employee Training (L&D Team)"
+  },
+  "description": {
+    "short": "Make it easy for L&D teams to create and manage events to enagage employees.",
+    "full": "Engage your employees with training where they spend most of their time-right here in Microsoft Teams. Your Learning + Development team can create new training events, specify who can attend and whether the event is mandatory or not, and close registration once capacity is reached. Built-in reminders help ensure your events are well attended."
+  },
+  "accentColor": "#FFFFFF",
+  "staticTabs": [
+    {
+      "entityId": "manage-events",
+      "name": "Manage events",
+      "contentUrl": "https://<<appDomain>>/manage-events",
+      "websiteUrl": "https://<<appDomain>>/manage-events",
+      "scopes": [ "team" ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "<<botId>>",
+      "scopes": [
+        "team"
+      ],
+      "commandLists": [
+        {
+          "scopes": [ "team" ],
+          "commands": [
+            {
+              "title": "Add event",
+              "description": "Add event for users"
+            }
+          ]
+        }
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "<<appDomain>>"
+  ],
+  "webApplicationInfo": {
+    "id": "<<botId>>",
+    "resource": "api://<<appDomain>>/<<botId>>"
+  }
+}

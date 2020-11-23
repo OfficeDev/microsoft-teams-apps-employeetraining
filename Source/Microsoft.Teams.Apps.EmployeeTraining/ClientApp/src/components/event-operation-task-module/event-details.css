@@ -1,0 +1,53 @@
+﻿.event-task-module .event-info {
+    height: 82vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.event-task-module .category {
+    letter-spacing: .08rem;
+    text-transform: uppercase;
+}
+
+.event-task-module .label-color {
+    color: #C14B7A;
+}
+
+.event-task-module .event-image {
+    margin-top: 1rem;
+    height: 16.33rem;
+    object-fit: cover;
+    width: 100%;
+}
+
+.event-task-module .footer {
+    margin-top: 1.7rem;
+}
+
+.event-task-module .event-date-and-time {
+    margin-right: .8rem;
+    width: auto;
+}
+
+.event-task-module .event-venue::before {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2Ij4KICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU5LjEgKDg2MTQ0KSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICA8dGl0bGU+aWNfZmx1ZW50X2xvY2F0aW9uXzE2X3JlZ3VsYXI8L3RpdGxlPgogIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogIDxnIGlkPSLwn5SNLVByb2R1Y3QtSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPGcgaWQ9ImljX2ZsdWVudF9sb2NhdGlvbl8xNl9yZWd1bGFyIiBmaWxsPSIjMjEyMTIxIiBmaWxsLXJ1bGU9Im5vbnplcm8iPgogICAgICA8cGF0aCBkPSJNOCwxIEMxMS4zMTM3MDg1LDEgMTQsMy42ODYyOTE1IDE0LDcgQzE0LDkuODY3MjM2MzEgMTIuMDY1MDQ5NiwxMi41MDU4MDUgOC4yNjg0Mzc3NSwxNC45MjE4MzA3IEM4LjEwNDY1NDU0LDE1LjAyNjA1NjQgNy44OTUzNDU0NiwxNS4wMjYwNTY0IDcuNzMxNTYyMjUsMTQuOTIxODMwNyBDMy45MzQ5NTAzNywxMi41MDU4MDUgMiw5Ljg2NzIzNjMxIDIsNyBDMiwzLjY4NjI5MTUgNC42ODYyOTE1LDEgOCwxIFogTTgsMiBDNS4yMzg1NzYyNSwyIDMsNC4yMzg1NzYyNSAzLDcgQzMsOS4zMjUzNjU2MiA0LjUzOTcwOTk2LDExLjU1NzY3MDUgNy42ODA1NzQxMywxMy42OTE3Nzk3IEw4LDEzLjkwNDg2MzEgTDguMzE5NDI1ODcsMTMuNjkxNzc5NyBDMTEuNDYwMjksMTEuNTU3NjcwNSAxMyw5LjMyNTM2NTYyIDEzLDcgQzEzLDQuMjM4NTc2MjUgMTAuNzYxNDIzNywyIDgsMiBaIE04LDUuNSBDOC44Mjg0MjcxMiw1LjUgOS41LDYuMTcxNTcyODggOS41LDcgQzkuNSw3LjgyODQyNzEyIDguODI4NDI3MTIsOC41IDgsOC41IEM3LjE3MTU3Mjg4LDguNSA2LjUsNy44Mjg0MjcxMiA2LjUsNyBDNi41LDYuMTcxNTcyODggNy4xNzE1NzI4OCw1LjUgOCw1LjUgWiIgaWQ9IvCfjqgtQ29sb3IiPjwvcGF0aD4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==);
+    background-size: 16px 16px;
+    content: '';
+    display: block;
+    float: left;
+    height: 16px;
+    margin-right: 0.4rem;
+    width: 16px;
+}
+
+.dark-container .event-task-module .event-venue::before {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2Ij4KICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU5LjEgKDg2MTQ0KSAtIGh0dHBzOi8vc2tldGNoLmNvbSAtLT4KICA8dGl0bGU+aWNfZmx1ZW50X2xvY2F0aW9uXzE2X3JlZ3VsYXI8L3RpdGxlPgogIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogIDxnIGlkPSLwn5SNLVByb2R1Y3QtSWNvbnMiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPGcgaWQ9ImljX2ZsdWVudF9sb2NhdGlvbl8xNl9yZWd1bGFyIiBmaWxsPSIjMjEyMTIxIiBmaWxsLXJ1bGU9Im5vbnplcm8iPgogICAgICA8cGF0aCBkPSJNOCwxIEMxMS4zMTM3MDg1LDEgMTQsMy42ODYyOTE1IDE0LDcgQzE0LDkuODY3MjM2MzEgMTIuMDY1MDQ5NiwxMi41MDU4MDUgOC4yNjg0Mzc3NSwxNC45MjE4MzA3IEM4LjEwNDY1NDU0LDE1LjAyNjA1NjQgNy44OTUzNDU0NiwxNS4wMjYwNTY0IDcuNzMxNTYyMjUsMTQuOTIxODMwNyBDMy45MzQ5NTAzNywxMi41MDU4MDUgMiw5Ljg2NzIzNjMxIDIsNyBDMiwzLjY4NjI5MTUgNC42ODYyOTE1LDEgOCwxIFogTTgsMiBDNS4yMzg1NzYyNSwyIDMsNC4yMzg1NzYyNSAzLDcgQzMsOS4zMjUzNjU2MiA0LjUzOTcwOTk2LDExLjU1NzY3MDUgNy42ODA1NzQxMywxMy42OTE3Nzk3IEw4LDEzLjkwNDg2MzEgTDguMzE5NDI1ODcsMTMuNjkxNzc5NyBDMTEuNDYwMjksMTEuNTU3NjcwNSAxMyw5LjMyNTM2NTYyIDEzLDcgQzEzLDQuMjM4NTc2MjUgMTAuNzYxNDIzNywyIDgsMiBaIE04LDUuNSBDOC44Mjg0MjcxMiw1LjUgOS41LDYuMTcxNTcyODggOS41LDcgQzkuNSw3LjgyODQyNzEyIDguODI4NDI3MTIsOC41IDgsOC41IEM3LjE3MTU3Mjg4LDguNSA2LjUsNy44Mjg0MjcxMiA2LjUsNyBDNi41LDYuMTcxNTcyODggNy4xNzE1NzI4OCw1LjUgOCw1LjUgWiIgaWQ9IvCfjqgtQ29sb3IiPjwvcGF0aD4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg==);
+    background-size: 16px 16px;
+    content: '';
+    display: block;
+    filter: brightness(0) invert(1);
+    float: left;
+    height: 16px;
+    margin-right: 0.4rem;
+    width: 16px;
+}

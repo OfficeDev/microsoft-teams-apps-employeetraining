@@ -1,0 +1,90 @@
+.accordion-content-items-wrapper {
+    width: 100%;
+    height: 62vh;
+    margin-top: 1rem;
+}
+
+.default-container .accordion-container{
+    color: #252423   !important;
+    background-color: #F3F2F1 !important;
+    width: 100%;
+    margin: 0.2rem 0;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+.radio-popup-content {
+    width: 19rem !important;
+}
+
+.accordion-content-items-body {
+    width: 100%;
+    max-height: 40vh;
+    overflow-y: auto;
+}
+
+.accordion-content-items-body .checkbox-wrapper{
+    margin-left: 1rem;
+}
+
+.checkbox-content-width {
+    width: auto;
+    vertical-align: "center";
+}
+
+.accordion-content-items-headerfooter {
+    width: 100%;
+    height: 3rem;
+    padding: 1rem;
+}
+
+.accordion-filter-popup-menu-divider{
+    margin-top: 2rem;
+}
+
+.clear-button {
+    margin-top: 0.5rem;
+}
+
+.enable-clear {
+    margin-top: 0.5rem;
+    color: #C14B7A !important;
+}
+
+.clear-button div {
+    margin-right: 0.5rem;
+    margin-top: 0.09rem;
+}
+.accordion-main{
+    width: 100%;
+    font-size: 1.7rem;
+}
+.dark-container .accordion-container {
+    background-color: #3b3a39 !important;
+    color: white !important;
+    width: 100%;
+    margin: 0.1rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+.button-back{
+    background: #F4F4F4 !important;
+    border-radius: 2px;
+    width: 22rem;
+}
+
+.high-contrast-container .accordion-container {
+    color: yellow !important;
+    width: 100%;
+    margin: 0.1rem;
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+@media only screen and (max-width: 750px) {
+    .ui-button__content {
+        display: contents;
+        padding:1rem !important;
+        width: 22rem;
+    }
+}

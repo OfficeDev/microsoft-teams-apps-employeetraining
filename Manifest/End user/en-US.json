@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Employee Training",
+  "name.full": "Employee Training",
+  "description.short": "Make it easy for employees to discover, register for, and share training events.",
+  "description.full": "Engage your employees with training where they spend most of their time-right here in Microsoft Teams. Administrators can create new training events, specify who can attend and whether the event is mandatory or not, and close registration once capacity is reached. Once the app is added to a Teams channel, employees can visit the Discover tab to browse events, register for the ones that interest them, and use the app's message extension to suggest events to their colleagues or direct reports. Once registered, employees receive reminders in Teams, so they never miss an event!",
+  "staticTabs[0].name": "Discover events",
+  "staticTabs[1].name": "Your events",
+  "composeExtensions[0].commands[0].title": "Recent",
+  "composeExtensions[0].commands[0].description": "Show all created events.",
+  "composeExtensions[0].commands[0].parameters[0].description": "Enter to search event",
+  "composeExtensions[0].commands[1].title": "Popular",
+  "composeExtensions[0].commands[1].description": "Show popular events.",
+  "composeExtensions[0].commands[1].parameters[0].description": "Enter to search event"
+}

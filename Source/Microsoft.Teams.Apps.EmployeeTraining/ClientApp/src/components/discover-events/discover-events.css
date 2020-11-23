@@ -1,0 +1,24 @@
+﻿.discover-events-container {
+    height: 100vh;
+    overflow: hidden;
+    max-width: 170rem;
+    padding: 1.42rem 2.42rem 0;
+    position: relative;
+}
+
+.default-container .container-div .discover-events-container {
+    /* background: #FFFFFF; */
+}
+
+.search-box{
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.close-searchbox-icon{
+    margin-left: 0.2rem;
+}
+
+.search-box-input{
+    width: 100%;
+}

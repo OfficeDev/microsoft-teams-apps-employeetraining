@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.7",
+  "version": "1.0.0",
+  "id": "eb3d21e5-1635-4334-a625-19249df25173",
+  "packageName": "com.microsoft.teams.employeetraining",
+  "developer": {
+    "name": "<<companyName>>",
+    "websiteUrl": "<<websiteUrl>>",
+    "privacyUrl": "<<privacyUrl>>",
+    "termsOfUseUrl": "<<termsOfUseUrl>>"
+  },
+  "localizationInfo": {
+    "defaultLanguageTag": "en",
+    "additionalLanguages": [
+      {
+        "languageTag": "en-US",
+        "file": "en-US.json"
+      }
+    ]
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "name": {
+    "short": "Employee Training",
+    "full": "Employee Training"
+  },
+  "description": {
+    "short": "Make it easy for employees to discover, register for, and share training events.",
+    "full": "Engage your employees with training where they spend most of their time-right here in Microsoft Teams. Administrators can create new training events, specify who can attend and whether the event is mandatory or not, and close registration once capacity is reached. Once the app is added to a Teams channel, employees can visit the Discover tab to browse events, register for the ones that interest them, and use the app's message extension to suggest events to their colleagues or direct reports. Once registered, employees receive reminders in Teams, so they never miss an event!"
+  },
+  "accentColor": "#FFFFFF",
+  "staticTabs": [
+    {
+      "entityId": "discover-events",
+      "name": "Discover events",
+      "contentUrl": "https://<<appDomain>>/discover-events",
+      "websiteUrl": "https://<<appDomain>>/discover-events",
+      "scopes": [ "personal" ]
+    },
+    {
+      "entityId": "my-events",
+      "name": "Your events",
+      "contentUrl": "https://<<appDomain>>/my-events",
+      "websiteUrl": "https://<<appDomain>>/my-events",
+      "scopes": [ "personal" ]
+    }
+  ],
+  "bots": [
+    {
+      "botId": "<<botId>>",
+      "scopes": [
+        "personal"
+      ],
+      "commandLists": [
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false
+    }
+  ],
+  "composeExtensions": [
+    {
+      "botId": "<<botId>>",
+      "canUpdateConfiguration": false,
+      "commands": [
+        {
+          "id": "recent",
+          "title": "Recent",
+          "description": "Show all created events.",
+          "parameters": [
+            {
+              "name": "searchText",
+              "title": "recent",
+              "description": "Enter to search event"
+            }
+          ],
+          "initialRun": true
+        },
+        {
+          "id": "popular",
+          "title": "Popular",
+          "description": "Show popular events.",
+          "parameters": [
+            {
+              "name": "searchText",
+              "title": "popular",
+              "description": "Enter to search event"
+            }
+          ],
+          "initialRun": true
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "<<appDomain>>"
+  ],
+  "webApplicationInfo": {
+    "id": "<<botId>>",
+    "resource": "api://<<appDomain>>/<<botId>>"
+  }
+}

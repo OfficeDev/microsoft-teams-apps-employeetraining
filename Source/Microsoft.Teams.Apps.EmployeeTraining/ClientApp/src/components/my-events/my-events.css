@@ -1,0 +1,11 @@
+﻿.my-events-container {
+    height: 100vh;
+    overflow: hidden;
+    max-width: 170rem;
+    padding: 1.42rem 2.42rem 0;
+    position: relative;
+}
+
+.default-container .container-div .my-events-container {
+    /* background: #FFFFFF; */
+}

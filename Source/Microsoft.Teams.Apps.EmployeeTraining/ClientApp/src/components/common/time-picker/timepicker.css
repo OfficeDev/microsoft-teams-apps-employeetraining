@@ -1,0 +1,15 @@
+﻿.timepicker-popup-style {
+    width: 16.8rem !important;
+}
+
+.timepicker-dropdown .ui-dropdown__container {
+    width: 8rem !important;
+}
+
+.timepicker-dropdown .ui-list {
+    width: 8rem !important;
+}
+
+.timepicker-dropdown .ui-dropdown__selected-items {
+    overflow:hidden !important;
+}
