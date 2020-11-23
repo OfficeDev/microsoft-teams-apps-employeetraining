@@ -135,9 +135,9 @@ class CreateEventWrapper extends React.Component<ICreateEventProps, ICreateEvent
             eventDetails.endTime = moment.utc(eventDetails.endTime).local().toDate();
 
             if (eventDetails.status === EventStatus.Cancelled || eventDetails.endDate < new Date()) {
-                this.setState({ isLoading: false, displayReadonly: true, eventDetails: eventDetails });
+                this.setState({ isLoading: false, displayReadonly: true, eventDetails: eventDetails }, this.getAllCategories);
             } else {
-                this.setState({ isLoading: false, eventDetails: eventDetails, selectedUserGroups: selectedUsersOrGroups, isEdit: true, isDraft: this.params.isDraft! });
+                this.setState({ isLoading: false, eventDetails: eventDetails, selectedUserGroups: selectedUsersOrGroups, isEdit: true, isDraft: this.params.isDraft! }, this.getAllCategories);
             }
 
         }
