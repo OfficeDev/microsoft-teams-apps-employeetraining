@@ -17,6 +17,9 @@ import CreateEventWrapper from "../components/create-event/create-event-wrapper"
 import ManageCategories from "../components/manage-categories/manage-categories";
 import CloseOrCancelEvent from "../components/manage-events/close-cancel-event";
 import DeleteDraftEvent from "../components/manage-events/delete-draft";
+import SignInPage from "../components/signin/signin";
+import SignInSimpleStart from "../components/signin/signin-start";
+import SignInSimpleEnd from "../components/signin/signin-end";
 
 export const AppRoute: React.FunctionComponent<{}> = () => {
     return (
@@ -32,6 +35,9 @@ export const AppRoute: React.FunctionComponent<{}> = () => {
                     <Route exact path="/create-event" component={CreateEventWrapper} />
                     <Route exact path="/delete-draft" component={DeleteDraftEvent} />
                     <Route exact path="/mobile-filter" component={MobileFilter} />
+                    <Route exact path="/signin" component={SignInPage} />
+                    <Route exact path="/signin-simple-start" component={SignInSimpleStart} />
+                    <Route exact path="/signin-simple-end" component={SignInSimpleEnd} />
                     <Route exact path="/error" component={ErrorPage} />
                 </Switch>
             </BrowserRouter>
