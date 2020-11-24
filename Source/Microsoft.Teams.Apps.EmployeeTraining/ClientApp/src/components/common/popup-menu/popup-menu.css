@@ -1,0 +1,76 @@
+.content-items-wrapper {
+    width: 19.2rem;
+}
+
+.radio-popup-content {
+    width: 19rem !important;
+}
+
+.content-items-body {
+    width: 19.2rem;
+    max-height: 18rem;
+    overflow-y: auto;
+}
+
+.checkbox-content-width {
+    width: auto;
+    vertical-align: middle;
+}
+
+.content-items-headerfooter {
+    width: 19.5rem;
+    height: 3rem;
+}
+
+.filter-popup-menu-divider{
+    margin-top:1rem;
+}
+
+.clear-button {
+    margin-top: 0.5rem;
+}
+
+.enable-clear {
+    margin-top: 0.5rem;
+    color: #C14B7A !important;
+}
+
+.clear-button div {
+    margin-right: 0.5rem;
+    margin-top: 0.09rem;
+}
+
+.filter-bar-item-container .filter-button {
+    width: 17rem;
+}
+
+.dark-container .filter-bar-item-container .filter-button {
+    background-color: #3b3a39 !important;
+    color: white !important;
+}
+
+.button-back {
+    background: #F4F4F4 !important;
+    border-radius: 2px;
+    width: 22rem;
+}
+
+.high-contrast-container .filter-bar-item-container .filter-button {
+    color: yellow !important;
+}
+
+.default-container .filter-bar-item-container .filter-button {
+    background-color: #F3F2F1 !important;
+    color: #6264A7 !important;
+}
+.popup-container{
+    margin-top: 2rem;
+}
+
+@media only screen and (max-width: 750px) {
+    .ui-button__content {
+        display: contents;
+        padding:1rem !important;
+        width: 22rem;
+    }
+}

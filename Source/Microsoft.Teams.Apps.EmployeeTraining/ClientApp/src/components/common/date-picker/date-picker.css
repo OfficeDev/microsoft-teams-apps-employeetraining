@@ -1,0 +1,27 @@
+﻿.date-picker-style-for-small-device {
+    max-width: 41.5vw !important;
+    width: 41.5vw !important;
+}
+
+.date-picker-size-space .ms-Label {
+    font-weight: 100 !important;
+    font-size: 1.2rem !important;
+}
+
+.date-picker-style {
+    max-width: 43vw !important;
+    width: 43vw !important;
+}
+
+.default-datepicker .ms-TextField-fieldGroup {
+    border: none !important;
+    background-color: rgb(243, 242, 241) !important;
+}
+
+.dark-datepicker .ms-TextField-fieldGroup {
+    border: none !important;
+}
+
+.full-width {
+    width: 100% !important;
+}

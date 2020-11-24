@@ -1,0 +1,205 @@
+﻿/*
+    <copyright file="style.css" company="Microsoft">
+    Copyright (c) Microsoft. All rights reserved.
+    </copyright>
+*/
+
+.loader {
+    left: 50vw;
+    position: absolute;
+    top: 45vh;
+}
+
+.task-module-loader {
+    left: 50%;
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.task-module-container {
+    height: 100vh;
+    padding: 1.5rem 3.2rem 2.6rem;
+    width: 100%;
+}
+
+.mobile-task-module-container {
+    height: 100vh;
+    width:100%;
+    padding: 1.2rem 1.4rem;
+}
+
+.mobile-filter-bar-container {
+    padding: .5rem;
+    width: 100%;
+    height: 50vh;
+}
+
+.alert-message {
+    margin-top: 40vh;
+    text-align: center;
+}
+
+.container-fluid-overriden {
+    height: 100% !important;
+    position: relative;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.container-div {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+.container-subdiv {
+    height: 100vh;
+    overflow-y: auto;
+    max-width: 170rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.error-message {
+    text-align: center;
+    width: 80%;
+    height: 10rem;
+    position: absolute;
+    top: 4rem;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 1.5rem;
+}
+
+.dialog-container-div {
+    height: 60vh;
+    display: flex;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    width: auto;
+    overflow: auto;
+}
+
+.default-container .container-div {
+    height: auto;
+    width: 100%;
+    background: #F3F2F1;
+}
+
+.dark-container .container-div {
+    height: auto;
+    width: 100%;
+    background: #201F1F;
+}
+
+.high-contrast-container .container-div {
+    height: auto;
+    width: 100%;
+    background: black;
+}
+
+.dark-container .commandbar-wrapper {
+    background-color: #2D2C2C;
+}
+
+.high-contrast-container .commandbar-wrapper {
+    background-color: black;
+}
+
+/*.grid-column {
+	padding: 1rem;
+}*/
+
+.title-bar-provider-wrapper {
+    padding-right: 1.4rem;
+}
+
+.icon-hover:hover {
+    cursor: pointer;
+}
+
+.event-category {
+    color: #C14B7A;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+}
+
+@media only screen and (max-width: 650px) {
+    .mobile-button {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+}
+
+@media (min-width: 800px) {
+    .col-md-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+@media (min-width: 1100px) {
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+.no-content-container {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.no-content-title {
+    width: 100%;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.dropdown-flex-half {
+    width: 43vw !important;
+}
+
+.event-artifact {
+    height: 3rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.text-overflow-ellipsis {
+    max-width: 11rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-artifact.mandatory {
+    color: #C14B7A;
+}
+
+.container-subdiv-cardview {
+    height: 100vh;
+    overflow: hidden;
+    max-width: 170rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.container-fluid-overriden  {
+    height: 100% !important;
+    position: relative;
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
+}

@@ -1,0 +1,19 @@
+﻿.event-image-placeholder-container {
+    background: #282C35;
+}
+
+.event-image-placeholder-container .event-image-placeholder {
+    padding: 5.3rem;
+}
+
+.event-image-placeholder-container .event-image-placeholder .placeholder-icon {
+    color: white;
+}
+
+.event-image-renderer.image-loaded {
+    display: block;
+}
+
+.event-image-renderer.image-not-loaded {
+    display: none;
+}

@@ -1,0 +1,24 @@
+﻿.notification-toast {
+    max-width: 100vw !important;
+    width: 100vw;
+    font-size: 1.4rem !important;
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none !important;
+}
+
+.notification-toast.success {
+    background-color: rgba(146, 195, 89, 1);
+}
+
+.notification-toast.error {
+    background-color: rgba(167, 32, 55, 1);
+}
+
+.notification-toast .notification {
+    color: white;
+    border: none;
+    padding: 1rem;
+}

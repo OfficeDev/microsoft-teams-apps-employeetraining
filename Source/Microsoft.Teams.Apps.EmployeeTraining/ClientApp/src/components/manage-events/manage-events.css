@@ -1,0 +1,114 @@
+﻿.manage-events-table {
+    margin-top: 1.3rem;
+}
+
+.close-cancel-event {
+    margin: 2.1rem 3.1rem 0;
+    height: 82vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.container-manage-events {
+    height: 100vh;
+    overflow: hidden;
+    max-width: 170rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.manage-events-scroll-area {
+    margin-top: 1rem;
+    height: 90%;
+    overflow-Y: auto;
+    overflow-X: hidden;
+    bottom: 1px;
+}
+
+.manage-events-scroll-area-mobile {
+    margin-top: 1rem;
+    height: 82%;
+    overflow-Y: auto;
+    overflow-X: hidden;
+    bottom: 1px;
+}
+
+.split-button div button {
+    width: 16rem;
+}
+
+.default-container .split-button button{
+    background-color: transparent;
+    border: none;
+    color: #6264A7;
+    font-size: 1.5rem;
+}
+
+.dark-container .split-button button{
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.high-contrast-container .split-button button{
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.list-header{
+    font-size: 1.4rem;
+}
+
+.default-container .manage-events-list-item-container {
+    margin-top: 0.1rem;
+    background-color: #FFFFFF;
+    padding: 1rem;
+}
+
+.dark-container .manage-events-list-item-container {
+    margin-top: 0.1rem;
+    background-color: #2D2C2C;
+    padding: 1rem;
+}
+
+.high-contrast-container .manage-events-list-item-container {
+    margin-top: 0.1rem;
+    background-color: transparent;
+    padding: 1rem;
+}
+
+.mobile-menu-manage-events {
+    padding-top: .75rem;
+}
+
+.manage-events-list-item-container .divider {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.manage-events-list-item-container .list-elements {
+    margin-top: 0.4rem;
+}
+
+.manage-events-mobile-list-view {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 85%;
+    margin-top: .75rem !important;
+}
+
+.manage-events-mobile-list-view li {
+    padding: 0rem;
+}
+
+.manage-events-mobile-search-box {
+    margin-top: .9rem;
+}
+
+.manage-events-mobile-list-view .list-elements .category-name {
+    text-transform: uppercase;
+}
