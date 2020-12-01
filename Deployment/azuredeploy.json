@@ -36,7 +36,7 @@
       "type": "string",
       "minLength": 36,
       "maxLength": 36,
-      "defaultValue": "c1b50ba4-a9fc-46ed-ae5c-c4060461f88b",
+      "defaultValue": "eb3d21e5-1635-4334-a625-19249df25173",
       "metadata": {
         "description": "Manifest Id (Required for deeplinking). This needs to be same as manifest Id provided in manifest.json file inside Manifest folder."
       }
