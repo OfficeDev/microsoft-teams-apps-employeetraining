@@ -21,26 +21,39 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
     /// </summary>
     internal sealed class EmployeeTrainingLocalizationCultureProvider : IRequestCultureProvider
     {
+        private const string UserAgentHeaderKey = "User-Agent";
+        private const string UserAgentMSBotHeaderValue = "Microsoft-BotFramework";
+        private const string AcceptLanguageHeaderKey = "Accept-Language";
+        private const int StreamReaderBufferSize = 1024;
+
         /// <summary>
         /// Get the culture of the current request.
         /// </summary>
         /// <param name="httpContext">The current request.</param>
         /// <returns>A Task resolving to the culture info if found, null otherwise.</returns>
-        #pragma warning disable UseAsyncSuffix // Interface method doesn't have Async suffix.
+#pragma warning disable UseAsyncSuffix // Interface method doesn't have Async suffix.
         public async Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)
-        #pragma warning restore UseAsyncSuffix
+#pragma warning restore UseAsyncSuffix
         {
             if (httpContext?.Request?.Body?.CanRead != true)
             {
                 return null;
             }
 
-            var isBotFrameworkUserAgent = httpContext.Request.Headers["User-Agent"]
-                .Any(userAgent => userAgent.Contains("Microsoft-BotFramework", StringComparison.OrdinalIgnoreCase));
+            var isBotFrameworkUserAgent =
+                httpContext.Request.Headers[UserAgentHeaderKey]
+                .Any(userAgent => userAgent.Contains(UserAgentMSBotHeaderValue, StringComparison.OrdinalIgnoreCase));
 
             if (!isBotFrameworkUserAgent)
             {
-                return null;
+                var locale = httpContext.Request.Headers[AcceptLanguageHeaderKey].FirstOrDefault();
+                locale = locale?.Split(",")?.FirstOrDefault();
+                if (string.IsNullOrWhiteSpace(locale))
+                {
+                    return null;
+                }
+
+                return new ProviderCultureResult(locale);
             }
 
             try
@@ -49,19 +62,21 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
                 httpContext.Request.EnableBuffering();
 
                 // Read the request body, parse out the activity object, and set the parsed culture information.
-                using (var streamReader = new StreamReader(httpContext.Request.Body, Encoding.UTF8, true, 1024, leaveOpen: true))
-                using (var jsonReader = new JsonTextReader(streamReader))
+                using (var streamReader = new StreamReader(httpContext.Request.Body, Encoding.UTF8, true, StreamReaderBufferSize, leaveOpen: true))
                 {
-                    var obj = await JObject.LoadAsync(jsonReader).ConfigureAwait(false);
-                    var activity = obj.ToObject<Activity>();
+                    using (var jsonReader = new JsonTextReader(streamReader))
+                    {
+                        var obj = await JObject.LoadAsync(jsonReader);
+                        var activity = obj.ToObject<Activity>();
 
-                    var result = new ProviderCultureResult(activity.Locale);
-                    return result;
+                        var result = new ProviderCultureResult(activity.Locale);
+                        return result;
+                    }
                 }
             }
-            #pragma warning disable CA1031 // part of the middleware pipeline, better to use default local then fail the request.
+#pragma warning disable CA1031 // part of the middleware pipeline, better to use default locale then fail the request.
             catch (Exception)
-            #pragma warning restore CA1031
+#pragma warning restore CA1031
             {
                 return null;
             }
