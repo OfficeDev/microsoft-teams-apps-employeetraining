@@ -66,7 +66,7 @@ const EventDetails: React.FunctionComponent<IEventDetailsProps> = props => {
      * @param endTime The end time of an event
      */
     const getEventDayAndTime = (startDate: Date, startTime: Date, endTime: Date) => {
-        let eventDay = moment.utc(startDate).local().format("ddd");
+        let eventDay = moment.utc(startDate).local().format("DD MMM YYYY");
         let eventStartTime = moment.utc(startTime).local().format("HH:mm");
         let eventEndTime = moment.utc(endTime).local().format("HH:mm");
 
