@@ -8,7 +8,7 @@ import 'moment/min/locales.min';
 import { Flex } from '@fluentui/react-northstar';
 import { useState } from "react";
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
-import { Fabric, Customizer } from 'office-ui-fabric-react/lib';
+import { Fabric, Customizer, IDatePickerStrings } from 'office-ui-fabric-react';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { DarkCustomizations } from "../../../helpers/dark-customizations";
 import { DefaultCustomizations } from "../../../helpers/default-customizations";
@@ -26,12 +26,11 @@ interface IDateePickerProps {
     disableSelectionForPastDate:boolean
 }
 
-let dayPickerStrings = {
-    months: moment.months(),
-    shortMonths: moment.monthsShort(),
-    days: moment.weekdays(),
-    shortDays: moment.weekdaysShort(),
-    goToToday: ""
+let dayPickerStrings: IDatePickerStrings = {
+    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    shortDays: ["S", "M", "T", "W", "T", "F", "S"]
 };
 
 const onFormatDate = (date?: Date): string => {
@@ -42,6 +41,11 @@ const StartDate: React.FC<IDateePickerProps> = props => {
     let bgcolor = "";
     let theme = props.theme;
     let datePickerTheme;
+
+    dayPickerStrings.months = moment.months();
+    dayPickerStrings.shortMonths = moment.monthsShort();
+    dayPickerStrings.days = moment.weekdays();
+    dayPickerStrings.shortDays = moment.weekdaysShort();
 
     if (theme === Constants.dark) {
         bgcolor = "dark-datepicker";
