@@ -12,6 +12,7 @@ import { EventType } from "../../../models/event-type";
 import { getUserProfiles } from "../../../api/user-group-api"
 import { ResponseStatus } from "../../../constants/constants";
 import moment from "moment";
+import 'moment/min/locales.min';
 
 import "../../manage-events/manage-events.css";
 
