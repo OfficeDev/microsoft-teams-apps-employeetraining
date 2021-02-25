@@ -38,15 +38,6 @@ const onFormatDate = (date?: Date): string => {
     return !date ? '' : moment.utc(date).local().format("LL");
 };
 
-interface IDateePickerProps {
-    selectedDate: Date;
-    onDateSelect: (startDate: Date) => void,
-    theme: string,
-    screenWidth: number,
-    minDate: Date;
-    disableSelectionForPastDate:boolean
-}
-
 const StartDate: React.FC<IDateePickerProps> = props => {
     let bgcolor = "";
     let theme = props.theme;
