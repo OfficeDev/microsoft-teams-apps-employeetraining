@@ -39,9 +39,4 @@ export const updateLocale = () => {
     moment.locale(loc);
 };
 
-export const formatDate = (date: string) => {
-    if (!date) return date;
-    return moment(date).format('l LT');
-}
-
 export default i18n;
