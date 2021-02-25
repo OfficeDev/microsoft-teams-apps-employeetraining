@@ -4,6 +4,7 @@
 
 import * as React from "react";
 import moment from "moment";
+import 'moment/min/locales.min';
 import { Flex } from '@fluentui/react-northstar';
 import { useState } from "react";
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';
@@ -15,6 +16,27 @@ import Constants from "../../../constants/resources";
 import "./date-picker.css";
 
 initializeIcons();
+
+interface IDateePickerProps {
+    selectedDate: Date;
+    onDateSelect: (startDate: Date) => void,
+    theme: string,
+    screenWidth: number,
+    minDate: Date;
+    disableSelectionForPastDate:boolean
+}
+
+let dayPickerStrings = {
+    months: moment.months(),
+    shortMonths: moment.monthsShort(),
+    days: moment.weekdays(),
+    shortDays: moment.weekdaysShort(),
+    goToToday: ""
+};
+
+const onFormatDate = (date?: Date): string => {
+    return !date ? '' : moment.utc(date).local().format("LL");
+};
 
 interface IDateePickerProps {
     selectedDate: Date;
@@ -76,6 +98,8 @@ const StartDate: React.FC<IDateePickerProps> = props => {
                             <DatePicker
                                 className={bgcolor}
                                 label={''}
+                                strings={dayPickerStrings}
+                                formatDate={onFormatDate}
                                 showMonthPickerAsOverlay={true}
                                 minDate={minDate!}
                                 isMonthPickerVisible={true}
