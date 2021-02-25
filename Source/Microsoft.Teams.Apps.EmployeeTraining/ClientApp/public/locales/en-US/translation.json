@@ -1,4 +1,6 @@
 {
+  "hour": "Hour",
+  "minute": "Minute",
   "categoryName": "Category name",
   "enterNamePlaceholder": "Type a name",
   "description": "Description",
