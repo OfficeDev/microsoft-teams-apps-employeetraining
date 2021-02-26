@@ -163,7 +163,7 @@ export const saveEventAsDraftAsync = async (stepEventState: ICreateEventState, t
     * @returns Returns formatted date and time. Ex. Tue, 10:00 - 11:00
     */
 export const formatEventDayAndTimeToShort = (startDate: Date, startTime: Date, endTime: Date) => {
-    let eventDay = moment.utc(startDate).local().format("ddd");
+    let eventDay = moment.utc(startDate).local().format("LL");
     let eventStartTime = moment.utc(startTime).local().format("HH:mm");
     let eventEndTime = moment.utc(endTime).local().format("HH:mm");
 
