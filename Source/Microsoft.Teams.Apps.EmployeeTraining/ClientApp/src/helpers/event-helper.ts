@@ -4,7 +4,6 @@ import { ISelectedUserGroup } from "../models/ISelectedUserGroup";
 import { getGroupMembers } from "../api/user-group-api";
 import { ICreateEventState } from "../models/ICreateEventState";
 import moment from 'moment';
-import 'moment/min/locales.min';
 
 export const validateSelectedUsers = async (selectedUsersAndGroups: Array<ISelectedUserGroup>) => {
     let users = { mandatoryUsers: new Array<string>(), optionalUsers: new Array<string>() };

@@ -4,7 +4,6 @@
 
 import * as React from "react";
 import moment from "moment";
-import 'moment/min/locales.min';
 import { Flex } from '@fluentui/react-northstar';
 import { useState } from "react";
 import { DatePicker } from 'office-ui-fabric-react/lib/DatePicker';

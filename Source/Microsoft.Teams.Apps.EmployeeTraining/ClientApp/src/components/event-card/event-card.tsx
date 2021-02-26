@@ -5,7 +5,6 @@
 import * as React from "react";
 import { Flex, Text, Divider } from "@fluentui/react-northstar";
 import moment from "moment";
-import 'moment/min/locales.min';
 import { Icon } from 'office-ui-fabric-react';
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
