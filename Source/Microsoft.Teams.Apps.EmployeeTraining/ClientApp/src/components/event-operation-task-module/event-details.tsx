@@ -11,7 +11,7 @@ import { IEvent } from "../../models/IEvent";
 import { EventAudience } from "../../models/event-audience";
 import { EventType } from "../../models/event-type";
 import { EventOperationType } from "../../models/event-operation-type";
-import { formatEventDayAndTimeToShort } from "../../helpers/event-helper";
+import { formatEventDayAndTimeToLong } from "../../helpers/event-helper";
 import AudienceArtifact from "../../components/common/event-artifacts/audience";
 import TeamsMeetingArtifact from "../../components/common/event-artifacts/teams-meeting";
 import LiveEventArtifact from "../../components/common/event-artifacts/live-event";
@@ -233,7 +233,7 @@ const EventDetails: React.FunctionComponent<IEventDetailsProps> = props => {
                                 <Layout
                                     className="event-date-and-time"
                                     start={<Icon iconName="Clock" />}
-                                    main={<Text content={formatEventDayAndTimeToShort(props.eventDetails?.startDate, props.eventDetails?.startTime!, props.eventDetails.endTime!)} weight="semibold" size="small" />}
+                                    main={<Text content={formatEventDayAndTimeToLong(props.eventDetails?.startDate, props.eventDetails?.startTime!, props.eventDetails.endTime!)} weight="semibold" size="small" />}
                                     gap=".4rem"
                                 />
                                 {renderEventVenue(props.eventDetails?.type, props.eventDetails?.venue)}
