@@ -151,17 +151,27 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
         /// <param name="configuration">Application configuration properties.</param>
         public static void AddSearchService(this IServiceCollection services, IConfiguration configuration)
         {
+            var IsGCCHybrid = configuration.GetValue<bool>("DeploymentType:IsGCCHybrid");
+            var searchDnsSuffix = IsGCCHybrid == true ? "search.azure.us" : "search.windows.net";
+
 #pragma warning disable CA2000 // This is singleton which has lifetime same as the app
             services.AddSingleton<ISearchServiceClient>(new SearchServiceClient(
                 configuration.GetValue<string>("SearchService:SearchServiceName"),
                 new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceAdminApiKey"))));
 
-            services.AddSingleton<ISearchIndexClient>(new SearchIndexClient(
+            var searchIndexClient = new SearchIndexClient(
                 configuration.GetValue<string>("SearchService:SearchServiceName"),
                 Constants.EventsIndex,
-                new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceQueryApiKey"))));
-            services.AddSingleton<ISearchServiceClient>(new SearchServiceClient(configuration.GetValue<string>("SearchService:SearchServiceName"), new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceAdminApiKey"))));
-            services.AddSingleton<ISearchIndexClient>(new SearchIndexClient(configuration.GetValue<string>("SearchService:SearchServiceName"), Constants.EventsIndex, new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceQueryApiKey"))));
+                new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceQueryApiKey")));
+            searchIndexClient.SearchDnsSuffix = searchDnsSuffix;
+            services.AddSingleton<ISearchIndexClient>(searchIndexClient);
+
+            var searchServiceClient = new SearchServiceClient(configuration.GetValue<string>("SearchService:SearchServiceName"), new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceAdminApiKey")));
+            searchServiceClient.SearchDnsSuffix = searchDnsSuffix;
+            services.AddSingleton<ISearchServiceClient>(searchServiceClient);
+            var searchIndexAPIClient = new SearchIndexClient(configuration.GetValue<string>("SearchService:SearchServiceName"), Constants.EventsIndex, new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceQueryApiKey")));
+            searchIndexAPIClient.SearchDnsSuffix = searchDnsSuffix;
+            services.AddSingleton<ISearchIndexClient>(searchIndexAPIClient);
             services.AddSingleton<IEventSearchService, EventSearchService>();
             services.AddSingleton<IUserEventSearchService, UserEventSearchService>();
             services.AddSingleton<ITeamEventSearchService, TeamEventSearchService>();

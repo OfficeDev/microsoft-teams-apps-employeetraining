@@ -131,6 +131,13 @@
       "minLength": 1,
       "defaultValue": "en-US"
     },
+    "IsGCCHybrid": {
+      "type": "bool",
+      "defaultValue": "false",
+      "metadata": {
+        "description": "True if deployment is for GCC tenant, else false."
+      }
+    },
     "gitRepoUrl": {
       "type": "string",
       "metadata": {
@@ -328,6 +335,10 @@
             {
               "name": "KeyVaultStrings:SearchServiceQueryApiKey",
               "value": "SearchServiceQueryApiKey--SecretKey"
+            },
+            {
+              "name": "DeploymentType:IsGCCHybrid",
+              "value": "[parameters('IsGCCHybrid')]"
             }
           ],
           "cors": {
