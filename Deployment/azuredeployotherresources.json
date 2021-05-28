@@ -1,0 +1,461 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseResourceName": {
+      "minLength": 1,
+      "type": "String",
+      "metadata": {
+        "description": "The base name to use for the resources that will be provisioned."
+      }
+    },
+    "botClientId": {
+      "minLength": 36,
+      "maxLength": 36,
+      "type": "String",
+      "metadata": {
+        "description": "The client Id of the bot Azure Active Directory app, e.g., 742e4567-e89b-12d3-a456-426655443586."
+      }
+    },
+    "botClientSecret": {
+      "minLength": 1,
+      "type": "SecureString",
+      "metadata": {
+        "description": "The client secret of the bot Azure Active Directory app."
+      }
+    },
+    "manifestId": {
+      "defaultValue": "eb3d21e5-1635-4334-a625-19249df25173",
+      "minLength": 36,
+      "maxLength": 36,
+      "type": "String",
+      "metadata": {
+        "description": "Manifest Id (Required for deeplinking). This needs to be same as manifest Id provided in manifest.json file inside Manifest folder."
+      }
+    },
+    "cacheDurationInMinutes": {
+      "defaultValue": 60,
+      "type": "Int",
+      "metadata": {
+        "description": "Number of minutes to cache user details in memory."
+      }
+    },
+    "tenantId": {
+      "defaultValue": "[subscription().tenantId]",
+      "minLength": 1,
+      "maxLength": 36,
+      "type": "String",
+      "metadata": {
+        "description": "The Id of the tenant to which the app will be deployed."
+      }
+    },
+    "IsGCCHybrid": {
+      "type": "bool",
+      "defaultValue": "false",
+      "metadata": {
+        "description": "Deployment tenant is GCC or any other tenant."
+      }
+    },
+    "sku": {
+      "defaultValue": "Standard",
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ],
+      "type": "String",
+      "metadata": {
+        "description": "The pricing tier for the hosting plan."
+      }
+    },
+    "planSize": {
+      "defaultValue": "3",
+      "allowedValues": [
+        "1",
+        "2",
+        "3"
+      ],
+      "type": "String",
+      "metadata": {
+        "description": "The size of the hosting plan (small, medium, or large)."
+      }
+    },
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "String",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    },
+    "searchServiceSku": {
+      "defaultValue": "B (15 indexes)",
+      "allowedValues": [
+        "F (3 indexes)",
+        "B (15 indexes)"
+      ],
+      "type": "String",
+      "metadata": {
+        "description": "The pricing tier for the Azure Search service."
+      }
+    },
+    "defaultCulture": {
+      "defaultValue": "en-US",
+      "minLength": 1,
+      "type": "String"
+    },
+    "gitRepoUrl": {
+      "defaultValue": "https://github.com/OfficeDev/microsoft-teams-apps-employeetraining.git",
+      "type": "String",
+      "metadata": {
+        "description": "The URL to the GitHub repository to deploy."
+      }
+    },
+    "gitBranch": {
+      "defaultValue": "main",
+      "type": "String",
+      "metadata": {
+        "description": "The branch of the GitHub repository to deploy."
+      }
+    }
+  },
+  "variables": {
+    "uniqueString": "[uniquestring(subscription().subscriptionId, resourceGroup().id, parameters('baseResourceName'))]",
+    "botName": "[parameters('baseResourceName')]",
+    "botAppName": "[parameters('baseResourceName')]",
+    "botAppDomain": "[concat(variables('botAppName'), '.azurewebsites.us')]",
+    "botAppUrl": "[concat('https://', variables('botAppDomain'))]",
+    "hostingPlanName": "[parameters('baseResourceName')]",
+    "storageAccountName": "[variables('uniqueString')]",
+    "botAppInsightsName": "[parameters('baseResourceName')]",
+    "azureSearchName": "[concat('search-', variables('uniqueString'))]",
+    "azureSearchSkus": {
+      "F ": "free",
+      "B ": "basic"
+    },
+    "azureSearchSkuValue": "[variables('azureSearchSkus')[toUpper(substring(parameters('searchServiceSku'), 0, 2))]]",
+    "keyVaultName": "[concat(variables('botAppName'), 'vault')]",
+    "keyVaultUrl": "[concat('https://',variables('keyVaultName'), '.vault.usgovcloudapi.net/secrets/')]",
+    "microsoftAppId": "MicrosoftAppId",
+    "microsoftAppPassword": "MicrosoftAppPassword",
+    "storageConnection": "StorageConnection",
+    "storageConnectionString": "core.usgovcloudapi.net",
+    "sharedSkus": [
+      "Free",
+      "Shared"
+    ],
+    "isSharedPlan": "[contains(variables('sharedSkus'), parameters('sku'))]",
+    "skuFamily": "[if(equals(parameters('sku'), 'Shared'), 'D', take(parameters('sku'), 1))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2018-02-01",
+      "name": "[variables('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "supportsHttpsTrafficOnly": true,
+        "allowBlobPublicAccess": false
+      }
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2016-09-01",
+      "name": "[variables('hostingPlanName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[if(variables('isSharedPlan'), concat(variables('skuFamily'),'1'), concat(variables('skuFamily'),parameters('planSize')))]",
+        "tier": "[parameters('sku')]",
+        "size": "[concat(variables('skuFamily'), parameters('planSize'))]",
+        "family": "[variables('skuFamily')]",
+        "capacity": 0
+      },
+      "properties": {
+        "name": "[variables('hostingPlanName')]",
+        "hostingEnvironment": "",
+        "numberOfWorkers": 1
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2016-08-01",
+      "name": "[variables('botAppName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
+        "[resourceId('Microsoft.Search/searchServices/', variables('azureSearchName'))]"
+      ],
+      "kind": "app",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "name": "[variables('botAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+        "enabled": true,
+        "reserved": false,
+        "clientAffinityEnabled": true,
+        "clientCertEnabled": false,
+        "hostNamesDisabled": false,
+        "containerSize": 0,
+        "dailyMemoryTimeQuota": 0,
+        "httpsOnly": true,
+        "siteConfig": {
+          "alwaysOn": true,
+          "appsettings": [
+            {
+              "name": "Logging:LogLevel:Default",
+              "value": "Information"
+            },
+            {
+              "name": "ApplicationInsights:LogLevel:Default",
+              "value": "Information"
+            },
+            {
+              "name": "ApplicationInsights:LogLevel:Microsoft",
+              "value": "Information"
+            },
+            {
+              "name": "App:AppBaseUri",
+              "value": "[concat('https://', variables('botAppDomain'))]"
+            },
+            {
+              "name": "App:EventsPageSize",
+              "value": "30"
+            },
+            {
+              "name": "App:ManifestId",
+              "value": "[parameters('manifestId')]"
+            },
+            {
+              "name": "App:CacheDurationInMinutes",
+              "value": "[parameters('cacheDurationInMinutes')]"
+            },
+            {
+              "name": "i18n:DefaultCulture",
+              "value": "[parameters('defaultCulture')]"
+            },
+            {
+              "name": "i18n:SupportedCultures",
+              "value": "en-US"
+            },
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "12.18.0"
+            },
+            {
+              "name": "AzureAd:Instance",
+              "value": "https://login.microsoftonline.com/"
+            },
+            {
+              "name": "AzureAd:TenantId",
+              "value": "[parameters('tenantId')]"
+            },
+            {
+              "name": "AzureAd:ValidIssuers",
+              "value": "https://login.microsoftonline.com/TENANT_ID/v2.0,https://sts.windows.net/TENANT_ID/"
+            },
+            {
+              "name": "AzureAd:ApplicationIdURI",
+              "value": "[concat('api://', concat(variables('botAppDomain'), concat('/',parameters('botClientId'))))]"
+            },
+            {
+              "name": "AzureAd:GraphScope",
+              "value": "openid profile offline_access https://graph.microsoft.com/User.ReadBasic.All https://graph.microsoft.com/People.Read https://graph.microsoft.com/Directory.Read.All https://graph.microsoft.com/Calendars.ReadWrite"
+            },
+            {
+              "name": "KeyVault:BaseUrl",
+              "value": "[variables('keyVaultUrl')]"
+            },
+            {
+              "name": "KeyVaultStrings:StorageConnection",
+              "value": "StorageConnection--SecretKey"
+            },
+            {
+              "name": "KeyVaultStrings:MicrosoftAppId",
+              "value": "MicrosoftAppId--SecretKey"
+            },
+            {
+              "name": "KeyVaultStrings:MicrosoftAppPassword",
+              "value": "MicrosoftAppPassword--SecretKey"
+            },
+            {
+              "name": "KeyVaultStrings:SearchServiceName",
+              "value": "SearchServiceName--SecretKey"
+            },
+            {
+              "name": "KeyVaultStrings:SearchServiceAdminApiKey",
+              "value": "SearchServiceAdminApiKey--SecretKey"
+            },
+            {
+              "name": "KeyVaultStrings:SearchServiceQueryApiKey",
+              "value": "SearchServiceQueryApiKey--SecretKey"
+            },
+            {
+              "name": "DeploymentType:IsGCCHybrid",
+              "value": "[parameters('IsGCCHybrid')]"
+            }
+          ],
+          "cors": {
+            "supportCredentials": true,
+            "allowedOrigins": [
+              "[concat('https://', variables('botAppDomain'))]"
+            ]
+          }
+        }
+      },
+      "resources": [
+        {
+          "type": "sourcecontrols",
+          "apiVersion": "2016-08-01",
+          "name": "web",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', variables('botAppName'))]"
+          ],
+          "properties": {
+            "RepoUrl": "[parameters('gitRepoUrl')]",
+            "branch": "[parameters('gitBranch')]",
+            "IsManualIntegration": true
+          },
+          "condition": "[not(empty(parameters('gitRepoUrl')))]"
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2018-02-14",
+      "name": "[variables('keyVaultName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', variables('botAppName'))]"
+      ],
+      "tags": {
+        "displayName": "KeyVault"
+      },
+      "properties": {
+        "enabledForDeployment": "true",
+        "enabledForTemplateDeployment": "true",
+        "enabledForDiskEncryption": "true",
+        "tenantId": "[reference(concat('Microsoft.Web/sites/', variables('botAppName')), '2018-02-01', 'Full').identity.tenantId]",
+        "accessPolicies": [
+          {
+            "objectId": "[reference(concat('Microsoft.Web/sites/', variables('botAppName')), '2018-02-01', 'Full').identity.principalId]",
+            "tenantId": "[reference(concat('Microsoft.Web/sites/', variables('botAppName')), '2018-02-01', 'Full').identity.tenantId]",
+            "permissions": {
+              "secrets": [
+                "all"
+              ]
+            }
+          }
+        ],
+        "sku": {
+          "name": "Standard",
+          "family": "A"
+        },
+        "networkAcls": {
+          "value": {
+            "defaultAction": "Allow",
+            "bypass": "AzureServices"
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2018-02-14",
+      "name": "[concat(variables('keyVaultName'), '/', 'StorageConnection--SecretKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')),'2015-05-01-preview').key1,';EndpointSuffix=', variables('storageConnectionString'))]"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2018-02-14",
+      "name": "[concat(variables('keyVaultName'), '/', 'MicrosoftAppId--SecretKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[parameters('botClientId')]"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2018-02-14",
+      "name": "[concat(variables('keyVaultName'), '/', 'MicrosoftAppPassword--SecretKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[parameters('botClientSecret')]"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2018-02-14",
+      "name": "[concat(variables('keyVaultName'), '/', 'SearchServiceName--SecretKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[variables('azureSearchName')]"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2018-02-14",
+      "name": "[concat(variables('keyVaultName'), '/', 'SearchServiceAdminApiKey--SecretKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[listAdminKeys(resourceId('Microsoft.Search/searchServices/', variables('azureSearchName')), '2015-08-19').primaryKey]"
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2018-02-14",
+      "name": "[concat(variables('keyVaultName'), '/', 'SearchServiceQueryApiKey--SecretKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
+      ],
+      "properties": {
+        "value": "[listQueryKeys(resourceId('Microsoft.Search/searchServices/', variables('azureSearchName')), '2015-08-19').value[0].key]"
+      }
+    },
+    {
+      "type": "Microsoft.Search/searchServices",
+      "apiVersion": "2015-08-19",
+      "name": "[variables('azureSearchName')]",
+      "location": "[parameters('location')]",
+      "tags": {},
+      "sku": {
+        "name": "[toLower(variables('azureSearchSkuValue'))]"
+      },
+      "properties": {
+        "replicaCount": 1,
+        "partitionCount": 1,
+        "hostingMode": "default"
+      }
+    }
+  ],
+  "outputs": {
+    "botId": {
+      "type": "String",
+      "value": "[parameters('botClientId')]"
+    }
+  }
+}
