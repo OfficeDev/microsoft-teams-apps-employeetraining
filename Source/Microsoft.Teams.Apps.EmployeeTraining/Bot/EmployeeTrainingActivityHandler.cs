@@ -246,7 +246,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
         /// <param name="taskModuleRequest">task module request.</param>
         /// <param name="cancellationToken">cancellation token.</param>
         /// <returns>task module response.</returns>
-        protected override Task<TaskModuleResponse> OnTeamsTaskModuleSubmitAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
+        protected override async Task<TaskModuleResponse> OnTeamsTaskModuleSubmitAsync(ITurnContext<IInvokeActivity> turnContext, TaskModuleRequest taskModuleRequest, CancellationToken cancellationToken)
         {
             return default;
         }
