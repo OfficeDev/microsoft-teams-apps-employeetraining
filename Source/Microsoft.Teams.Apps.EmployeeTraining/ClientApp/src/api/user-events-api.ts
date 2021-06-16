@@ -20,6 +20,7 @@ export const getEventsAsync = async (
         searchString: encodeURIComponent(searchString),
         pageCount: pageCount,
         eventSearchType: eventSearchType,
+        createdByFilter: createdByFilter,
         categoryFilter: categoryFilter,
         sortBy: sortByFilter
     };
