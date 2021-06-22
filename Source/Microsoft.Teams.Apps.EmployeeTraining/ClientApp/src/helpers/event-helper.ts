@@ -168,3 +168,18 @@ export const formatEventDayAndTimeToShort = (startDate: Date, startTime: Date, e
 
     return `${eventDay}, ${eventStartTime} - ${eventEndTime}`;
 }
+
+/**
+    * Format and renders event day and time as per local time in long format.
+    * @param startDate The start date of an event
+    * @param startTime The start time of an event
+    * @param endTime The end time of an event
+    * @returns Returns formatted date and time. Ex. March 4, 2021, 10:00 - 11:00
+    */
+ export const formatEventDayAndTimeToLong = (startDate: Date, startTime: Date, endTime: Date) => {
+    let eventDay = moment.utc(startDate).local().format("LL");
+    let eventStartTime = moment.utc(startTime).local().format("HH:mm");
+    let eventEndTime = moment.utc(endTime).local().format("HH:mm");
+
+    return `${eventDay}, ${eventStartTime} - ${eventEndTime}`;
+}

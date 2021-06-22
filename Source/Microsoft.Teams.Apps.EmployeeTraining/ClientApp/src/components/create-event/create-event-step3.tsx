@@ -115,7 +115,7 @@ class CreateEventStep3 extends React.Component<ICreateEventsStep3Props, ICreateE
      * @param endTime The end time of an event
      */
     getEventDayAndTime = (startDate: Date, startTime: Date, endTime: Date) => {
-        let eventDay = moment.utc(startDate).local().format("ddd");
+        let eventDay = moment.utc(startDate).local().format("LL");
         let eventStartTime = moment.utc(startTime).local().format("HH:mm");
         let eventEndTime = moment.utc(endTime).local().format("HH:mm");
 

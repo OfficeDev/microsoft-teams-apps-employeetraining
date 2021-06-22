@@ -175,7 +175,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                 {
                                     new AdaptiveTextBlock
                                     {
-                                        Text = $"**{localizer.GetString("Description")}:** ",
+                                        Text = $"**{localizer.GetString("DescriptionLabelCard")}:** ",
                                         Wrap = true,
                                         Weight = AdaptiveTextWeight.Bolder,
                                         Size = AdaptiveTextSize.Small,

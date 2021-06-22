@@ -7,6 +7,7 @@ import Resources from "./constants/constants";
 import * as microsoftTeams from "@microsoft/teams-js";
 import { Provider, ThemeInput, themes } from "@fluentui/react-northstar";
 import { initializeIcons } from "@uifabric/icons";
+import { updateLocale } from './i18n';
 import "./styles/style.css";
 
 export interface IAppState {
@@ -38,6 +39,7 @@ export default class App extends React.Component<{}, IAppState> {
                 this.forceUpdate();
             });
         });
+        updateLocale();
     }
 
     setThemeComponent = () => {

@@ -5,6 +5,7 @@
 import React, { useState } from 'react';
 import { Input, Popup, Flex, Dropdown, Text } from '@fluentui/react-northstar';
 import { Icon } from '@fluentui/react/lib/Icon';
+import { useTranslation } from 'react-i18next';
 import "./timepicker.css";
 
 interface ITimePickerProps {
@@ -17,6 +18,7 @@ interface ITimePickerProps {
 }
 
 export const TimePicker: React.FunctionComponent<ITimePickerProps> = props => {
+    const localize = useTranslation().t;
     const [open, setOpen] = useState(false);
     const [text, setText] = React.useState(props.hours!.toString().padStart(2, '0') + ":" + props.minutes!.toString().padStart(2, '0'));
     const [hours, setHour] = React.useState(props.hours!.toString().padStart(2, '0'));
@@ -79,10 +81,10 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = props => {
         <div className="timepicker-popup-style">
             <Flex gap="gap.small">
                 <Flex.Item size="size.half">
-                    <Text size="small" content="Hour" />
+                    <Text size="small" content={localize("hour")} />
                 </Flex.Item>
                 <Flex.Item size="size.half">
-                    <Text size="small" content="Minute" />
+                    <Text size="small" content={localize("minute")} />
                 </Flex.Item>
             </Flex>
             <Flex gap="gap.small" styles={{marginTop:"0.5rem"}}>

@@ -428,7 +428,7 @@ class ManageEvents extends React.Component<IManageEventsProps, IManageEventsStat
         let response = await exportEventDetailsToCSV(this.teamId, eventId);
 
         if (response.status === ResponseStatus.OK) {
-            const url = window.URL.createObjectURL(new Blob([response.data]));
+            const url = window.URL.createObjectURL(new Blob(["\ufeff", response.data],  {type: 'text/csv;charset=utf-8'}));
             const downloadLink = document.createElement('a');
             downloadLink.href = url;
             downloadLink.setAttribute('download', `${eventName}.csv`);
