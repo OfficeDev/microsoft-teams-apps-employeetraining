@@ -405,4 +405,8 @@
     <value>Meeting link is required</value>
     <comment>Error message sent by API when event meeting link is blank</comment>
   </data>
+  <data name="BotCommandAddEvent" xml:space="preserve">
+    <value>Add event</value>
+    <comment>Bot command add event. This needs to be match with SME manifest's command "Add Event" in translated json file.</comment>
+  </data>
 </root>

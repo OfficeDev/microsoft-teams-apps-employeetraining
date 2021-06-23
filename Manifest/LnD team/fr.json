@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Form. empl. (Équ. form./dvpt)",
+  "name.full": "Formation des employés (Équipe formation/développement)",
+  "description.short": "Simpl. créat. et gest. des évén. des équipes formation/dvpt pr engager les empl.",
+  "description.full": "Demandez à vos employés de suivre une formation dans laquelle ils passent la plupart de leur temps dans Microsoft Teams. Votre équipe Formation + Développement peut créer de nouveaux événements de formation, spécifier les personnes autorisées à participer et déterminer si l’événement est obligatoire ou non, et fermer l’inscription une fois la capacité atteinte. Les rappels intégrés vous permettent de vous assurer que vos événements sont correctement suivis.",
+  "staticTabs[0].name": "Gérer les événements",
+  "bots[0].commandLists[0].commands[0].title": "Ajouter un événement",
+  "bots[0].commandLists[0].commands[0].description": "Ajouter un événement pour des utilisateurs"
+}

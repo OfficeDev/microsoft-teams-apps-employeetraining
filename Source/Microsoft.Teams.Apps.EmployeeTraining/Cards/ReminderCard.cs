@@ -29,6 +29,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
         /// <returns>If event details provided, then returns reminder card. Else returns empty card.</returns>
         public static Attachment GetCard(IEnumerable<EventEntity> events, IStringLocalizer<Strings> localizer, string applicationManifestId, NotificationType notificationType = NotificationType.Manual)
         {
+            var textAlignment = CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? AdaptiveHorizontalAlignment.Right : AdaptiveHorizontalAlignment.Left;
             if (events == null || !events.Any())
             {
                 return new Attachment();
@@ -67,6 +68,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                     Wrap = true,
                                     Size = AdaptiveTextSize.Large,
                                     Weight = AdaptiveTextWeight.Bolder,
+                                    HorizontalAlignment = textAlignment,
                                 },
                             },
                         },
@@ -104,6 +106,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
         /// <returns>Returns reminder card elements</returns>
         private static List<AdaptiveElement> GetReminderCardElements(IEnumerable<EventEntity> events, IStringLocalizer<Strings> localizer)
         {
+            var textAlignment = CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? AdaptiveHorizontalAlignment.Right : AdaptiveHorizontalAlignment.Left;
             List<AdaptiveElement> cardElements = new List<AdaptiveElement>();
 
             foreach (var eventDetails in events)
@@ -138,6 +141,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                     Text = eventDetails.Name,
                                     Weight = AdaptiveTextWeight.Bolder,
                                     Size = AdaptiveTextSize.Small,
+                                    HorizontalAlignment = textAlignment,
                                 },
                                 new AdaptiveColumnSet
                                 {
@@ -155,6 +159,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                                     Wrap = true,
                                                     Color = AdaptiveTextColor.Warning,
                                                     Size = AdaptiveTextSize.Small,
+                                                    HorizontalAlignment = textAlignment,
                                                 },
                                             },
                                         },
@@ -166,7 +171,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                                 {
                                                     Text = "| " + (eventDetails.Type == (int)EventType.InPerson ? eventDetails.Venue : localizer.GetString("TeamsMeetingText")),
                                                     Wrap = true,
-                                                    HorizontalAlignment = AdaptiveHorizontalAlignment.Left,
+                                                    HorizontalAlignment = textAlignment,
                                                     Size = AdaptiveTextSize.Small,
                                                 },
                                             },
@@ -185,9 +190,10 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                             {
                                                 new AdaptiveTextBlock
                                                 {
-                                                    Text = string.Format(CultureInfo.CurrentCulture, "{0} {1}-{2}", "{{DATE(" + eventDetails.StartDate.Value.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", CultureInfo.InvariantCulture) + ")}}", "{{TIME(" + eventDetails.StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'", CultureInfo.InvariantCulture) + ")}}", "{{TIME(" + eventDetails.EndTime.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'", CultureInfo.InvariantCulture) + ")}}"),
+                                                    Text = string.Format(CultureInfo.CurrentCulture, "{0} {1}-{2}", "{{DATE(" + eventDetails.StartDate.Value.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", CultureInfo.InvariantCulture) + ", SHORT)}}", "{{TIME(" + eventDetails.StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'", CultureInfo.InvariantCulture) + ")}}", "{{TIME(" + eventDetails.EndTime.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'", CultureInfo.InvariantCulture) + ")}}"),
                                                     Wrap = true,
                                                     Size = AdaptiveTextSize.Small,
+                                                    HorizontalAlignment = textAlignment,
                                                 },
                                             },
                                         },

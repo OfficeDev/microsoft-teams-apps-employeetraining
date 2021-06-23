@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "従業員のトレーニング",
+  "name.full": "従業員のトレーニング",
+  "description.short": "従業員がトレーニング イベントを簡単に検出、登録、共有できるようにします。",
+  "description.full": "従業員をトレーニングに参加させ、ほとんどの時間をここ Microsoft Teams で過ごします。管理者は、新しいトレーニング イベントを作成し、誰が参加できるか、イベントが必須かどうかを指定し、定員に達したら登録を閉じることができます。アプリが Teams チャネルに追加されると、従業員は [検出] タブにアクセスしてイベントを参照し、関心のあるイベントに登録し、アプリのメッセージ拡張機能を使用して同僚や直属の部下にイベントを提案できます。登録すると、従業員は Teams でリマインダーを受け取るので、イベントを見逃すことはありません!",
+  "staticTabs[0].name": "イベントの検出",
+  "staticTabs[1].name": "イベント",
+  "composeExtensions[0].commands[0].title": "最近",
+  "composeExtensions[0].commands[0].description": "作成されたすべてのイベントを表示",
+  "composeExtensions[0].commands[0].parameters[0].description": "イベントを検索するために入力してください",
+  "composeExtensions[0].commands[1].title": "人気",
+  "composeExtensions[0].commands[1].description": "人気のイベントを表示",
+  "composeExtensions[0].commands[1].parameters[0].description": "イベントを検索するために入力してください"
+}

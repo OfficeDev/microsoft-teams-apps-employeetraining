@@ -5,6 +5,7 @@
 namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
 {
     using System.Collections.Generic;
+    using System.Globalization;
     using AdaptiveCards;
     using Microsoft.Bot.Schema;
     using Microsoft.Extensions.Localization;
@@ -23,6 +24,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
         /// <returns>An adaptive card attachment.</returns>
         public static Attachment GetCard(IStringLocalizer<Strings> localizer)
         {
+            var textAlignment = CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? AdaptiveHorizontalAlignment.Right : AdaptiveHorizontalAlignment.Left;
             var createEventCard = new AdaptiveCard(new AdaptiveSchemaVersion(1, 2))
             {
                 Body = new List<AdaptiveElement>
@@ -30,6 +32,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                     new AdaptiveTextBlock
                     {
                         Text = localizer.GetString("CreateEventCardTitleText"),
+                        HorizontalAlignment = textAlignment,
                     },
                 },
                 Actions = new List<AdaptiveAction>

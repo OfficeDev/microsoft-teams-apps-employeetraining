@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Treinamento (L&D Equipe)",
+  "name.full": "Treinamento de Funcionários (L&D Teams)",
+  "description.short": "Tornar mais fácil para L&D criar e gerenciar eventos para atrair funcionários.",
+  "description.full": "Entre em contato com seus funcionários com treinamento em que eles gastam a maior parte do seu tempo aqui no Microsoft Teams. Sua equipe de aprendizado/desenvolvimento pode criar novos eventos de treinamento, especificar quem pode participar e se o evento é obrigatório ou não, e fechar o registro quando a capacidade for atingida. Lembretes internos ajudam a garantir que seus eventos estejam bem assistidos.",
+  "staticTabs[0].name": "Gerenciar eventos",
+  "bots[0].commandLists[0].commands[0].title": "Adicionar evento",
+  "bots[0].commandLists[0].commands[0].description": "Adicionar evento aos usuários"
+}

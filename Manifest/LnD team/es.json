@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Curso de empleados, equipo L&D",
+  "name.full": "Aprendizaje de los empleados (equipo L&D)",
+  "description.short": "Facilite a equipos de L&D crear y administrar eventos para implicar a empleados.",
+  "description.full": "Haga participar a sus empleados en el aprendizaje en el que dedican la mayor parte del tiempo: justo aquí en Microsoft Teams. El equipo de aprendizaje + desarrollo puede crear nuevos eventos de aprendizaje, especificar quién puede asistir y si el evento es obligatorio o no, y cerrar el registro una vez que se alcanza la capacidad. Los avisos integrados le ayudarán a asegurarse de que los eventos estén bien atendidos.",
+  "staticTabs[0].name": "Administrar eventos",
+  "bots[0].commandLists[0].commands[0].title": "Agregar evento",
+  "bots[0].commandLists[0].commands[0].description": "Agregar evento para los usuarios"
+}

@@ -17,9 +17,13 @@ import TeamsMeetingArtifact from "../../components/common/event-artifacts/teams-
 import LiveEventArtifact from "../../components/common/event-artifacts/live-event";
 import MandatoryArtifact from "../../components/common/event-artifacts/mandatory";
 import EventImage from "../../components/common/event-image/event-image";
+import { LanguageDirection } from "../../models/language-direction";
+import { Fabric } from "@fluentui/react";
+
 import "./event-details.css";
 
 interface IEventDetailsProps extends WithTranslation {
+    dir: LanguageDirection
     eventDetails: IEvent | undefined,
     eventCreatedByName: string
     eventOperationType: EventOperationType,
@@ -84,6 +88,7 @@ const EventDetails: React.FunctionComponent<IEventDetailsProps> = props => {
                 <Avatar
                     size="small"
                     name={name}
+                    className={props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}
                 />
                 <Layout
                     start={<Text content={localize("createdBy")} size="small" />}
@@ -139,14 +144,16 @@ const EventDetails: React.FunctionComponent<IEventDetailsProps> = props => {
         return (
             <Flex className="footer" vAlign="center">
                 {props.isOperationFailed ? <Text error content={localize("dataResponseFailedStatus")} weight="semibold" /> : null}
-                <Flex.Item push>
-                    <Button
-                        primary
-                        loading={props.isOperationInProgress}
-                        disabled={props.isOperationInProgress}
-                        content={renderOperationButtonText()}
-                        onClick={props.onPerformOperation}
-                    />
+                <Flex.Item grow={props.dir === LanguageDirection.Rtl} push={props.dir === LanguageDirection.Ltr}>
+                    <div >
+                        <Button
+                            primary
+                            loading={props.isOperationInProgress}
+                            disabled={props.isOperationInProgress}
+                            content={renderOperationButtonText()}
+                            onClick={props.onPerformOperation}
+                        />
+                    </div>
                 </Flex.Item>
             </Flex>
         );
@@ -168,7 +175,7 @@ const EventDetails: React.FunctionComponent<IEventDetailsProps> = props => {
             return (
                 <Flex space="between" vAlign="center">
                     <Text className="category label-color" truncated content={props.eventDetails?.categoryName} title={props.eventDetails?.categoryName} weight="bold" />
-                    <Flex.Item push>
+                    <Flex.Item push={props.dir === LanguageDirection.Ltr}>
                         {getArtifacts()}
                     </Flex.Item>
                 </Flex>
@@ -215,49 +222,51 @@ const EventDetails: React.FunctionComponent<IEventDetailsProps> = props => {
         }
 
         return (
-            <Provider>
-                <Flex>
-                    <div className={`${props.isMobileView ? "mobile-task-module-container" : "task-module-container"} event-task-module`}>
-                        <div className="event-info">
-                            { renderHeader() }
-                            {props.eventDetails.photo && <EventImage className="event-image" imageSrc={props.eventDetails.photo} />}
-                            {props.eventDetails.selectedColor && <div className="event-image" style={{ backgroundColor: props.eventDetails.selectedColor }}>
-                                <Flex className="event-image" hAlign="center" vAlign="center">
-                                    <Text className="event-color-text" size="large" weight="semibold" content={props.eventDetails.name} title={props.eventDetails.name} />
+            <Fabric dir={props.dir}>
+                <Provider>
+                    <Flex>
+                        <div className={`${props.isMobileView ? "mobile-task-module-container" : "task-module-container"} event-task-module`}>
+                            <div className="event-info">
+                                { renderHeader() }
+                                {props.eventDetails.photo && <EventImage className="event-image" imageSrc={props.eventDetails.photo} />}
+                                {props.eventDetails.selectedColor && <div className="event-image" style={{ backgroundColor: props.eventDetails.selectedColor }}>
+                                    <Flex className="event-image" hAlign="center" vAlign="center">
+                                        <Text className="event-color-text" size="large" weight="semibold" content={props.eventDetails.name} title={props.eventDetails.name} />
+                                    </Flex>
+                                </div>}
+                                <div style={{ marginTop: "1.33rem" }}>
+                                    <Text align={props.dir === LanguageDirection.Rtl ? "end" : "start"} className={props.dir === LanguageDirection.Rtl ? "rtl-right-margin-smaller" : ""} content={props.eventDetails?.name} weight="bold" size="medium" />
+                                </div>
+                                <Flex vAlign="center" hAlign="start">
+                                    <Layout
+                                        className="event-date-and-time"
+                                        start={<Icon iconName="Clock" />}
+                                        main={<Text content={formatEventDayAndTimeToShort(props.eventDetails?.startDate, props.eventDetails?.startTime!, props.eventDetails.endTime!)} weight="semibold" size="small" />}
+                                        gap=".4rem"
+                                    />
+                                    {renderEventVenue(props.eventDetails?.type, props.eventDetails?.venue)}
                                 </Flex>
-                            </div>}
-                            <div style={{ marginTop: "1.33rem" }}>
-                                <Text content={props.eventDetails?.name} weight="bold" size="medium" />
+                                <Flex vAlign="center" hAlign="start" design={{ marginTop: "2.67rem" }}>
+                                    <Text className={props.dir === LanguageDirection.Rtl ? "rtl-right-margin-small" : ""} content={props.eventDetails?.description} />
+                                </Flex>
+                                { renderAttendeeURL() }
+                                <Flex gap={props.dir === LanguageDirection.Rtl ? undefined : "gap.large"} className={props.dir === LanguageDirection.Rtl ? "rtl-right-margin-small" : ""} design={{ marginTop: "2.67rem" }}>
+                                    <Flex column className={props.dir === LanguageDirection.Rtl ? "rtl-left-margin-large" : ""}>
+                                        <Text content={localize("totalNoOfParticipants")} weight="semibold" />
+                                        <Text align={props.dir === LanguageDirection.Rtl ? "end" : "start"} content={props.eventDetails?.maximumNumberOfParticipants} />
+                                    </Flex>
+                                    <Flex column>
+                                        <Text content={localize("registeredParticipants")} weight="semibold" />
+                                        <Text align={props.dir === LanguageDirection.Rtl ? "end" : "start"} content={props.eventDetails?.registeredAttendeesCount} />
+                                    </Flex>
+                                </Flex>
+                                {renderEventCreatorInfo()}
                             </div>
-                            <Flex vAlign="center" hAlign="start">
-                                <Layout
-                                    className="event-date-and-time"
-                                    start={<Icon iconName="Clock" />}
-                                    main={<Text content={formatEventDayAndTimeToShort(props.eventDetails?.startDate, props.eventDetails?.startTime!, props.eventDetails.endTime!)} weight="semibold" size="small" />}
-                                    gap=".4rem"
-                                />
-                                {renderEventVenue(props.eventDetails?.type, props.eventDetails?.venue)}
-                            </Flex>
-                            <Flex vAlign="center" hAlign="start" design={{ marginTop: "2.67rem" }}>
-                                <Text content={props.eventDetails?.description} />
-                            </Flex>
-                            { renderAttendeeURL() }
-                            <Flex gap="gap.large" design={{ marginTop: "2.67rem" }}>
-                                <Flex column>
-                                    <Text content={localize("totalNoOfParticipants")} weight="semibold" />
-                                    <Text content={props.eventDetails?.maximumNumberOfParticipants} />
-                                </Flex>
-                                <Flex column>
-                                    <Text content={localize("registeredParticipants")} weight="semibold" />
-                                    <Text content={props.eventDetails?.registeredAttendeesCount} />
-                                </Flex>
-                            </Flex>
-                            {renderEventCreatorInfo()}
+                            {renderFooter()}
                         </div>
-                        {renderFooter()}
-                    </div>
-                </Flex>
-            </Provider>
+                    </Flex>
+                </Provider>
+            </Fabric>
         );
     }
 

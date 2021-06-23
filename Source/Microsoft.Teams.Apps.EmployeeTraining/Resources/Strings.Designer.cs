@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Teams.Apps.EmployeeTraining {
+namespace Microsoft.Teams.Apps.EmployeeTraining.Resources {
     using System;
     
     
@@ -102,6 +102,15 @@ namespace Microsoft.Teams.Apps.EmployeeTraining {
         public static string AutoRegisteredHeader {
             get {
                 return ResourceManager.GetString("AutoRegisteredHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add event.
+        /// </summary>
+        public static string BotCommandAddEvent {
+            get {
+                return ResourceManager.GetString("BotCommandAddEvent", resourceCulture);
             }
         }
         

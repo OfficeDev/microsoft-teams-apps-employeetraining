@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "직원 교육",
+  "name.full": "직원 교육",
+  "description.short": "직원이 교육 이벤트를 검색, 등록하고, 공유할 수 있습니다.",
+  "description.full": "직원들이 대부분의 시간을 이곳 Microsoft Teams에서 보내는 교육에 참여할 수 있도록 독려하세요. 관리자는 새 교육 이벤트를 만들고, 참석할 수 있는 사용자 및 이벤트 의무 여부를 지정하고, 한도에 도달하면 등록을 닫을 수 있습니다. Teams 채널에 앱이 추가되면 직원들은 검색 탭을 방문하여 이벤트를 검색하고 이벤트를 관심 있는 이벤트에 등록하고 앱의 메시지 확장을 사용하여 동료에게 이벤트를 제안하거나 직접 보고서를 작성할 수 있습니다. 일단 등록되면, 직원들은 Teams 내에서 알림을 받게 되므로 이벤트를 놓치지 않습니다!",
+  "staticTabs[0].name": "이벤트 검색",
+  "staticTabs[1].name": "이벤트",
+  "composeExtensions[0].commands[0].title": "최근",
+  "composeExtensions[0].commands[0].description": "생성된 모든 이벤트 표시",
+  "composeExtensions[0].commands[0].parameters[0].description": "이벤트를 검색하려면 Enter 키를 누릅니다.",
+  "composeExtensions[0].commands[1].title": "인기 항목",
+  "composeExtensions[0].commands[1].description": "인기 이벤트 표시",
+  "composeExtensions[0].commands[1].parameters[0].description": "이벤트를 검색하려면 Enter 키를 누릅니다."
+}

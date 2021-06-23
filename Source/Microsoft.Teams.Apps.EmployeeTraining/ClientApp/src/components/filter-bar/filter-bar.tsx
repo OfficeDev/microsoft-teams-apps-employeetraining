@@ -15,15 +15,18 @@ import { getLocalizedSortBy } from "../../helpers/localized-constants";
 import { ICategory } from "../../models/ICategory";
 import { ITeamsChannelMember } from "../../models/ITeamsChannelMember";
 import { SortBy } from "../../models/sort-by";
+import withContext, { IWithContext } from "../../providers/context-provider";
+import { Fabric } from "@fluentui/react";
+import { LanguageDirection } from "../../models/language-direction";
 
 import "./filter-bar.css";
 
-interface IFilterBarProps extends WithTranslation {
-    isVisible: boolean;
-    isReset: boolean;
-    categoryList: Array<ICategory>;
-    createdByList: Array<ITeamsChannelMember>;
-    onFilterBarCloseClick: (isFilterStateChanged: boolean) => void;
+interface IFilterBarProps extends WithTranslation, IWithContext {
+    isVisible: boolean,
+    isReset: boolean,
+    categoryList: Array<ICategory>,
+    createdByList: Array<ITeamsChannelMember>,
+    onFilterBarCloseClick: (isFilterStateChanged: boolean) => void,
     onFilterChange: (selectedCategories: Array<string>, selectedUsers: Array<string>, sortBy: number) => void
 }
 
@@ -200,34 +203,36 @@ class FilterBar extends React.Component<IFilterBarProps, IFilterBarState> {
     public render(): JSX.Element {
         if (this.props.isVisible) {
             return (
-                <Flex className="filter-bar" data-testid="filterbar">
-                    {this.state.screenWidth > 750 &&
-                        <Flex gap="gap.small" vAlign="center" className="filter-bar-wrapper" space="between">
-                            <div className="filter-bar-item-container">
-                                <Text content={this.localize("category")} weight="semibold" className="title-text"/>
-                                <PopupMenuWrapper title={this.state.categorySelectedCount > 0 ? this.state.categorySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.categorySelectedCount} checkboxes={this.state.categoryList} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCategoryStateChange} onOpenChange={this.onFilterChange} />
-                                    <Text content={this.localize("createdBy")} weight="semibold" className="title-text"/>
-                                <PopupMenuWrapper title={this.state.createdBySelectedCount > 0 ? this.state.createdBySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} checkboxes={this.state.createdByList} selectedCount={this.state.createdBySelectedCount} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
-                                    <Text content={this.localize("sortBy")} weight="semibold" className="title-text"/>
-                                <PopupMenuWrapper title={this.state.sortBy[this.state.selectedSortBy!].name} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.createdBySelectedCount} radioGroup={this.state.sortBy} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
-                            </div>
-                            <Flex.Item push>
-                                <CloseIcon className="close-icon" onClick={this.onCloseIconClick} />
+                <Fabric dir={this.props.dir}>
+                    <Flex className="filter-bar" data-testid="filterbar">
+                        {this.state.screenWidth > 750 &&
+                            <Flex gap="gap.small" vAlign="center" className="filter-bar-wrapper" space="between">
+                                <div className="filter-bar-item-container">
+                                    <Text content={this.localize("category")} weight="semibold" className="title-text"/>
+                                    <PopupMenuWrapper dir={this.props.dir} title={this.state.categorySelectedCount > 0 ? this.state.categorySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.categorySelectedCount} checkboxes={this.state.categoryList} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCategoryStateChange} onOpenChange={this.onFilterChange} />
+                                        <Text content={this.localize("createdBy")} weight="semibold" className="title-text"/>
+                                    <PopupMenuWrapper dir={this.props.dir} title={this.state.createdBySelectedCount > 0 ? this.state.createdBySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} checkboxes={this.state.createdByList} selectedCount={this.state.createdBySelectedCount} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
+                                        <Text content={this.localize("sortBy")} weight="semibold" className="title-text"/>
+                                    <PopupMenuWrapper dir={this.props.dir} title={this.state.sortBy[this.state.selectedSortBy!].name} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.createdBySelectedCount} radioGroup={this.state.sortBy} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
+                                </div>
+                            <Flex.Item push={this.props.dir === LanguageDirection.Ltr}>
+                                <CloseIcon onClick={this.onCloseIconClick} className={this.props.dir === LanguageDirection.Rtl ? "close-icon rtl-left-margin-small" : "close-icon"} />
+                                </Flex.Item>
+                            </Flex>}
+
+                        {this.state.screenWidth <= 750 && <Flex gap="gap.small" vAlign="start" className="filter-bar-wrapper">
+                            <Flex.Item grow>
+                                <Flex column gap="gap.small" vAlign="stretch">
+                                    <Flex className="mobile-filterbar-wrapper">
+                                        <PopupMenuWrapper dir={this.props.dir} title={this.state.categorySelectedCount > 0 ? this.state.categorySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.categorySelectedCount} checkboxes={this.state.categoryList} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCategoryStateChange} onOpenChange={this.onFilterChange} />
+                                        <PopupMenuWrapper dir={this.props.dir} title={this.state.createdBySelectedCount > 0 ? this.state.createdBySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.createdBySelectedCount} checkboxes={this.state.createdByList} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
+                                        <PopupMenuWrapper dir={this.props.dir} title={this.state.sortBy[this.state.selectedSortBy!].name} selectedCount={this.state.createdBySelectedCount} selectedSortBy={this.state.selectedSortBy!} radioGroup={this.state.sortBy} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
+                                    </Flex>
+                                </Flex>
                             </Flex.Item>
                         </Flex>}
-
-                    {this.state.screenWidth <= 750 && <Flex gap="gap.small" vAlign="start" className="filter-bar-wrapper">
-                        <Flex.Item grow>
-                            <Flex column gap="gap.small" vAlign="stretch">
-                                <Flex className="mobile-filterbar-wrapper">
-                                    <PopupMenuWrapper title={this.state.categorySelectedCount > 0 ? this.state.categorySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.categorySelectedCount} checkboxes={this.state.categoryList} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCategoryStateChange} onOpenChange={this.onFilterChange} />
-                                    <PopupMenuWrapper title={this.state.createdBySelectedCount > 0 ? this.state.createdBySelectedCount + " " + this.localize("selected") : this.localize("selectHere")} showSearchBar={true} selectedSortBy={this.state.selectedSortBy!} selectedCount={this.state.createdBySelectedCount} checkboxes={this.state.createdByList} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
-                                    <PopupMenuWrapper title={this.state.sortBy[this.state.selectedSortBy!].name} selectedCount={this.state.createdBySelectedCount} selectedSortBy={this.state.selectedSortBy!} radioGroup={this.state.sortBy} onRadiogroupStateChange={this.onSortByStateChange} onCheckboxStateChange={this.onCreatedByStateChange} onOpenChange={this.onFilterChange} />
-                                </Flex>
-                            </Flex>
-                        </Flex.Item>
-                    </Flex>}
-                </Flex>
+                    </Flex>
+                </Fabric>
             );
         }
         else {
@@ -236,4 +241,4 @@ class FilterBar extends React.Component<IFilterBarProps, IFilterBarState> {
     }
 }
 
-export default withTranslation()(FilterBar)
+export default withTranslation()(withContext(FilterBar))

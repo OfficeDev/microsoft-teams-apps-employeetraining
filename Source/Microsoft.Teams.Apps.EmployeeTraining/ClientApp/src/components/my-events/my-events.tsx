@@ -16,7 +16,7 @@ import NoContent from "../no-content-page/no-content-page"
 import FilterBar from "../filter-bar/filter-bar";
 import TabMenu from "../tab-menu/tab-menu"
 import { getEventsAsync } from "../../api/user-events-api";
-import { Icon } from 'office-ui-fabric-react';
+import { Fabric, Icon } from 'office-ui-fabric-react';
 import { getEventCategoriesAsync } from "../../api/create-event-api";
 import { getAllLnDTeamMembersAsync } from "../../api/LnD-team-api";
 import { ICategory } from "../../models/ICategory";
@@ -27,6 +27,7 @@ import { ActivityStatus } from "../../models/activity-status";
 import { EventOperationType } from "../../models/event-operation-type";
 import { clearMobileFilterLocalStorage } from "../../helpers/mobile-filter-helper";
 import Resources from "../../constants/resources";
+import { LanguageDirection } from "../../models/language-direction";
 
 import "./my-events.css";
 
@@ -538,13 +539,14 @@ class MyEvents extends React.Component<IMyEventsProps, IMyEventsState> {
     /** Renders the desktop view */
     renderDesktopView = () => {
         return (
-            <React.Fragment>
+            <Fabric dir={this.props.dir}>
                 <Flex column>
                     <Flex space="between" vAlign="center">
                         <TabMenu defaultTabIndex={RegisteredEventsTabIndex} activeTabIndex={this.state.activeTabIndex!} tabItems={this.renderTabMenuItems()} onTabIndexChange={this.onTabIndexChange} />
-                        <Flex.Item push>
+                        <Flex.Item push={this.props.dir === LanguageDirection.Ltr}>
                             <Flex gap="gap.medium" vAlign="center">
                                 <MenuButton
+                                    className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-medium" : ""}
                                     trigger={
                                         <Button icon={this.renderFilterButtonIcon()}
                                             content={this.localize("filterButtonText")}
@@ -556,6 +558,7 @@ class MyEvents extends React.Component<IMyEventsProps, IMyEventsState> {
                                     inverted
                                     value={this.state.searchText}
                                     icon={<SearchIcon />}
+                                    iconPosition={this.props.dir === LanguageDirection.Rtl ? "start" : "end"}
                                     placeholder={this.localize("searchForEventsPlaceholder")}
                                     input={{ design: { minWidth: "20rem", maxWidth: "20rem" } }}
                                     onKeyUp={this.onSearchEvents}
@@ -575,14 +578,14 @@ class MyEvents extends React.Component<IMyEventsProps, IMyEventsState> {
                     />
                 </Flex>
                 {this.renderEvents()}
-            </React.Fragment>
+            </Fabric>
         );
     }
 
     /** Renders the mobile view */
     renderMobileView = () => {
         return (
-            <React.Fragment>
+            <Fabric dir={this.props.dir}>
                 <Flex column>
                     <Flex space="between">
                         <TabMenu defaultTabIndex={RegisteredEventsTabIndex} activeTabIndex={this.state.activeTabIndex!} tabItems={this.renderTabMenuItems()} onTabIndexChange={this.onTabIndexChange} />
@@ -620,7 +623,7 @@ class MyEvents extends React.Component<IMyEventsProps, IMyEventsState> {
                     }
                 </Flex>
                 {!this.state.isFilterOpen && this.renderEvents()}
-            </React.Fragment>
+            </Fabric>
         );
     }
 
@@ -630,7 +633,7 @@ class MyEvents extends React.Component<IMyEventsProps, IMyEventsState> {
             <div className="container-div">
                 <div className="my-events-container">
                     {this.state.isMobileView ? this.renderMobileView() : this.renderDesktopView()}
-                    <ToastNotification notification={this.state.notification} />
+                    <ToastNotification dir={this.props.dir} notification={this.state.notification} />
                 </div>
             </div>
         );

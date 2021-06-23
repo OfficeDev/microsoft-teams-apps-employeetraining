@@ -128,6 +128,44 @@
     text-transform: uppercase;
 }
 
+.ltr-direction {
+    direction: ltr;
+    text-align: right;
+}
+
+.rtl-direction {
+    direction: rtl;
+    text-align: right;
+}
+
+.rtl-left-margin-small {
+    margin-left: 1rem;
+}
+
+.rtl-left-margin-medium {
+    margin-left: 1.5rem;
+}
+
+.rtl-left-margin-large {
+    margin-left: 2rem;
+}
+
+.rtl-right-margin-smaller {
+    margin-right: 0.8rem;
+}
+
+.rtl-right-margin-small {
+    margin-right: 1rem;
+}
+
+.rtl-right-margin-medium {
+    margin-right: 1.5rem;
+}
+
+.rtl-right-margin-large {
+    margin-right: 2rem;
+}
+
 @media only screen and (max-width: 650px) {
     .mobile-button {
         padding-left: 1rem !important;

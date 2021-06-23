@@ -12,11 +12,11 @@ export class AxiosJWTDecorator {
     readonly authorizationHeaderKey = "Authorization";
     readonly acceptLanguageHeaderKey = "Accept-Language";
 
-    /**
-    * Post data to API
-    * @param  {String} url Resource URI
-    * @param  {Object} data Request body data
-    */
+	/**
+	* Post data to API
+	* @param  {String} url Resource URI
+	* @param  {Object} data Request body data
+	*/
     public async post<T = any, R = AxiosResponse<T>>(
         url: string,
         data?: any,
@@ -30,10 +30,10 @@ export class AxiosJWTDecorator {
         }
     }
 
-    /**
-    * Post data to API
-    * @param  {String} url Resource URI
-    */
+	/**
+	* Post data to API
+	* @param  {String} url Resource URI
+	*/
     public async delete<T = any, R = AxiosResponse<T>>(
         url: string,
         config?: AxiosRequestConfig
@@ -46,11 +46,11 @@ export class AxiosJWTDecorator {
         }
     }
 
-    /**
-    * Post data to API
-    * @param  {String} url Resource URI
-    * @param  {Object} data Request body data
-    */
+	/**
+	* Post data to API
+	* @param  {String} url Resource URI
+	* @param  {Object} data Request body data
+	*/
     public async put<T = any, R = AxiosResponse<T>>(
         url: string,
         data?: any,
@@ -82,9 +82,9 @@ export class AxiosJWTDecorator {
         }
     }
 
-    /**
-    * Get data to API
-    */
+	/**
+	* Get data to API
+	*/
     public async get<T = any, R = AxiosResponse<T>>(
         url: string,
         config?: AxiosRequestConfig,
@@ -101,8 +101,8 @@ export class AxiosJWTDecorator {
     }
 
     /**
-    * Get data to API
-    */
+	* Get data to API
+	*/
     public async getCachedData<T = any, R = AxiosResponse<T>>(
         url: string,
         config?: AxiosRequestConfig,
@@ -120,10 +120,10 @@ export class AxiosJWTDecorator {
     }
 
     /**
-    * Handle error occurred during API call.
-    * @param  {Object} error Error response object
-    */
-    private handleError(error: any): any {
+	* Handle error occurred during API call.
+	* @param  {Object} error Error response object
+	*/
+    private handleError(error: any):any {
         if (error.hasOwnProperty("response")) {
             return error.response;
         } else {
@@ -131,34 +131,34 @@ export class AxiosJWTDecorator {
         }
     }
 
-    private async setupAuthorizationHeader(
-        config?: AxiosRequestConfig
-    ): Promise<AxiosRequestConfig> {
-        microsoftTeams.initialize();
+	private async setupAuthorizationHeader(
+		config?: AxiosRequestConfig
+	): Promise<AxiosRequestConfig> {
+		microsoftTeams.initialize();
 
-        return new Promise<AxiosRequestConfig>((resolve, reject) => {
-            const authTokenRequest = {
-                successCallback: (token: string) => {
-                    if (!config) {
-                        config = axios.defaults;
-                    }
+		return new Promise<AxiosRequestConfig>((resolve, reject) => {
+			const authTokenRequest = {
+				successCallback: (token: string) => {
+					if (!config) {
+						config = axios.defaults;
+					}
                     config.headers[this.authorizationHeaderKey] = `Bearer ${token}`;
                     config.headers[this.acceptLanguageHeaderKey] = i18n.language;
-                    resolve(config);
-                },
-                failureCallback: (error: string) => {
-                    // When the getAuthToken function returns a "resourceRequiresConsent" error, 
-                    // it means Azure AD needs the user's consent before issuing a token to the app. 
-                    // The following code redirects the user to the "Sign in" page where the user can grant the consent. 
-                    // Right now, the app redirects to the consent page for any error.
-                    console.error("Error from getAuthToken: ", error);
-                    window.location.href = "/signin";
-                },
-                resources: []
-            };
-            microsoftTeams.authentication.getAuthToken(authTokenRequest);
-        });
-    }
+					resolve(config);
+				},
+				failureCallback: (error: string) => {
+					// When the getAuthToken function returns a "resourceRequiresConsent" error, 
+					// it means Azure AD needs the user's consent before issuing a token to the app. 
+					// The following code redirects the user to the "Sign in" page where the user can grant the consent. 
+					// Right now, the app redirects to the consent page for any error.
+					console.error("Error from getAuthToken: ", error);
+					window.location.href = "/signin";
+				},
+				resources: []
+			};
+			microsoftTeams.authentication.getAuthToken(authTokenRequest);
+		});
+	}
 }
 
 const axiosJWTDecoratorInstance = new AxiosJWTDecorator();

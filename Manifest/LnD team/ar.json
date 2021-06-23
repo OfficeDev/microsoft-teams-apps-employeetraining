@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "تدريب الموظفين (فريق L&D)",
+  "name.full": "تدريب الموظفين (فريق L&D)",
+  "description.short": ">اجعل من السهل على فر L&D إنشاء وإدارة الأحداث لإشراك الموظفين.",
+  "description.full": "إشراك موظفيك مع التدريب حيث يقضون معظم وقتهم هنا في Microsoft Teams. يمكن لفريق التعلم + التطوير إنشاء أحداث تدريبية جديدة وتحديد من يمكنه الحضور وما إذا كان الحدث إلزاميًا أم لا، وإغلاق التسجيل بمجرد الوصول إلى السعة. تساعد التذكيرات المضمنة على ضمان حضور الأحداث بشكل جيد.",
+  "staticTabs[0].name": "إدارة الأحداث",
+  "bots[0].commandLists[0].commands[0].title": "إضافة حدث",
+  "bots[0].commandLists[0].commands[0].description": "أضافه حدث للمستخدمين"
+}

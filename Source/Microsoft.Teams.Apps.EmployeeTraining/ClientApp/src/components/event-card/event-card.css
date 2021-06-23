@@ -30,6 +30,10 @@
     width: 82%;
 }
 
+.event-card .event-info .event-date-and-venue-rtl {
+    margin-right: 0.7rem;
+}
+
 .event-card .event-info .event-date-and-venue > :not(:last-child) {
     margin-right: .3rem;
 }

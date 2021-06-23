@@ -138,6 +138,7 @@ class CloseCancelEvent extends React.Component<ICloseCancelEventProps, ICloseCan
     render() {
         return (
             <EventDetails
+                dir={this.props.dir}
                 eventDetails={this.state.eventDetails}
                 eventCreatedByName={this.state.eventCreatedBy}
                 eventOperationType={this.state.eventOperationType}

@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "従業員トレーニング (L&D チーム)",
+  "name.full": "従業員トレーニング (L&D チーム)",
+  "description.short": "L&D チームが、従業員を引き付けるイベントを簡単に作成および管理できるようにします。",
+  "description.full": "従業員をトレーニングに参加させ、ほとんどの時間をここ Microsoft Teams で過ごします。Learning + Development チームは、新しいトレーニング イベントを作成し、参加できるユーザーとイベントが必須かどうかを指定し、定員に達したら登録を閉じることができます。組み込みのリマインダーは、イベントへの参加を確実にするのに役立ちます。",
+  "staticTabs[0].name": "イベントの管理",
+  "bots[0].commandLists[0].commands[0].title": "イベントの追加",
+  "bots[0].commandLists[0].commands[0].description": "ユーザーのイベントを追加"
+}

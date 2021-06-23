@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Audience" xml:space="preserve">
+    <value>Wer kann teilnehmen</value>
+    <comment>The value for audience text</comment>
+  </data>
+  <data name="AudiencePrivate" xml:space="preserve">
+    <value>Privat</value>
+    <comment>The private event text</comment>
+  </data>
+  <data name="AudiencePublic" xml:space="preserve">
+    <value>Öffentlich</value>
+    <comment>The public event text</comment>
+  </data>
+  <data name="AutoRegisteredCardSubTitle" xml:space="preserve">
+    <value>Sie wurden automatisch für dieses Ereignis registriert.</value>
+    <comment>Auto registration card sub title</comment>
+  </data>
+  <data name="AutoRegisteredHeader" xml:space="preserve">
+    <value>Obligatorisches Ereignis!</value>
+    <comment>Title for auto registration card sent to user</comment>
+  </data>
+  <data name="CancellationCardSubTitle" xml:space="preserve">
+    <value>Wir bedauern, Ihnen mitteilen zu müssen, dass das folgende Ereignis abgesagt wurde.</value>
+    <comment>Cancellation card subtitle</comment>
+  </data>
+  <data name="CancellationHeader" xml:space="preserve">
+    <value>Ereignis abgesagt!</value>
+    <comment>Cancellation card title</comment>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Kategorie</value>
+    <comment>The value for category</comment>
+  </data>
+  <data name="CloseRegistrationCardButton" xml:space="preserve">
+    <value>Registrierung schließen</value>
+    <comment>Close registrations card button</comment>
+  </data>
+  <data name="CreatedByLabel" xml:space="preserve">
+    <value>Erstellt von</value>
+    <comment>Created by user label text on card</comment>
+  </data>
+  <data name="CreateEventButtonWelcomeCard" xml:space="preserve">
+    <value>Ereignis hinzufügen</value>
+    <comment>LnD team welcome card add event button text</comment>
+  </data>
+  <data name="CreateEventCardTitleText" xml:space="preserve">
+    <value>Ein neues Ereignis erstellen</value>
+    <comment>The create event card title</comment>
+  </data>
+  <data name="DailyReminderCardTitle" xml:space="preserve">
+    <value>Morgige Ereignisse</value>
+    <comment>The reminder card title for daily reminder</comment>
+  </data>
+  <data name="DateAndTimeLabel" xml:space="preserve">
+    <value>Datum und Uhrzeit</value>
+    <comment>Date and time label for notification cards</comment>
+  </data>
+  <data name="DescriptionLabelCard" xml:space="preserve">
+    <value>Beschreibung</value>
+    <comment>Event description label in cards</comment>
+  </data>
+  <data name="EditEventCardButton" xml:space="preserve">
+    <value>Ereignis bearbeiten</value>
+    <comment>Edit event card button</comment>
+  </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>Enddatum</value>
+    <comment>The value for end date text</comment>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Fehler</value>
+    <comment>The task module title for error page</comment>
+  </data>
+  <data name="EventDescription" xml:space="preserve">
+    <value>Beschreibung</value>
+    <comment>The value for event description text</comment>
+  </data>
+  <data name="EventName" xml:space="preserve">
+    <value>Ereignisname</value>
+    <comment>The value for event name text</comment>
+  </data>
+  <data name="ExportDetailsCardButton" xml:space="preserve">
+    <value>Registrierungsdaten exportieren</value>
+    <comment>Export details card button</comment>
+  </data>
+  <data name="LoadingImageAltText" xml:space="preserve">
+    <value>Bild wird geladen</value>
+    <comment>The alternative text for loading an image</comment>
+  </data>
+  <data name="NumberOfRegistrations" xml:space="preserve">
+    <value>Registrierungen</value>
+    <comment>The value for number of registrations</comment>
+  </data>
+  <data name="RegisterButton" xml:space="preserve">
+    <value>Registrieren</value>
+    <comment>Adaptive card button text for invoking register event task module</comment>
+  </data>
+  <data name="RegisteredUsers" xml:space="preserve">
+    <value>Registrierte Teilnehmer</value>
+    <comment>The value for registered users text</comment>
+  </data>
+  <data name="ReminderCardRegisteredEventButton" xml:space="preserve">
+    <value>Registrierung anzeigen</value>
+    <comment>The button text to view registered events</comment>
+  </data>
+  <data name="ReminderCardTitle" xml:space="preserve">
+    <value>Erinnerung!</value>
+    <comment>The reminder card title</comment>
+  </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Startdatum</value>
+    <comment>The value for start date text</comment>
+  </data>
+  <data name="TeamsMeetingText" xml:space="preserve">
+    <value>Teams-Besprechung</value>
+    <comment>The event venue value if the meeting location is teams meeting</comment>
+  </data>
+  <data name="TrainingType" xml:space="preserve">
+    <value>Ereignistyp</value>
+    <comment>The value for training type</comment>
+  </data>
+  <data name="TrainingTypeInPerson" xml:space="preserve">
+    <value>Persönlich</value>
+    <comment>The in-person event text</comment>
+  </data>
+  <data name="TrainingTypeLiveEvent" xml:space="preserve">
+    <value>Liveereignis</value>
+    <comment>The live event text</comment>
+  </data>
+  <data name="Venue" xml:space="preserve">
+    <value>Veranstaltungsort</value>
+    <comment>The value for venue text</comment>
+  </data>
+  <data name="ViewAllEventsCardButton" xml:space="preserve">
+    <value>Alle Ereignisse anzeigen</value>
+    <comment>Card button text to navigate user on all events tab</comment>
+  </data>
+  <data name="WeeklyReminderCardTitle" xml:space="preserve">
+    <value>Ereignisse der nächsten Woche</value>
+    <comment>The reminder card title for weekly reminder</comment>
+  </data>
+  <data name="WelcomeCardTeamContentFooter" xml:space="preserve">
+    <value>Startbereit? Wählen Sie unten {0} aus:</value>
+    <comment>Card content footer</comment>
+  </data>
+  <data name="WelcomeCardPersonalDiscoverButtonText" xml:space="preserve">
+    <value>Entdecken</value>
+    <comment>Discover action button in welcome card</comment>
+  </data>
+  <data name="WelcomeCardPersonalIntro" xml:space="preserve">
+    <value>Möchten Sie neue Veranstaltungen entdecken und an ihnen teilnehmen? Ich bin hier, um Ihnen dabei zu helfen, neue Events zu entdecken, an ihnen teilzunehmen und den Überblick über ihre Durchführung zu behalten. Also, lassen Sie uns loslegen!</value>
+    <comment>App intro text in welcome card for team</comment>
+  </data>
+  <data name="WelcomeCardPersonalPoint1" xml:space="preserve">
+    <value>– Entdecken und Erkunden Sie alle Ereignisse.</value>
+    <comment>First point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardPersonalPoint2" xml:space="preserve">
+    <value>– Registrieren Sie sich für die Ereignisse, die Ihnen gefallen.</value>
+    <comment>Second point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardPersonalPoint3" xml:space="preserve">
+    <value>– Behalten Sie den Überblick über alle Ihre abgeschlossenen Veranstaltungen.</value>
+    <comment>Third point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardPersonalPoint4" xml:space="preserve">
+    <value>– Lassen Sie sich über alle Ihre Aktivitäten benachrichtigen, und erhalten Sie Erinnerungen für Ihre bevorstehenden registrierten Ereignisse.</value>
+    <comment>Forth point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardTeamHeading" xml:space="preserve">
+    <value>Insbesondere kann ich Ihnen helfen:</value>
+    <comment>Welcome card content heading for team</comment>
+  </data>
+  <data name="WelcomeCardTeamIntro" xml:space="preserve">
+    <value>Ich bin der Mitarbeiterschulungsbot, und ich kann Ihnen helfen, das Beste aus den Lernangeboten Ihrer Organisation zu machen.</value>
+    <comment>App intro text in welcome card for team</comment>
+  </data>
+  <data name="WelcomeCardTeamPoint1" xml:space="preserve">
+    <value>– Alle bevorstehenden Schulungsveranstaltungen erkunden</value>
+    <comment>First point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardTeamPoint2" xml:space="preserve">
+    <value>– Für Ereignisse registrieren</value>
+    <comment>Second point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardTeamPoint3" xml:space="preserve">
+    <value>– Behalten Sie den Überblick über abgeschlossene Schulungen</value>
+    <comment>Third point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardTeamPoint4" xml:space="preserve">
+    <value>– Erhalten Sie hilfreiche Benachrichtigungen und Erinnerungen</value>
+    <comment>Forth point highlighting feature of app</comment>
+  </data>
+  <data name="WelcomeCardTitle" xml:space="preserve">
+    <value>Willkommen!</value>
+    <comment>Welcome card title for personal and team scope</comment>
+  </data>
+  <data name="WelcomeCardPersonalContentFooter" xml:space="preserve">
+    <value>Startbereit? Wählen Sie unten {0} aus:</value>
+    <comment>Welcome card footer message for personal scope</comment>
+  </data>
+  <data name="EventUpdatedCardTitle" xml:space="preserve">
+    <value>Ereignis aktualisiert!</value>
+    <comment>The title of a card in personal scope when an event gets updated</comment>
+  </data>
+  <data name="ErrorMessage" xml:space="preserve">
+    <value>Da hat etwas nicht geklappt. Versuchen Sie es bitte später noch mal.</value>
+    <comment>The error message displayed when bot fails to send card</comment>
+  </data>
+  <data name="CalendarEventLocationText" xml:space="preserve">
+    <value>Ort: {0}</value>
+    <comment>The event location placeholder text in calendar event body if the event type is in-person</comment>
+  </data>
+  <data name="CalendarEventLiveEventURLText" xml:space="preserve">
+    <value>Liveereignis-URL: {0}</value>
+    <comment>The live event URL placeholder text in calendar event body if the event type is live event</comment>
+  </data>
+  <data name="ErrorEventAudienceInvalid" xml:space="preserve">
+    <value>Ungültiger Ziel Gruppen Wert. Es muss entweder 1 oder 2 sein.</value>
+    <comment>Error message sent by API when event audience value</comment>
+  </data>
+  <data name="ErrorEventCategoryRequired" xml:space="preserve">
+    <value>Die Ereigniskategorie ist erforderlich.</value>
+    <comment>Error message sent by API when event category is blank</comment>
+  </data>
+  <data name="ErrorEventDescriptionLength" xml:space="preserve">
+    <value>Die Länge der Ereignisbeschreibung darf nicht mehr als {0} Buchstaben sein</value>
+    <comment>Error message sent by API when event description length is not valid. {0} is placeholder which will be replaced by number at runtime.</comment>
+  </data>
+  <data name="ErrorEventDescriptionRequired" xml:space="preserve">
+    <value>Die Ereignisbeschreibung ist erforderlich</value>
+    <comment>Error message sent by API when event description is blank</comment>
+  </data>
+  <data name="ErrorEventEndTimeInvalid" xml:space="preserve">
+    <value>Die Endzeit des Ereignisses muss nach der Startzeit liegen.</value>
+    <comment>Error message sent by API when event end time is less than start time</comment>
+  </data>
+  <data name="ErrorEventEndTimeRequired" xml:space="preserve">
+    <value>Die Ereignisendzeit ist erforderlich</value>
+    <comment>Error message sent by API when event end time is blank</comment>
+  </data>
+  <data name="ErrorEventMaxParticipantsInvalid" xml:space="preserve">
+    <value>Ungültiger Wert für die maximale Teilnehmerzahl</value>
+    <comment>Error message sent by API when event max participants value</comment>
+  </data>
+  <data name="ErrorEventNameRequired" xml:space="preserve">
+    <value>Der Ereignisname ist erforderlich</value>
+    <comment>Error message sent by API when event name is blank</comment>
+  </data>
+  <data name="ErrorEventPhotoOrColorRequired" xml:space="preserve">
+    <value>Ereignisfoto-URL/Farbe ist erforderlich</value>
+    <comment>Error message sent by API when event image or color is blank</comment>
+  </data>
+  <data name="ErrorEventPhotoURLInvalid" xml:space="preserve">
+    <value>Die Ereignisfoto-URL muss ein gültiges URL-Format sein</value>
+    <comment>Error message sent by API when event photo URL is invalid</comment>
+  </data>
+  <data name="ErrorEventStartDateInvalid" xml:space="preserve">
+    <value>Das Startdatum des Ereignisses muss in der Zukunft liegen</value>
+    <comment>Error message sent by API when event start date is not future date</comment>
+  </data>
+  <data name="ErrorEventStartDateRequired" xml:space="preserve">
+    <value>Ein Ereignisstartdatum ist erforderlich</value>
+    <comment>Error message sent by API when event start date is blank</comment>
+  </data>
+  <data name="ErrorEventStartTimeRequired" xml:space="preserve">
+    <value>Die Startzeit für das Ereignis ist erforderlich</value>
+    <comment>Error message sent by API when event start time is blank</comment>
+  </data>
+  <data name="ErrorEventTypeInvalid" xml:space="preserve">
+    <value>Ungültiger Ereignistyp Wert. Der Ereignistyp muss zwischen 1 und 3 liegen.</value>
+    <comment>Error message sent by API when event type is invalid</comment>
+  </data>
+  <data name="ErrorEventVenueInvalid" xml:space="preserve">
+    <value>Ereignisveranstaltungsort darf nicht mehr als {0} Buchstaben lang sein</value>
+    <comment>Error message sent by API when event venue is invalid</comment>
+  </data>
+  <data name="ErrorEventVenueRequired" xml:space="preserve">
+    <value>Der Besprechungsveranstaltungsort ist erforderlich</value>
+    <comment>Error message sent by API when event meeting venue is blank</comment>
+  </data>
+  <data name="ErrorMeetingLinkInvalid" xml:space="preserve">
+    <value>Die Besprechungs-URL muss ein gültiges URL-Format sein</value>
+    <comment>Error message sent by API when event meeting url is invalid</comment>
+  </data>
+  <data name="ErrorMeetingLinkRequired" xml:space="preserve">
+    <value>Der Besprechungslink ist erforderlich</value>
+    <comment>Error message sent by API when event meeting link is blank</comment>
+  </data>
+  <data name="BotCommandAddEvent" xml:space="preserve">
+    <value>Ereignis hinzufügen</value>
+    <comment>Bot command add event. This needs to be match with SME manifest's command "Add Event" in translated json file.</comment>
+  </data>
+</root>

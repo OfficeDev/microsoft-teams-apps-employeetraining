@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "הדרכת עובדים",
+  "name.full": "הדרכת עובדים",
+  "description.short": "הקל לעובדים לגלות, להירשם ולשתף אירועי הדרכה.",
+  "description.full": "הפעל את העובדים בעזרת הדרכה, במקום בו הם משקיעים את מרבית זמנם כאן ב- Microsoft Teams. מנהלי מערכת יכולים ליצור אירועי הדרכה חדשים, לציין מי יכול להשתתף ואם האירוע הוא חובה או לא, ולסגור את הרישום לאחר הגעת קיבולת. לאחר הוספת האפליקציה לערוץ של Teams, עובדים יכולים לבקר בכרטיסיה 'גלה' כדי לעיין באירועים, להירשם לאירועים המעניינים אותם ולהשתמש בהרחבת ההודעות של האפליקציה כדי להציע אירועים לעמיתים או לדוחות ישירים שלהם. לאחר הרישום, העובדים מקבלים תזכורות ב-Teams, ולכן לא תחמיץ אירוע!",
+  "staticTabs[0].name": "גלה אירועים",
+  "staticTabs[1].name": "האירועים שלך",
+  "composeExtensions[0].commands[0].title": "מהזמן האחרון",
+  "composeExtensions[0].commands[0].description": "הצגת כל האירועים שנוצרו",
+  "composeExtensions[0].commands[0].parameters[0].description": "Enter כדי לחפש אירוע",
+  "composeExtensions[0].commands[1].title": "מהזמן האחרון",
+  "composeExtensions[0].commands[1].description": "הצג אירועים פופולריים",
+  "composeExtensions[0].commands[1].parameters[0].description": "Enter כדי לחפש אירוע"
+}

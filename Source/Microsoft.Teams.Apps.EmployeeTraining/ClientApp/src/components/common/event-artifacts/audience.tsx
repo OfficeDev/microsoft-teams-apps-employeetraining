@@ -7,8 +7,10 @@ import { EyeIcon, EyeSlashIcon, Text, Label, Layout } from "@fluentui/react-nort
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 import { EventAudience } from "../../../models/event-audience";
+import withContext, { IWithContext } from "../../../providers/context-provider";
+import { LanguageDirection } from "../../../models/language-direction";
 
-interface IAudienceArtifact extends WithTranslation {
+interface IAudienceArtifact extends WithTranslation, IWithContext {
     audienceType: EventAudience
 }
 
@@ -19,7 +21,7 @@ const AudienceArtifact: React.FunctionComponent<IAudienceArtifact> = props => {
     return (
         <Label
             circular
-            className="event-artifact"
+            className={props.dir === LanguageDirection.Rtl ? "event-artifact rtl-right-margin-small" : "event-artifact"}
             title={props.audienceType === EventAudience.Private ? localize("private") : localize("public")}
             content={
                 <Layout className="text-overflow-ellipsis"
@@ -31,4 +33,4 @@ const AudienceArtifact: React.FunctionComponent<IAudienceArtifact> = props => {
     );
 }
 
-export default withTranslation()(AudienceArtifact);
+export default withTranslation()(withContext(AudienceArtifact));

@@ -19,7 +19,6 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Microsoft.Teams.Apps.EmployeeTraining.Cards;
-    using Microsoft.Teams.Apps.EmployeeTraining.Common;
     using Microsoft.Teams.Apps.EmployeeTraining.Helpers;
     using Microsoft.Teams.Apps.EmployeeTraining.Models;
     using Newtonsoft.Json;
@@ -148,16 +147,15 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
                 {
                     var command = activity.RemoveRecipientMention().Trim();
 
-                    switch (command.ToUpperInvariant())
+                    // Command to show card from where create event task module can be invoked.
+                    if (command.Equals(this.localizer.GetString("BotCommandAddEvent"), StringComparison.CurrentCultureIgnoreCase))
                     {
-                        case BotCommands.CreateEvent: // Command to show card from where create event task module can be invoked.
-                            var card = CreateEventCard.GetCard(this.localizer);
-                            await turnContext.SendActivityAsync(MessageFactory.Attachment(card)).ConfigureAwait(false);
-                            break;
-
-                        default:
-                            this.logger.LogInformation($"Received a command {command.ToUpperInvariant()} which is not supported.");
-                            break;
+                        var card = CreateEventCard.GetCard(this.localizer);
+                        await turnContext.SendActivityAsync(MessageFactory.Attachment(card)).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        this.logger.LogInformation($"Received a command {command.ToUpperInvariant()} which is not supported.");
                     }
                 }
             }

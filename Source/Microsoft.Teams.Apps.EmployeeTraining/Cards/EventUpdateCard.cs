@@ -27,6 +27,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
         public static Attachment GetEventUpdateCard(IStringLocalizer<Strings> localizer, EventEntity eventEntity, string applicationManifestId)
         {
             eventEntity = eventEntity ?? throw new ArgumentNullException(nameof(eventEntity), "Event details cannot be null");
+            var textAlignment = CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? AdaptiveHorizontalAlignment.Right : AdaptiveHorizontalAlignment.Left;
 
             AdaptiveCard autoRegisteredCard = new AdaptiveCard(new AdaptiveSchemaVersion(1, 2))
             {
@@ -45,6 +46,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Text = $"**{localizer.GetString("EventUpdatedCardTitle")}**",
                                         Size = AdaptiveTextSize.Large,
                                         Weight = AdaptiveTextWeight.Bolder,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                             },
@@ -64,7 +66,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                      new AdaptiveImage
                                      {
                                         Url = new Uri(eventEntity.Photo),
-                                        HorizontalAlignment = AdaptiveHorizontalAlignment.Left,
+                                        HorizontalAlignment = textAlignment,
                                         PixelHeight = 45,
                                         PixelWidth = 45,
                                      },
@@ -81,6 +83,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Text = eventEntity.Name,
                                         Size = AdaptiveTextSize.Default,
                                         Weight = AdaptiveTextWeight.Bolder,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                     new AdaptiveTextBlock
                                     {
@@ -90,6 +93,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Weight = AdaptiveTextWeight.Bolder,
                                         Color = AdaptiveTextColor.Warning,
                                         Spacing = AdaptiveSpacing.Small,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                             },
@@ -111,6 +115,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Wrap = true,
                                         Weight = AdaptiveTextWeight.Bolder,
                                         Size = AdaptiveTextSize.Small,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                             },
@@ -124,6 +129,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Text = string.Format(CultureInfo.CurrentCulture, "{0} {1}-{2}", "{{DATE(" + eventEntity.StartDate.Value.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'", CultureInfo.InvariantCulture) + ", SHORT)}}", "{{TIME(" + eventEntity.StartTime.Value.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'", CultureInfo.InvariantCulture) + ")}}", "{{TIME(" + eventEntity.EndTime.ToString("yyyy-MM-dd'T'HH:mm:ss'Z'", CultureInfo.InvariantCulture) + ")}}"),
                                         Wrap = true,
                                         Size = AdaptiveTextSize.Small,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                             },
@@ -145,6 +151,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Wrap = true,
                                         Weight = AdaptiveTextWeight.Bolder,
                                         Size = AdaptiveTextSize.Small,
+                                        HorizontalAlignment = textAlignment,
                                      },
                                 },
                             },
@@ -158,6 +165,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Text = eventEntity.Venue,
                                         Wrap = true,
                                         Size = AdaptiveTextSize.Small,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                             },
@@ -179,6 +187,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Wrap = true,
                                         Weight = AdaptiveTextWeight.Bolder,
                                         Size = AdaptiveTextSize.Small,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                             },
@@ -192,6 +201,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Text = eventEntity.Description,
                                         Wrap = true,
                                         Size = AdaptiveTextSize.Small,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                             },

@@ -10,6 +10,7 @@ import { UserFriendsIcon, EditIcon, ArrowDownIcon, CloseIcon, MoreIcon } from "@
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 import moment from "moment";
+import { LanguageDirection } from "../../models/language-direction";
 
 interface IManageEventsMenuProps extends WithTranslation {
     eventDetails: IEvent,
@@ -18,7 +19,8 @@ interface IManageEventsMenuProps extends WithTranslation {
     onExportDetails: (eventId: string, eventName: string) => void,
     onSendReminder: (eventId: string) => void,
     onCancelEvent: (eventId: string) => void,
-    onDeleteDraftEvent: (eventId: string, eventName: string) => void
+    onDeleteDraftEvent: (eventId: string, eventName: string) => void,
+    dir: LanguageDirection
 }
 
 /**
@@ -117,6 +119,7 @@ const ManageEventsMenu: React.FunctionComponent<IManageEventsMenuProps> = props 
                 items: getMenuItems()
             }}
             position="before"
+            className={ props.dir === LanguageDirection.Rtl ? "ltr-direction" : ""}
         />
     );
 }

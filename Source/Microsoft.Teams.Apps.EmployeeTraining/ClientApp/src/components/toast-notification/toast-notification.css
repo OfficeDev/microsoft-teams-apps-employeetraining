@@ -22,3 +22,10 @@
     border: none;
     padding: 1rem;
 }
+
+.notification-toast .rtl-notification {
+    color: white;
+    border: none;
+    padding: 1rem;
+    text-align: right;
+}

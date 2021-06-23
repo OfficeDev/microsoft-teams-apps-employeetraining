@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "הדרכת עובדים (צוות L&D)",
+  "name.full": "הדרכת עובדים (צוות L&D)",
+  "description.short": "הקל על צוותי L&D ליצור ולנהל אירועים כדי לעסוק בעובדים.",
+  "description.full": "הפעל את העובדים בעזרת הדרכה, במקום בו הם משקיעים את מרבית זמנם כאן ב- Microsoft Teams. צוות הלמידה והפיתוח יכול ליצור אירועי הדרכה חדשים, לציין מי יכול להשתתף ואם האירוע הוא חובה או לא, ולסגור את הרישום לאחר הגעת הקיבולת. תזכורות מובנות מסייעות להבטיח השתתפות באירועים שלך.",
+  "staticTabs[0].name": "ניהול אירועים",
+  "bots[0].commandLists[0].commands[0].title": "הוסף אירוע",
+  "bots[0].commandLists[0].commands[0].description": "הוסף אירוע עבור משתמשים"
+}
