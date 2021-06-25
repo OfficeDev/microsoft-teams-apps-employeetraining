@@ -258,11 +258,11 @@
     <comment>The reminder card title for weekly reminder</comment>
   </data>
   <data name="WelcomeCardTeamContentFooter" xml:space="preserve">
-    <value>Ready to get started? Select {0} below:</value>
+    <value>Daha fazlası için: {0} </value>
     <comment>Card content footer</comment>
   </data>
   <data name="WelcomeCardPersonalDiscoverButtonText" xml:space="preserve">
-    <value>Discover</value>
+    <value>Keşfet</value>
     <comment>Discover action button in welcome card</comment>
   </data>
   <data name="WelcomeCardPersonalIntro" xml:space="preserve">
