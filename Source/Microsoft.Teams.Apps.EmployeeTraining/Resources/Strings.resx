@@ -266,23 +266,23 @@
     <comment>Discover action button in welcome card</comment>
   </data>
   <data name="WelcomeCardPersonalIntro" xml:space="preserve">
-    <value>Looking forward to discover and participate in new events? I am here to help you discover new events, participate in them &amp; keep track of their occurance. So, lets get started!</value>
+    <value>Etkinliklerin yeni buluşma noktası Eventzone’a hoş geldiniz!</value>
     <comment>App intro text in welcome card for team</comment>
   </data>
   <data name="WelcomeCardPersonalPoint1" xml:space="preserve">
-    <value>- Discover &amp; explore all events.</value>
+    <value>- Yaklaşan etkinlikleri buradan takip edebilirsiniz.</value>
     <comment>First point highlighting feature of app</comment>
   </data>
   <data name="WelcomeCardPersonalPoint2" xml:space="preserve">
-    <value>- Register to the events you like.</value>
+    <value>- Etkinliklere kayıt olabilir, takviminize ekleyebilirsiniz.</value>
     <comment>Second point highlighting feature of app</comment>
   </data>
   <data name="WelcomeCardPersonalPoint3" xml:space="preserve">
-    <value>- Keep a track of all your completed events.</value>
+    <value>- Etkinlik yaklaştığında bildirim alabilirsiniz.</value>
     <comment>Third point highlighting feature of app</comment>
   </data>
   <data name="WelcomeCardPersonalPoint4" xml:space="preserve">
-    <value>- Get notified about all your activities &amp; receive reminders of your upcoming registered events.</value>
+    <value>- Etkinlik geçmişinize göz atabilirsiniz.</value>
     <comment>Forth point highlighting feature of app</comment>
   </data>
   <data name="WelcomeCardTeamHeading" xml:space="preserve">
@@ -310,7 +310,7 @@
     <comment>Forth point highlighting feature of app</comment>
   </data>
   <data name="WelcomeCardTitle" xml:space="preserve">
-    <value>Welcome!</value>
+    <value>Hoş Geldiniz!</value>
     <comment>Welcome card title for personal and team scope</comment>
   </data>
   <data name="WelcomeCardPersonalContentFooter" xml:space="preserve">
