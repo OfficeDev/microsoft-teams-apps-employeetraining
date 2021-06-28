@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Teams.Apps.EmployeeTraining.Resources {
+namespace Microsoft.Teams.Apps.EmployeeTraining {
     using System;
     
     
