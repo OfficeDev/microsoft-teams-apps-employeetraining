@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "הקטגוריות אינן זמינות. הוסף קטגוריה באמצעות ' ניהול קטגוריות ' לפני יצירת אירוע.",
   "startAndEndTimeError": "זמן ההתחלה והסיום חייבים להיות תקפים",
   "hourPlaceholder": "שעה",
-  "minutePlaceholder": "דקה"
+  "minutePlaceholder": "דקה",
+  "signInText": "התחבר"
 }

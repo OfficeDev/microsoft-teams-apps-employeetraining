@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "カテゴリは使用できません。イベントを作成する前に、[カテゴリの管理] からカテゴリを追加してください。",
   "startAndEndTimeError": "開始時刻と終了時刻は有効である必要があります",
   "hourPlaceholder": "時間",
-  "minutePlaceholder": "分"
+  "minutePlaceholder": "分",
+  "signInText": "サインイン"
 }

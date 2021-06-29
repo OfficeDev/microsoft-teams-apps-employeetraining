@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "Les catégories ne sont pas disponibles. Veuillez ajouter une catégorie via « gérer les catégories » avant de créer un événement.",
   "startAndEndTimeError": "Les heures de début et de fin doivent être valides",
   "hourPlaceholder": "Heure",
-  "minutePlaceholder": "Minute"
+  "minutePlaceholder": "Minute",
+  "signInText": "Connexion"
 }

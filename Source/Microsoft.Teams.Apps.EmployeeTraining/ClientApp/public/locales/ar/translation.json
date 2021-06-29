@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "الفئات غير متوفرة. يُرجى إضافة فئة من خلال \"إدارة الفئات\" قبل إنشاء حدث.",
   "startAndEndTimeError": "يجب أن يكون وقت البدء والانتهاء صالحًا",
   "hourPlaceholder": "الساعة",
-  "minutePlaceholder": "الدقيقة"
+  "minutePlaceholder": "الدقيقة",
+  "signInText": "تسجيل الدخول"
 }

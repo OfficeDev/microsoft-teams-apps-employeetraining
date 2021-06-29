@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "사용 가능한 종류가 없습니다. 이벤트를 만들기 전에 '범주 관리'를 통해 범주를 추가하세요.",
   "startAndEndTimeError": "시작 및 종료 시간은 유효해야 합니다.",
   "hourPlaceholder": "시",
-  "minutePlaceholder": "분"
+  "minutePlaceholder": "분",
+  "signInText": "로그인"
 }

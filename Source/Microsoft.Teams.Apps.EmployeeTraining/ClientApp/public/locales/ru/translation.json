@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "Категории недоступны. Перед созданием события добавьте категорию в разделе \"Управление категориями\".",
   "startAndEndTimeError": "Время начала и время окончания должны быть допустимыми",
   "hourPlaceholder": "ч",
-  "minutePlaceholder": "мин"
+  "minutePlaceholder": "мин",
+  "signInText": "Войти"
 }

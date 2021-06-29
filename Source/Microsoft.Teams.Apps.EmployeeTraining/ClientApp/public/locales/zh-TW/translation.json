@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "無法使用類別。在建立活動前，請透過「管理類別」新增類別。",
   "startAndEndTimeError": "開始與結束時間必須有效",
   "hourPlaceholder": "小時",
-  "minutePlaceholder": "分鐘"
+  "minutePlaceholder": "分鐘",
+  "signInText": "登入"
 }

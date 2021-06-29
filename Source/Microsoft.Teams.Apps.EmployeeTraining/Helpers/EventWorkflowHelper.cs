@@ -9,6 +9,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Helpers
     using System.Data;
     using System.IO;
     using System.Linq;
+    using System.Text;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Azure.Cosmos.Table;
@@ -480,7 +481,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Helpers
 
             MemoryStream stream = new MemoryStream();
 
-            StreamWriter writer = new StreamWriter(stream);
+            StreamWriter writer = new StreamWriter(stream, Encoding.UTF8);
             writer.Write(string.Join(",", csvColumns.Select(column => $"\"{column}\"").ToArray()));
             writer.WriteLine();
 

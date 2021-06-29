@@ -146,5 +146,6 @@
   "categoriesNotAvailableError": "类别不可用。请在创建事件之前通过“管理类别”添加一个类别。",
   "startAndEndTimeError": "开始和结束时间必须有效",
   "hourPlaceholder": "小时",
-  "minutePlaceholder": "分钟"
+  "minutePlaceholder": "分钟",
+  "signInText": "登录"
 }
