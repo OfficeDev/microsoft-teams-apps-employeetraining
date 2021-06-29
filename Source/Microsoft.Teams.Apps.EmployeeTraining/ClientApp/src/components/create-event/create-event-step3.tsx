@@ -5,8 +5,7 @@
 import * as React from "react";
 import * as microsoftTeams from "@microsoft/teams-js";
 import { WithTranslation, withTranslation } from "react-i18next";
-import { Text, Flex, Image, Button, Label, EyeSlashIcon, ArrowLeftIcon, Layout,Divider } from '@fluentui/react-northstar'
-import { EyeIcon} from '@fluentui/react-icons-northstar';
+import { Text, Flex, Image, Button, ArrowLeftIcon, ArrowRightIcon, Layout, Divider } from '@fluentui/react-northstar'
 import { TFunction } from "i18next";
 import { Icon } from 'office-ui-fabric-react';
 import { ICreateEventState } from "./create-event-wrapper";
@@ -18,6 +17,7 @@ import withContext, { IWithContext } from "../../providers/context-provider";
 import AudienceArtifact from "../../components/common/event-artifacts/audience";
 import TeamsMeetingArtifact from "../../components/common/event-artifacts/teams-meeting";
 import LiveEventArtifact from "../../components/common/event-artifacts/live-event";
+import { LanguageDirection } from "../../models/language-direction";
 
 interface ICreateEventsStep3Props extends WithTranslation, IWithContext {
     navigateToPage: (nextPage: number, stepEventState: ICreateEventState) => void;
@@ -205,7 +205,7 @@ class CreateEventStep3 extends React.Component<ICreateEventsStep3Props, ICreateE
                     </Flex>
                     <Flex className="margin-top" space="between" vAlign="center">
                         <Text className="category label-color" content={this.props.eventPageState.selectedCategory?.header!} weight="bold" />
-                        <Flex.Item push>
+                        <Flex.Item push={this.props.dir === LanguageDirection.Ltr}>
                             {this.getArtifacts()}
                         </Flex.Item>
                     </Flex>
@@ -216,7 +216,7 @@ class CreateEventStep3 extends React.Component<ICreateEventsStep3Props, ICreateE
                         </Flex>
                     </div>}
                     <div style={{ marginTop: "1.33rem" }}>
-                        <Text content={this.props.eventPageState.eventDetails.name} weight="bold" size="medium" />
+                        <Text align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.props.eventPageState.eventDetails.name} weight="bold" size="medium" />
                     </div>
                     <Flex vAlign="center" hAlign="start">
                         <Layout
@@ -228,21 +228,21 @@ class CreateEventStep3 extends React.Component<ICreateEventsStep3Props, ICreateE
                         {this.renderEventVenue(this.props.eventPageState.eventDetails.type, this.props.eventPageState.eventDetails.venue)}
                     </Flex>
                     <Flex vAlign="center" hAlign="start" design={{ marginTop: "2.67rem" }}>
-                        <Text content={this.props.eventPageState.eventDetails.description} />
+                        <Text align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.props.eventPageState.eventDetails.description} />
                     </Flex>
                     {this.renderAttendeeURL()}
-                    <Flex gap="gap.large" design={{ marginTop: "2.67rem" }}>
-                        <Flex column>
-                            <Text content={this.localize("totalNoOfParticipants")} weight="semibold" />
-                            <Text content={this.props.eventPageState.eventDetails.maximumNumberOfParticipants} />
+                    <Flex gap={this.props.dir === LanguageDirection.Rtl ? undefined : "gap.large"} design={{ marginTop: "2.67rem" }}>
+                        <Flex column className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}>
+                            <Text align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.localize("totalNoOfParticipants")} weight="semibold" />
+                            <Text align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.props.eventPageState.eventDetails.maximumNumberOfParticipants} />
                         </Flex>
                         <Flex column>
-                            <Text content={this.localize("registeredParticipants")} weight="semibold" />
-                            <Text content={this.state.registeredAttendeesCount} />
+                            <Text align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.localize("registeredParticipants")} weight="semibold" />
+                            <Text align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.state.registeredAttendeesCount} />
                         </Flex>
                     </Flex>
                 </div>
-                <Flex gap="gap.smaller" className="button-footer" vAlign="center">
+                {this.props.dir === LanguageDirection.Ltr && <Flex gap="gap.smaller" className="button-footer" vAlign="center">
                     <Button disabled={this.state.isCreateLoading} icon={<ArrowLeftIcon />} text content={this.localize("back")} onClick={this.backBtnClick} />
                     <Flex.Item push>
                         <Text weight="bold" content={this.localize("step3of3")} />
@@ -258,7 +258,32 @@ class CreateEventStep3 extends React.Component<ICreateEventsStep3Props, ICreateE
                             <Button disabled={this.state.isCreateLoading} loading={this.state.isCreateLoading} content={this.localize("updateEventButton")} primary onClick={this.updateEvent} data-testid="update_button" />
                         </>
                     }
-                </Flex>
+                </Flex>}
+
+                {this.props.dir === LanguageDirection.Rtl && <Flex gap="gap.smaller" className="button-footer" vAlign="center">
+                    <Flex.Item push>
+                        <Button
+                            disabled={this.state.isCreateLoading}
+                            icon={<ArrowRightIcon />}
+                            text
+                            content={<Text content={this.localize("back")} className="rtl-right-margin-small" />}
+                            onClick={this.backBtnClick}
+                        />
+                    </Flex.Item>
+                    
+                    <Text className="rtl-left-margin-small" weight="bold" content={this.localize("step3of3")} />
+                    {
+                        (this.props.eventPageState.isDraft || !this.props.eventPageState.isEdit) && <>
+                            <Button className="rtl-left-margin-small" disabled={this.state.isCreateLoading || this.state.isDraftLoading} loading={this.state.isDraftLoading} onClick={this.saveEventAsDraft} content={this.localize("saveAsDraft")} secondary data-testid="save_button" />
+                            <Button disabled={this.state.isCreateLoading || this.state.isDraftLoading} loading={this.state.isCreateLoading} content={this.localize("createEvent")} primary onClick={this.createEvent} data-testid="create_event_button" />
+                        </>
+                    }
+                    {
+                        !this.props.eventPageState.isDraft && this.props.eventPageState.isEdit && <>
+                            <Button className="rtl-left-margin-small" disabled={this.state.isCreateLoading} loading={this.state.isCreateLoading} content={this.localize("updateEventButton")} primary onClick={this.updateEvent} data-testid="update_button" />
+                        </>
+                    }
+                </Flex>}
             </>
         );
     }

@@ -4,6 +4,7 @@
 
 import * as React from "react";
 import { Button, Flex, Input, Loader, MenuButton, MenuProps, Provider, SearchIcon, CloseIcon } from "@fluentui/react-northstar";
+import { Fabric } from "@fluentui/react";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 import { IEvent } from "../../models/IEvent";
@@ -27,6 +28,7 @@ import { EventOperationType } from "../../models/event-operation-type";
 import Resources from "../../constants/resources";
 import { clearMobileFilterLocalStorage } from "../../helpers/mobile-filter-helper";
 import withContext, { IWithContext } from "../../providers/context-provider";
+import { LanguageDirection } from "../../models/language-direction";
 
 import "./discover-events.css";
 
@@ -548,24 +550,26 @@ class DiscoverEvents extends React.Component<IDiscoverEventsProps, IDiscoverEven
     /** Renders the desktop view */
     renderDesktopView = () => {
         return (
-            <React.Fragment>
+            <Fabric dir={this.props.dir}>
                 <Flex column>
                     <Flex space="between" vAlign="center">
                         <TabMenu defaultTabIndex={MandatoryEventsTabIndex} activeTabIndex={this.state.activeTabIndex!} tabItems={this.renderTabMenuItems()} onTabIndexChange={this.onTabIndexChange} />
-                        <Flex.Item push>
+                        <Flex.Item push={this.props.dir === LanguageDirection.Ltr}>
                             <Flex gap="gap.medium" vAlign="center">
                                 <MenuButton
+                                    className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-medium" : ""}
                                     trigger={
                                         <Button icon={this.renderFilterButtonIcon()}
                                             content={this.localize("filterButtonText")}
                                             onClick={this.onFilterBarToggle}
                                             data-testid="filterbutton"
                                         />}
-                                />
+                            />
                                 <Input
                                     inverted
                                     value={this.state.searchText}
                                     icon={<SearchIcon />}
+                                    iconPosition={this.props.dir === LanguageDirection.Rtl ? "start" : "end"}
                                     placeholder={this.localize("searchForEventsPlaceholder")}
                                     input={{ design: { minWidth: "20rem", maxWidth: "20rem" } }}
                                     onKeyUp={this.onSearchEvents}
@@ -585,14 +589,14 @@ class DiscoverEvents extends React.Component<IDiscoverEventsProps, IDiscoverEven
                     />
                 </Flex>
                 {this.renderEvents()}
-            </React.Fragment>
+            </Fabric>
         );
     }
 
     /** Renders the mobile view */
     renderMobileView = () => {
         return (
-            <React.Fragment>
+            <Fabric dir={this.props.dir}>
                 <Flex column>
                     <Flex space="between">
                         <TabMenu defaultTabIndex={MandatoryEventsTabIndex} activeTabIndex={this.state.activeTabIndex!} tabItems={this.renderTabMenuItems()} onTabIndexChange={this.onTabIndexChange} />
@@ -629,7 +633,7 @@ class DiscoverEvents extends React.Component<IDiscoverEventsProps, IDiscoverEven
                     }
                 </Flex>
                 {!this.state.isFilterOpen && this.renderEvents()}
-            </React.Fragment>
+            </Fabric>
         );
     }
 
@@ -639,7 +643,7 @@ class DiscoverEvents extends React.Component<IDiscoverEventsProps, IDiscoverEven
             <div className="container-div">
                 <div className="discover-events-container">
                     {this.state.isMobileView ? this.renderMobileView() : this.renderDesktopView()}
-                    <ToastNotification notification={this.state.notification} />
+                    <ToastNotification dir={this.props.dir} notification={this.state.notification} />
                 </div>
             </div>
         );

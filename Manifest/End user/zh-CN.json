@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "员工培训",
+  "name.full": "员工培训",
+  "description.short": "让员工能够轻松地发现、注册和共享培训事件。",
+  "description.full": "让你的员工接受培训，使他们可以在 Microsoft Teams 中度过大部分时间。管理员可以创建新的培训事件，指定哪些人可以参加以及该事件是否为必须参加的事件，并在人满后即关闭注册。将应用添加到 Teams 频道后，员工可以访问“发现”选项卡以浏览事件，注册感兴趣的事件，并使用应用的消息扩展向同事建议或直接报告事件。注册后，员工会收到 Teams 提醒，因此他们不致于错过事件！",
+  "staticTabs[0].name": "发现事件",
+  "staticTabs[1].name": "你的事件",
+  "composeExtensions[0].commands[0].title": "最近",
+  "composeExtensions[0].commands[0].description": "显示所有创建的事件",
+  "composeExtensions[0].commands[0].parameters[0].description": "输入以搜索事件",
+  "composeExtensions[0].commands[1].title": "热门",
+  "composeExtensions[0].commands[1].description": "显示热门事件",
+  "composeExtensions[0].commands[1].parameters[0].description": "输入以搜索事件"
+}

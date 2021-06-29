@@ -11,6 +11,7 @@ import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 import withContext, { IWithContext } from "../../providers/context-provider";
 import { getCategoriesAsync } from "../../api/manage-categories-api";
+import { LanguageDirection } from "../../models/language-direction";
 
 interface IListCategoriesProps extends WithTranslation, IWithContext {
     statusMessage: string,
@@ -53,7 +54,7 @@ class ListCategories extends React.Component<IListCategoriesProps, IListCategori
 
     /** Gets called when component get mounted */
     componentDidMount() {
-        this.setState({ isLoading: true });        
+        this.setState({ isLoading: true });
     }
 
     /**
@@ -63,7 +64,7 @@ class ListCategories extends React.Component<IListCategoriesProps, IListCategori
         if (this.props.teamsContext !== nextProps.teamsContext) {
             if (nextProps.teamsContext) {
                 this.getCategoriesAsync(nextProps.teamsContext.teamId!);
-            }            
+            }
         }
     }
 
@@ -80,7 +81,7 @@ class ListCategories extends React.Component<IListCategoriesProps, IListCategori
                 categories.push(category);
             });
 
-            this.setState({ categories, isLoading: false });
+            this.setState({categories, isLoading: false });
         }
         else {
             this.setState({ isLoading: false, statusMessage: this.localize("dataResponseFailedStatus") });
@@ -293,9 +294,9 @@ class ListCategories extends React.Component<IListCategoriesProps, IListCategori
                             <QuestionCircleIcon outline color="green" />
                         </div>
                     </Flex.Item>
-                    <Flex.Item grow>
+                    <Flex.Item grow={this.props.dir === LanguageDirection.Ltr}>
                         <Flex column gap="gap.small" vAlign="stretch">
-                            <div>
+                            <div className={this.props.dir === LanguageDirection.Rtl ? "rtl-direction rtl-right-margin-small" : ""}>
                                 <Text weight="bold" content={this.localize("categoriesNotAvailableHeader")} /><br />
                                 <Text content={
                                     this.searchText !== "" ?
@@ -310,17 +311,43 @@ class ListCategories extends React.Component<IListCategoriesProps, IListCategori
         }
     }
 
+    /** Render search input based on culture direction. */
+    renderSearchInput = () => {
+            if (this.props.dir === LanguageDirection.Rtl)
+            {
+                return <div>
+                    <Input
+                        icon={<SearchIcon />}
+                        iconPosition={"start"}
+                        data-testid="searchbar"
+                        placeholder={this.localize("searchPlaceholder")}
+                        onChange={this.onSearchTextChanged}
+                    />
+                </div>
+            }
+            else if(this.props.dir === LanguageDirection.Ltr)
+            {
+                return <Input
+                    icon={<SearchIcon />}
+                    iconPosition={"end"}
+                    data-testid="searchbar"
+                    placeholder={this.localize("searchPlaceholder")}
+                    onChange={this.onSearchTextChanged}
+                />
+            }
+    }
+
     /** Renders the component */
     render() {
         return (
             <>
                 <div className="commandbar-wrapper">
                     <Flex className="commandbar-wrapper-container">
-                        <Button text data-testid="addbutton" className="list-categories-menu-button" icon={<AddIcon />} content={this.localize("add")} onClick={() => this.onActionPerformed(CategoryOperations.Add)} />
-                        <Button text data-testid="editbutton" className="list-categories-menu-button" icon={<EditIcon />} disabled={!this.state.isEditEnabled} content={this.localize("edit")} onClick={() => this.onActionPerformed(CategoryOperations.Edit)} />
-                        <Button text data-testid="deletebutton" icon={<TrashCanIcon />} disabled={!this.state.isDeleteEnabled} content={this.localize("delete")} onClick={() => this.onActionPerformed(CategoryOperations.Delete)} />
-                        <Flex.Item push className="search-input-container">
-                            <Input icon={<SearchIcon />} data-testid="searchbar" placeholder={this.localize("searchPlaceholder")} onChange={this.onSearchTextChanged} />
+                        <Button text data-testid="addbutton" className="list-categories-menu-button" icon={<AddIcon className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}/>} content={this.localize("add")} onClick={() => this.onActionPerformed(CategoryOperations.Add)} />
+                        <Button text data-testid="editbutton" className="list-categories-menu-button" icon={<EditIcon className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}/>} disabled={!this.state.isEditEnabled} content={this.localize("edit")} onClick={() => this.onActionPerformed(CategoryOperations.Edit)} />
+                        <Button text data-testid="deletebutton" icon={<TrashCanIcon className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}/>} disabled={!this.state.isDeleteEnabled} content={this.localize("delete")} onClick={() => this.onActionPerformed(CategoryOperations.Delete)} />
+                        <Flex.Item push={this.props.dir === LanguageDirection.Ltr} grow={this.props.dir === LanguageDirection.Rtl} className="search-input-container">
+                            {this.renderSearchInput()}
                         </Flex.Item>
                     </Flex>
                 </div>

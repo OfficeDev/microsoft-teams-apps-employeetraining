@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Mitarbeiterschulung (L&D-Team)",
+  "name.full": "Mitarbeiterschulung (L&D-Team)",
+  "description.short": "Erstellen/Verwalten von Mitarbeiter-Engagement-Events für L&D-Teams erleichtern.",
+  "description.full": "Binden Sie Ihre Mitarbeiter mit Schulungen dort ein, wo sie die meiste Zeit verbringen – direkt hier in Microsoft Teams. Ihr Learning- + Development-Team kann neue Schulungsveranstaltungen erstellen, festlegen, wer teilnehmen kann und ob die Veranstaltung obligatorisch ist oder nicht, und die Registrierung schließen, sobald die Kapazität erreicht ist. Eingebaute Erinnerungen sorgen dafür, dass Ihre Veranstaltungen gut besucht werden.",
+  "staticTabs[0].name": "Ereignisse verwalten",
+  "bots[0].commandLists[0].commands[0].title": "Ereignis hinzufügen",
+  "bots[0].commandLists[0].commands[0].description": "Ereignis für Benutzer hinzufügen"
+}

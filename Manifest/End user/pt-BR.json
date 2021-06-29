@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Treinamento de Funcionários",
+  "name.full": "Treinamento de Funcionários",
+  "description.short": "Facilitar aos funcionários o descobrir, registrar e compartilhar treinamentos.",
+  "description.full": "Envolva seus funcionários com treinamento onde eles passam a maior parte de seu tempo aqui no Microsoft Teams. Os administradores podem criar novos eventos de treinamento, especificar quem pode participar e se o evento é obrigatório ou não, e fechar o registro quando a capacidade for atingida. Uma vez que o aplicativo é adicionado a um canal do Teams, os funcionários poderão visitar a guia Descobrir para procurar eventos, se registrar para os que lhes interessam e usar a extensão de mensagem do aplicativo para sugerir eventos a seus colegas ou subordinados direto. Uma vez registrado, os funcionários recebem lembretes no Teams, para que nunca percam um evento!",
+  "staticTabs[0].name": "Descobrir eventos",
+  "staticTabs[1].name": "Seus eventos",
+  "composeExtensions[0].commands[0].title": "Recentes",
+  "composeExtensions[0].commands[0].description": "Mostrar tudo sobre eventos criados",
+  "composeExtensions[0].commands[0].parameters[0].description": "Pressione Enter para buscar o evento",
+  "composeExtensions[0].commands[1].title": "Popular",
+  "composeExtensions[0].commands[1].description": "Mostrar eventos populares",
+  "composeExtensions[0].commands[1].parameters[0].description": "Pressione Enter para buscar o evento"
+}

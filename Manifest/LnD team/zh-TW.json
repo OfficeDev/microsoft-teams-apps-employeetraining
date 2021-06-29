@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "員工訓練 (學習與開發小組) ",
+  "name.full": "員工訓練 (學習與開發小組)",
+  "description.short": "讓學習與開發小組輕鬆建立和管理活動，以促進員工參與感。",
+  "description.full": "讓您的員工直接在 Microsoft Teams 中進行多數的訓練，以提升參與感。您的學習 + 開發小組可以建立新的訓練活動、指定可出席的人員，以及該活動是否為必要項目，並在達到人數上限後關閉註冊。內建的提醒可協助確保您的活動有很高的出席率。",
+  "staticTabs[0].name": "管理活動",
+  "bots[0].commandLists[0].commands[0].title": "新增活動",
+  "bots[0].commandLists[0].commands[0].description": "為使用者新增活動"
+}

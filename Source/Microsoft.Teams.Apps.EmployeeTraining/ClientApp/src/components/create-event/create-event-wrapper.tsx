@@ -22,6 +22,7 @@ import { EventStatus } from "../../models/event-status";
 import EventDetails from "../common/event-details/event-details";
 import withContext, { IWithContext } from "../../providers/context-provider";
 import { getEventCategoriesAsync } from "../../api/create-event-api";
+import { Fabric } from "@fluentui/react";
 
 import "./create-event.css";
 
@@ -188,7 +189,7 @@ class CreateEventWrapper extends React.Component<ICreateEventProps, ICreateEvent
             case 1:
                 return <CreateEventStep1 eventPageState={{ ...this.state }} navigateToPage={this.setEventStep} />
             case 2:
-                return <CreateEventStep2 eventPageState={{ ...this.state }} navigateToPage={this.setEventStep} />
+                return <CreateEventStep2 eventPageState={{ ...this.state }} navigateToPage={this.setEventStep} dir={this.props.dir}/>
             case 3:
                 return <CreateEventStep3 eventPageState={{ ...this.state }} navigateToPage={this.setEventStep} />
             default:
@@ -215,14 +216,16 @@ class CreateEventWrapper extends React.Component<ICreateEventProps, ICreateEvent
         }
         else {
             return (
-                <Provider>
-                    <Flex>
-                        <div className="task-module-container">
-                            {!this.state.isLoading && !this.state.displayReadonly && this.renderOperation()}
-                            {this.state.isLoading && <Loader className="loader" />}
-                        </div>
-                    </Flex>
-                </Provider>
+                <Fabric dir={this.props.dir}>
+                    <Provider>
+                        <Flex>
+                            <div className="task-module-container">
+                                {!this.state.isLoading && !this.state.displayReadonly && this.renderOperation()}
+                                {this.state.isLoading && <Loader className="loader" />}
+                            </div>
+                        </Flex>
+                    </Provider>
+                </Fabric>
             );
         }
 

@@ -10,6 +10,7 @@ import { render, unmountComponentAtNode } from "react-dom";
 import { act } from "react-dom/test-utils";
 import pretty from "pretty";
 import TestData from "../../../api/test-data/test-data";
+import { LanguageDirection } from "../../../models/language-direction";
 
 jest.mock("../../../api/common-api");
 jest.mock("../../../api/user-group-api");
@@ -51,6 +52,7 @@ beforeEach(async () => {
                 <CreateEventStep2
                     eventPageState={TestData.stateTest}
                     navigateToPage={(nextPage: any, stepEventState: any) => { }}
+                    dir={LanguageDirection.Ltr}
                 />
             </Provider>,
             container
@@ -181,6 +183,7 @@ describe("CreateEventStep2", () => {
                     <CreateEventStep2
                         eventPageState={eventState}
                         navigateToPage={(nextPage: any, stepEventState: any) => { }}
+                        dir={LanguageDirection.Ltr}
                     />
                 </Provider>,
                 container

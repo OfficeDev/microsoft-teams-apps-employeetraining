@@ -106,6 +106,15 @@ namespace Microsoft.Teams.Apps.EmployeeTraining {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add event.
+        /// </summary>
+        public static string BotCommandAddEvent {
+            get {
+                return ResourceManager.GetString("BotCommandAddEvent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Live event URL: {0}.
         /// </summary>
         public static string CalendarEventLiveEventURLText {

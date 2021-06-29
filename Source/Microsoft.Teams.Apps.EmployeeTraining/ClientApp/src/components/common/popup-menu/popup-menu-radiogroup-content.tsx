@@ -4,19 +4,22 @@
 
 import * as React from "react";
 import { Flex, RadioGroup } from "@fluentui/react-northstar";
+import { Fabric } from "@fluentui/react";
+import { LanguageDirection } from "../../../models/language-direction";
 
 import "./popup-menu.css";
 
 interface IPopupMenuRadiogroupContentProps {
     content: any,
     selectedValue: number,
-    onRadiogroupStateChange: (selectedValue: number) => void
+    onRadiogroupStateChange: (selectedValue: number) => void,
+    dir: LanguageDirection
 }
 
 const PopupMenuRadiogroupContent: React.FunctionComponent<IPopupMenuRadiogroupContentProps> = props => {
 
     return (
-        <>
+        <Fabric dir={props.dir}>
             <div className="content-items-wrapper radio-popup-content">
                 <div className="content-items-body">
                     {   
@@ -32,7 +35,7 @@ const PopupMenuRadiogroupContent: React.FunctionComponent<IPopupMenuRadiogroupCo
                     }
                 </div>
             </div>
-        </>
+        </Fabric>
     );
 }
 

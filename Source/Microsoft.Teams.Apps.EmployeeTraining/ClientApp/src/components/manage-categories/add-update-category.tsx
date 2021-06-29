@@ -212,7 +212,8 @@ class AddUpdateCategory extends React.Component<IAddCategoryProps, IAddCategoryS
                         />
                     </Flex>
                     <ManageCategoriesOperationFooter
-                        backButtonContent={this.localize("Back")}
+                        dir={this.props.dir}
+                        backButtonContent={this.localize("back")}
                         submitButtonContent={this.props.category ? this.localize("save") : this.localize("addCategory")}
                         isSubmitButtonDisabled={this.state.category.name.trim() === "" || this.state.category.description.trim() === "" || this.state.isCreatingOrUpdating || this.state.isCategoryAlreadyExists}
                         isOperationInProgress={this.state.isCreatingOrUpdating}

@@ -1,0 +1,15 @@
+﻿  {
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Mitarbeiterschulung",
+  "name.full": "Mitarbeiterschulung",
+  "description.short": "Schulungen entdecken, sich anmelden und miteinander teilen – leicht gemacht.",
+  "description.full": "Binden Sie Ihre Mitarbeiter mit Schulungen dort ein, wo sie die meiste Zeit verbringen – direkt hier in Microsoft Teams. Administratoren können neue Schulungsveranstaltungen erstellen, festlegen, wer teilnehmen kann und ob die Veranstaltung obligatorisch ist oder nicht, und die Registrierung schließen, sobald die Kapazität erreicht ist. Sobald die App zu einem Teams-Kanal hinzugefügt wurde, können Mitarbeiter die Registerkarte „Entdecken“ besuchen, um Veranstaltungen zu durchsuchen, sich für diejenigen registrieren, die sie interessieren, und die Nachrichtenerweiterung der App verwenden, um ihren Kollegen oder direkten Mitarbeitern Veranstaltungen vorzuschlagen. Sobald sie registriert sind, erhalten die Mitarbeiter Erinnerungen in Teams, sodass sie keine Veranstaltung verpassen!",
+  "staticTabs[0].name": "Ereignisse entdecken",
+  "staticTabs[1].name": "Ihre Ereignisse",
+  "composeExtensions[0].commands[0].title": "Zuletzt verwendet",
+  "composeExtensions[0].commands[0].description": "Alle erstellten Ereignisse anzeigen",
+  "composeExtensions[0].commands[0].parameters[0].description": "EINGABETASTE, um ein Ereignis zu suchen",
+  "composeExtensions[0].commands[1].title": "Beliebt",
+  "composeExtensions[0].commands[1].description": "Beliebte Veranstaltungen anzeigen",
+  "composeExtensions[0].commands[1].parameters[0].description": "EINGABETASTE, um ein Ereignis zu suchen"
+}

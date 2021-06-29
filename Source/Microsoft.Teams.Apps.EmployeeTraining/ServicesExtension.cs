@@ -173,6 +173,8 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
             {
                 SearchDnsSuffix = searchDnsSuffix,
             });
+            services.AddSingleton<ISearchServiceClient>(new SearchServiceClient(configuration.GetValue<string>("SearchService:SearchServiceName"), new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceAdminApiKey"))));
+            services.AddSingleton<ISearchIndexClient>(new SearchIndexClient(configuration.GetValue<string>("SearchService:SearchServiceName"), Constants.EventsIndex, new SearchCredentials(configuration.GetValue<string>("SearchService:SearchServiceQueryApiKey"))));
             services.AddSingleton<IEventSearchService, EventSearchService>();
             services.AddSingleton<IUserEventSearchService, UserEventSearchService>();
             services.AddSingleton<ITeamEventSearchService, TeamEventSearchService>();

@@ -3,7 +3,8 @@
 // </copyright>
 
 import * as React from "react";
-import { Button, Flex, Text, ChevronStartIcon } from "@fluentui/react-northstar";
+import { Button, Flex, Text, ChevronStartIcon, ChevronEndIcon } from "@fluentui/react-northstar";
+import { LanguageDirection } from "../../models/language-direction";
 
 interface IManageCategoriesOperationFooter {
     backButtonContent: string,
@@ -12,7 +13,8 @@ interface IManageCategoriesOperationFooter {
     isOperationInProgress: boolean,
     errorMessage: string,
     onBackClicked: () => void,
-    onSubmit: () => void
+    onSubmit: () => void,
+    dir: LanguageDirection
 }
 
 /**
@@ -33,7 +35,7 @@ export const ManageCategoriesOperationFooter: React.FunctionComponent<IManageCat
 
     return (
         <Flex className="manage-categories-footer" space="between">
-            <Button data-testid="backbutton" className="back-button" text icon={<ChevronStartIcon />} content={props.backButtonContent} onClick={props.onBackClicked} />
+            <Button data-testid="backbutton" className="back-button" text icon={props.dir === LanguageDirection.Rtl ? <ChevronEndIcon /> : <ChevronStartIcon />} content={props.backButtonContent} onClick={props.onBackClicked} />
             <Flex gap="gap.medium" vAlign="center" hAlign="center">
                 {renderError()}
                 <Flex.Item push>

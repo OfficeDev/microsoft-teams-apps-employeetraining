@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "تدريب الموظفين",
+  "name.full": "تدريب الموظفين",
+  "description.short": "اجعل من السهل علي الموظفين اكتشاف أحداث التدريب، والتسجيلها فيها، ومشاركتها.",
+  "description.full": "قم بإشراك موظفيك في التدريب حيث يقضون معظم وقتهم هنا في Microsoft Teams. يمكن للمسؤولين إنشاء أحداث تدريبية جديدة وتحديد من يمكنه الحضور وما إذا كان الحدث إلزاميا أم لا، وإغلاق التسجيل بمجرد الوصول إلى السعة. بمجرد إضافة التطبيق إلى قناة Teams، يمكن للموظفين زيارة علامة التبويب اكتشاف لتصفح الأحداث والتسجيل للمناسبات التي تهمهم واستخدام إضافة رسالة التطبيق لاقتراح الأحداث على زملائهم أو التقارير المباشرة. بمجرد التسجيل، يتلقى الموظفون تذكيرات في Teams، حتى لا يفوتوا أي حدث!",
+  "staticTabs[0].name": "اكتشاف الأحداث",
+  "staticTabs[1].name": "أحداثك",
+  "composeExtensions[0].commands[0].title": "الأخيرة",
+  "composeExtensions[0].commands[0].description": "إظهار جميع الأحداث التي تم إنشاؤها",
+  "composeExtensions[0].commands[0].parameters[0].description": "ادخل للبحث عن حدث",
+  "composeExtensions[0].commands[1].title": "شائعة",
+  "composeExtensions[0].commands[1].description": "إظهار الاحداث الشائعة",
+  "composeExtensions[0].commands[1].parameters[0].description": "ادخل للبحث عن حدث"
+}

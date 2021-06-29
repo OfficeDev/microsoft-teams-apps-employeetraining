@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "員工訓練",
+  "name.full": "員工訓練",
+  "description.short": "讓員工輕鬆探索、註冊和共用訓練活動。",
+  "description.full": "讓您的員工直接在 Microsoft Teams 中進行多數的訓練，以提升參與感。系統管理員可以建立新的訓練活動、指定可出席的人員，以及該活動是否為必要項目，並在達到人數上限後關閉註冊。將應用程式新增到 Teams 頻道後，員工可以造訪 [探索] 索引標籤來瀏覽活動、註冊感興趣的活動，並使用應用程式的訊息延伸模組，向同事或直屬員工建議活動。註冊後，員工會收到 Teams 中的提醒，因此他們絕不會錯過活動！",
+  "staticTabs[0].name": "探索活動",
+  "staticTabs[1].name": "您的活動",
+  "composeExtensions[0].commands[0].title": "最近",
+  "composeExtensions[0].commands[0].description": "顯示所有建立的活動",
+  "composeExtensions[0].commands[0].parameters[0].description": "輸入以搜尋活動",
+  "composeExtensions[0].commands[1].title": "熱門",
+  "composeExtensions[0].commands[1].description": "顯示熱門活動",
+  "composeExtensions[0].commands[1].parameters[0].description": "輸入以搜尋活動"
+}

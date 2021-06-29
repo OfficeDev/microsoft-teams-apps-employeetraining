@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "직원 교육(L&D 팀)",
+  "name.full": "직원 교육(L&D 팀)",
+  "description.short": "L&D 팀이 손쉽게 이벤트를 만들고 관리하여 직원을 세분화할 수 있습니다.",
+  "description.full": "직원들이 대부분의 시간을 이곳 Microsoft Teams에서 보내는 교육에 참여할 수 있도록 독려하세요. 학습 + 개발 팀은 새로운 교육 이벤트를 만들고, 참석할 수 있는 사용자 및 이벤트 의무 여부를 지정하고, 좌석이 확보되면 등록을 마감할 수 있습니다. 내장된 미리 알림을 통해 이벤트에 대한 참석이 용이합니다.",
+  "staticTabs[0].name": "이벤트 관리",
+  "bots[0].commandLists[0].commands[0].title": "이벤트 추가",
+  "bots[0].commandLists[0].commands[0].description": "사용자에 대한 이벤트 추가"
+}

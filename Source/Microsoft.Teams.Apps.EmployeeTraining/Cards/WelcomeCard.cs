@@ -27,7 +27,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
         /// <returns>Team's welcome card as attachment.</returns>
         public static Attachment GetWelcomeCardAttachmentForTeam(string applicationBasePath, IStringLocalizer<Strings> localizer)
         {
-            var t = localizer.GetString("WelcomeCardTitle");
+            var textAlignment = CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? AdaptiveHorizontalAlignment.Right : AdaptiveHorizontalAlignment.Left;
             AdaptiveCard card = new AdaptiveCard(new AdaptiveSchemaVersion(1, 2))
             {
                 Body = new List<AdaptiveElement>
@@ -58,6 +58,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Spacing = AdaptiveSpacing.None,
                                         Text = localizer.GetString("WelcomeCardTitle"),
                                         Wrap = true,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                     new AdaptiveTextBlock
                                     {
@@ -65,6 +66,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Text = localizer.GetString("WelcomeCardTeamIntro"),
                                         Wrap = true,
                                         IsSubtle = true,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                                 Width = AdaptiveColumnWidth.Stretch,
@@ -75,33 +77,39 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                     {
                         Text = localizer.GetString("WelcomeCardTeamHeading"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Spacing = AdaptiveSpacing.Medium,
                         Text = localizer.GetString("WelcomeCardTeamPoint1"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Text = localizer.GetString("WelcomeCardTeamPoint2"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Text = localizer.GetString("WelcomeCardTeamPoint3"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Text = localizer.GetString("WelcomeCardTeamPoint4"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Spacing = AdaptiveSpacing.Medium,
                         Text = string.Format(CultureInfo.CurrentCulture, localizer.GetString("WelcomeCardTeamContentFooter"), localizer.GetString("CreateEventButtonWelcomeCard")),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                 },
                 Actions = new List<AdaptiveAction>
@@ -143,6 +151,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
             IStringLocalizer<Strings> localizer,
             string applicationManifestId)
         {
+            var textAlignment = CultureInfo.CurrentCulture.TextInfo.IsRightToLeft ? AdaptiveHorizontalAlignment.Right : AdaptiveHorizontalAlignment.Left;
             AdaptiveCard card = new AdaptiveCard(new AdaptiveSchemaVersion(1, 2))
             {
                 Body = new List<AdaptiveElement>
@@ -173,6 +182,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Spacing = AdaptiveSpacing.None,
                                         Text = localizer.GetString("WelcomeCardTitle"),
                                         Wrap = true,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                     new AdaptiveTextBlock
                                     {
@@ -180,6 +190,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                                         Text = localizer.GetString("WelcomeCardPersonalIntro"),
                                         Wrap = true,
                                         IsSubtle = true,
+                                        HorizontalAlignment = textAlignment,
                                     },
                                 },
                                 Width = AdaptiveColumnWidth.Stretch,
@@ -191,27 +202,32 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Cards
                         Spacing = AdaptiveSpacing.Medium,
                         Text = localizer.GetString("WelcomeCardPersonalPoint1"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Text = localizer.GetString("WelcomeCardPersonalPoint2"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Text = localizer.GetString("WelcomeCardPersonalPoint3"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Text = localizer.GetString("WelcomeCardPersonalPoint4"),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                     new AdaptiveTextBlock
                     {
                         Spacing = AdaptiveSpacing.Medium,
                         Text = string.Format(CultureInfo.CurrentCulture, localizer.GetString("WelcomeCardPersonalContentFooter"), localizer.GetString("WelcomeCardPersonalDiscoverButtonText")),
                         Wrap = true,
+                        HorizontalAlignment = textAlignment,
                     },
                 },
                 Actions = new List<AdaptiveAction>

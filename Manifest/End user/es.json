@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Formación de los empleados",
+  "name.full": "Formación de los empleados",
+  "description.short": "Facilite a empleados detectar, registrar y compartir de eventos de aprendizaje.",
+  "description.full": "Involucre a sus empleados en el aprendizaje en el lugar en que dedican la mayor parte del tiempo: justo aquí, en Microsoft Teams. Los administradores pueden crear nuevos eventos de aprendizaje, especificar quién puede asistir y si el evento es obligatorio o no, así como cerrar el registro una vez que se alcanza el límite de la capacidad. Una vez que la aplicación se agrega a un canal de Teams, los empleados pueden visitar la pestaña Descubrir para examinar los eventos, registrarse para los que les interesen y usar la extensión de mensajes de la aplicación para sugerir eventos a sus compañeros o subordinados directos. Una vez que se han registrado, los empleados reciben recordatorios en Teams, para que nunca se pierdan un evento.",
+  "staticTabs[0].name": "Descubrir eventos",
+  "staticTabs[1].name": "Sus eventos",
+  "composeExtensions[0].commands[0].title": "Reciente",
+  "composeExtensions[0].commands[0].description": "Mostrar todos los eventos creados",
+  "composeExtensions[0].commands[0].parameters[0].description": "Entrar para buscar un evento",
+  "composeExtensions[0].commands[1].title": "Populares",
+  "composeExtensions[0].commands[1].description": "Mostrar eventos populares",
+  "composeExtensions[0].commands[1].parameters[0].description": "Entrar para buscar un evento"
+}

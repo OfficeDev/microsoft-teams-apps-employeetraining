@@ -20,6 +20,7 @@ import { TimePicker } from "../common/time-picker/timepicker";
 import { ICreateEventState } from "./create-event-wrapper";
 import withContext, { IWithContext } from "../../providers/context-provider";
 import { ColorPicker } from "../common/color-picker/color-picker";
+import { LanguageDirection } from '../../models/language-direction';
 
 interface ICreateEventsStep1Props extends WithTranslation, IWithContext {
     navigateToPage: (nextPage: number, stepEventState: ICreateEventState) => void;
@@ -589,7 +590,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                     </Flex>
                     <Flex gap="gap.smaller" className="margin-top" vAlign="center">
                         <Text className="form-label margin-right" content={this.localize("eventPhotoStep1")} /><ExclamationCircleIcon title={this.localize("imageInfoIcon")} size="small" />
-                        <Flex.Item push>
+                        <Flex.Item push grow={this.props.dir === LanguageDirection.Rtl}>
                             {this.getPhotoError()}
                         </Flex.Item>
                     </Flex>
@@ -606,7 +607,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                     <Flex gap="gap.smaller" className="input-label-margin-between" vAlign="center" >
                         <Flex.Item>
                             <>
-                                <Button disabled={this.state.imageUploadLoader} loading={this.state.imageUploadLoader} onClick={this.handleUploadClick} size="medium" icon={<FilesUploadIcon />} content={this.state.eventDetails.photo && this.state.eventDetails.photo.length ? this.localize("changePhotoStep1") : this.localize("uploadPhotoStep1")} iconPosition="before" />
+                                <Button disabled={this.state.imageUploadLoader} loading={this.state.imageUploadLoader} onClick={this.handleUploadClick} size="medium" icon={<FilesUploadIcon className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}/>} content={this.state.eventDetails.photo && this.state.eventDetails.photo.length ? this.localize("changePhotoStep1") : this.localize("uploadPhotoStep1")} iconPosition="before" />
                                 <input
                                     type="file"
                                     ref={this.inputReference}
@@ -614,7 +615,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                                     style={{ display: 'none' }}
                                     key={this.state.inputKey}
                                 />
-                                <Text className="form-label" content={this.localize("orLabelForImageOrColor")} />
+                                <Text className={this.props.dir === LanguageDirection.Rtl ? "form-label rtl-left-margin-small" : "form-label"} content={this.localize("orLabelForImageOrColor")} />
                             </>
                         </Flex.Item>
                         <Flex.Item>
@@ -625,7 +626,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                     </Flex>
                     <Flex className="margin-top" gap="gap.smaller">
                         <Text className="form-label" content={this.localize("eventNameStep1")} />
-                        <Flex.Item push>
+                        <Flex.Item push grow={this.props.dir === LanguageDirection.Rtl}>
                             {this.getNameError()}
                         </Flex.Item>
                     </Flex>
@@ -636,7 +637,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                         <Flex.Item size="size.half">
                             <Flex>
                                 <Text className="form-label" content={this.localize("eventTypeStep1")} />
-                                <Flex.Item push>
+                                <Flex.Item push grow={this.props.dir === LanguageDirection.Rtl}>
                                     {this.getEventTypeError()}
                                 </Flex.Item>
                             </Flex>
@@ -644,7 +645,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                         <Flex.Item size="size.half">
                             <Flex>
                                 <Text className="form-label" content={this.localize("category")} />
-                                <Flex.Item push>
+                                <Flex.Item push grow={this.props.dir === LanguageDirection.Rtl}>
                                     {this.getEventCategoryError()}
                                 </Flex.Item>
                             </Flex>
@@ -654,7 +655,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                     <Flex gap="gap.smaller" className="input-label-margin-between">
                         <Flex.Item size="size.half">
                             <Dropdown
-                                className="dropdown-flex-half"
+                                className={this.props.dir === LanguageDirection.Rtl ? "dropdown-flex-half rtl-left-margin-small" : "dropdown-flex-half"}
                                 fluid
                                 items={this.state.eventTypes.map((value: IConstantDropdownItem) => { return { key: value.id, header: value.name } })}
                                 value={this.state.selectedEventType}
@@ -680,7 +681,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                         <>
                             <Flex className="margin-top" gap="gap.smaller">
                                 <Text className="form-label" content={this.localize("liveEventUrlStep1")} />
-                                <Flex.Item push>
+                                <Flex.Item push grow={this.props.dir === LanguageDirection.Rtl}>
                                     {this.getMeetingLinkError()}
                                 </Flex.Item>
                             </Flex>
@@ -694,7 +695,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                         this.state.eventDetails.type === EventType.InPerson && <>
                             <Flex className="margin-top" gap="gap.smaller">
                                 <Text className="form-label" content={this.localize("venue")} />
-                                <Flex.Item push>
+                                <Flex.Item push grow={this.props.dir === LanguageDirection.Rtl}>
                                     {this.getVenueError()}
                                 </Flex.Item>
                             </Flex>
@@ -712,7 +713,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                     }
                     <Flex gap="gap.smaller" className="margin-top">
                         <Text className="form-label" content={this.localize("eventDescriptionStep1")} />
-                        <Flex.Item push>
+                        <Flex.Item push grow={this.props.dir === LanguageDirection.Rtl}>
                             {this.getDescriptionError()}
                         </Flex.Item>
                     </Flex>
@@ -735,20 +736,22 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                             <Flex gap="gap.smaller" className="margin-top">
                                 <Flex.Item size="size.half">
                                     <div>
-                                        <Text className="form-label" content={`${this.localize("startDateStep1")}`} />
-                                        <StartDate
-                                            screenWidth={this.state.screenWidth}
-                                            theme={this.state.theme}
-                                            selectedDate={this.state.eventDetails.startDate}
-                                            minDate={minDate}
-                                            onDateSelect={this.setStartDate}
-                                            disableSelectionForPastDate={!this.checkEventAlreadyStarted()}
-                                        />
+                                        <Text className="form-label" align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={`${this.localize("startDateStep1")}`} />
+                                        <Flex className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}>
+                                            <StartDate
+                                                screenWidth={this.state.screenWidth}
+                                                theme={this.state.theme}
+                                                selectedDate={this.state.eventDetails.startDate}
+                                                minDate={minDate}
+                                                onDateSelect={this.setStartDate}
+                                                disableSelectionForPastDate={!this.checkEventAlreadyStarted()}
+                                            />
+                                        </Flex>
                                     </div>
                                 </Flex.Item>
                                 <Flex.Item size="size.half">
                                     <div>
-                                        <Text className="form-label" content={`${this.localize("endDateStep1")}`} />
+                                        <Text className="form-label" align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={`${this.localize("endDateStep1")}`} />
                                         <StartDate
                                             screenWidth={this.state.screenWidth}
                                             theme={this.state.theme}
@@ -798,24 +801,24 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                         <Flex.Item size="size.half">
                             <Flex gap="gap.smaller">
                                 <Flex.Item size="size.half">
-                                    <Text className="form-label" content={this.localize("startTimeStep1")} />
+                                    <Text className="form-label" align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.localize("startTimeStep1")} />
                                 </Flex.Item>
                                 <Flex.Item size="size.half">
-                                    <Text className="form-label" content={this.localize("endTimeStep1")} />
+                                    <Text className="form-label" align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.localize("endTimeStep1")} />
                                 </Flex.Item>
                             </Flex>
                         </Flex.Item>
                         <Flex.Item size="size.half">
                             <Flex>
-                                <Text className="form-label" content={this.localize("maxParticipantsStep1")} />
-                                <Flex.Item push>
+                                <Text className="form-label" align={this.props.dir === LanguageDirection.Rtl ? "end" : "start"} content={this.localize("maxParticipantsStep1")} />
+                                <Flex.Item push={this.props.dir === LanguageDirection.Ltr} grow={this.props.dir === LanguageDirection.Rtl}>
                                     {this.getMaximumNoofParticipantsError()}
                                 </Flex.Item>
                             </Flex>
                         </Flex.Item>
                     </Flex>
                     <Flex gap="gap.smaller" className="input-label-margin-between">
-                        <Flex.Item size="size.half">
+                        <Flex.Item size="size.half" className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}>
                             <Flex gap="gap.smaller">
                                 <Flex.Item size="size.half">
                                     <TimePicker
@@ -823,6 +826,7 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                                         minutes={this.state.eventDetails.startTime?.getMinutes()}
                                         isDisabled={!this.checkEventAlreadyStarted()}
                                         onPickerClose={this.onStartTimeChange}
+                                        dir={this.props.dir}
                                     />
                                 </Flex.Item>
                                 <Flex.Item size="size.half">
@@ -833,23 +837,33 @@ class CreateEventStep1 extends React.Component<ICreateEventsStep1Props, ICreateE
                                         minHours={this.state.eventDetails.startTime?.getHours()!}
                                         minMinutes={undefined}
                                         isDisabled={!this.checkEventAlreadyStarted()}
+                                        dir={this.props.dir}
                                     />
                                 </Flex.Item>
                             </Flex>
                         </Flex.Item>
-                        <Flex.Item size="size.half">
+                        <Flex.Item size="size.half" className={this.props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}>
                             <Input type="number" min={1} fluid value={this.state.eventDetails.maximumNumberOfParticipants.toString()} onChange={(event: any) => this.onMaxNoOfParticipantsChange(event.target.value)} data-testid="event_maxParticipants_input" />
                         </Flex.Item>
                     </Flex>
                 </div>
-                <Flex gap="gap.smaller" className="button-footer" vAlign="center">
-                    {!this.state.isTimeValid && <Text error content="Start and end time must be valid" />}
+                {this.props.dir === LanguageDirection.Ltr && <Flex gap="gap.smaller" className="button-footer" vAlign="center">
+                    {!this.state.isTimeValid && <Text error content={this.localize("startAndEndTimeError")} />}
                     <Flex.Item push>
                         <Text weight="bold" content={this.localize("step1Of3")} />
                     </Flex.Item>
                     {(!this.props.eventPageState.isEdit || (this.props.eventPageState.isEdit && this.props.eventPageState.isDraft)) && <Button disabled={this.state.isLoading || this.state.isValidatingStep1} loading={this.state.isLoading} onClick={this.saveEventAsDraft} content={this.localize("saveAsDraft")} secondary data-testid="event_save_button" />}
                     <Button data-testid="event_next_button" content={this.localize("nextButton")} loading={this.state.isValidatingStep1} disabled={this.state.isLoading || this.state.isValidatingStep1} primary onClick={this.nextBtnClick} />
-                </Flex>
+                </Flex>}
+
+                {this.props.dir === LanguageDirection.Rtl && <Flex gap="gap.smaller" className="button-footer" vAlign="center">
+                    <Flex.Item push>
+                        <Text error content={!this.state.isTimeValid ? this.localize("startAndEndTimeError") : ""} />
+                    </Flex.Item>
+                    <Text className="rtl-left-margin-small" weight="bold" content={this.localize("step1Of3")} />
+                    {(!this.props.eventPageState.isEdit || (this.props.eventPageState.isEdit && this.props.eventPageState.isDraft)) && <Button className="rtl-left-margin-small" disabled={this.state.isLoading || this.state.isValidatingStep1} loading={this.state.isLoading} onClick={this.saveEventAsDraft} content={this.localize("saveAsDraft")} secondary data-testid="event_save_button" />}
+                    <Button data-testid="event_next_button" content={this.localize("nextButton")} loading={this.state.isValidatingStep1} disabled={this.state.isLoading || this.state.isValidatingStep1} primary onClick={this.nextBtnClick} />
+                </Flex>}
             </>
         );
     }

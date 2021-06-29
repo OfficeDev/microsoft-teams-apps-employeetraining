@@ -4,6 +4,7 @@
 
 import * as React from "react";
 import { Flex, Provider } from '@fluentui/react-northstar';
+import { Fabric } from '@fluentui/react';
 import ListCategories from "./list-categories";
 import { CategoryOperations } from "../../constants/constants";
 import AddUpdateCategory from './add-update-category';
@@ -11,8 +12,12 @@ import DeleteCategory from './delete-category';
 import { ICategory } from "../../models/ICategory";
 import { WithTranslation, withTranslation } from "react-i18next";
 import { TFunction } from "i18next";
+import withContext, { IWithContext } from "../../providers/context-provider";
 
 import "./manage-categories.css";
+
+interface IManageCategoriesProps extends WithTranslation, IWithContext {
+}
 
 interface IManageCategoriesState {
     operation: CategoryOperations,
@@ -21,7 +26,7 @@ interface IManageCategoriesState {
 }
 
 /** The class which manages manage-categories dialog content */
-class ManageCategories extends React.Component<WithTranslation, IManageCategoriesState> {
+class ManageCategories extends React.Component<IManageCategoriesProps, IManageCategoriesState > {
     readonly localize: TFunction;
 
     /** Constructor which initializes state */
@@ -95,15 +100,17 @@ class ManageCategories extends React.Component<WithTranslation, IManageCategorie
     /** Renders the component */
     render() {
         return (
-            <Provider>
-                <Flex>
-                    <div className="task-module-container">
-                        {this.renderOperation()}
-                    </div>
-                </Flex>
-            </Provider>
+            <Fabric dir={this.props.dir}>
+                <Provider>
+                    <Flex>
+                        <div className="task-module-container">
+                            {this.renderOperation()}
+                        </div>
+                    </Flex>
+                </Provider>
+            </Fabric>
         );
     }
 }
 
-export default withTranslation()(ManageCategories);
+export default withTranslation()(withContext(ManageCategories));

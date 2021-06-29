@@ -95,8 +95,8 @@ export const validateSelectedUsers = async (selectedUsersAndGroups: Array<ISelec
 
 export const createEvent = async (stepEventState: ICreateEventState, teamId: string) => {
     let eventDetails = { ...stepEventState.eventDetails };
-    eventDetails.startDate = moment(eventDetails.startDate).utc().toDate();
-    eventDetails.endDate = moment(eventDetails.endDate).utc().toDate();
+    eventDetails.startDate = moment(eventDetails.startDate).startOf('day').add(eventDetails.startTime?.getHours(), 'hours').add(eventDetails.startTime?.getMinutes(), 'minutes').utc().toDate();
+    eventDetails.endDate = moment(eventDetails.endDate).startOf('day').add(eventDetails.startTime?.getHours(), 'hours').add(eventDetails.startTime?.getMinutes(), 'minutes').utc().toDate();
     eventDetails.startTime = moment(eventDetails.startTime).utc().toDate();
     eventDetails.endTime = moment(eventDetails.endTime).utc().toDate();
     eventDetails.selectedUserOrGroupListJSON = JSON.stringify(stepEventState.selectedUserGroups);

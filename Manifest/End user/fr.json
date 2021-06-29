@@ -1,0 +1,15 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "Formation des employés",
+  "name.full": "Formation des employés",
+  "description.short": "Simplifiez découverte, inscription et partage des formations pour les employés.",
+  "description.full": "Demandez à vos employés de suivre une formation dans laquelle ils passent la plupart de leur temps dans Microsoft Teams. Les administrateurs peuvent créer de nouveaux événements de formation, spécifier qui peut participer et indiquer si l’événement est obligatoire ou non, et fermer l’inscription une fois la capacité atteinte. Une fois l’application ajoutée à un canal Teams, les employés peuvent accéder à l’onglet Découvrir pour parcourir les événements, s’inscrire pour ceux qui les intéressent et utiliser l’extension de message de l’application pour suggérer des événements à leurs collègues ou collaborateurs directs. Une fois l’inscription enregistrée, les employés reçoivent des rappels dans Teams, de sorte qu’ils ne manquent jamais d’événement.",
+  "staticTabs[0].name": "Découvrez des événements",
+  "staticTabs[1].name": "Vos événements",
+  "composeExtensions[0].commands[0].title": "Récents",
+  "composeExtensions[0].commands[0].description": "Afficher tous les événements créés",
+  "composeExtensions[0].commands[0].parameters[0].description": "Entrée pour lancer la recherche",
+  "composeExtensions[0].commands[1].title": "Populaire",
+  "composeExtensions[0].commands[1].description": "Afficher les événements les plus populaires",
+  "composeExtensions[0].commands[1].parameters[0].description": "Entrée pour lancer la recherche"
+}

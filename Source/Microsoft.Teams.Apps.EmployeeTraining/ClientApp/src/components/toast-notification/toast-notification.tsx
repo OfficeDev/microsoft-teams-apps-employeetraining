@@ -8,11 +8,13 @@ import { TFunction } from "i18next";
 import { IToastNotification } from "../../models/IToastNotification";
 import { ActivityStatus } from "../../models/activity-status";
 import { Toast } from "react-bootstrap";
+import { LanguageDirection } from "../../models/language-direction";
 
 import "./toast-notification.css";
 
 interface IToastNotificationProps extends WithTranslation {
-    notification: IToastNotification
+    notification: IToastNotification,
+    dir: LanguageDirection
 }
 
 interface IToastNotificationState {
@@ -54,7 +56,7 @@ class ToastNotification extends React.Component<IToastNotificationProps, IToastN
                 delay={4000}
                 show={this.state.isShowNotification}
                 onClose={this.onClose}>
-                <Toast.Body className="notification">
+                <Toast.Body className={this.props.dir === LanguageDirection.Ltr ? "notification" : "rtl-notification"}>
                     <strong>{this.props.notification.message}</strong>
                 </Toast.Body>
             </Toast>

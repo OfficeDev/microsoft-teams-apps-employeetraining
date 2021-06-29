@@ -307,7 +307,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Models
             }
             else if (!(isUpdate && eventDetails.StartDate < DateTime.UtcNow))
             {
-                if (eventDetails.StartDate < DateTime.UtcNow.AddDays(1).Date)
+                if (eventDetails.StartDate?.Date < DateTime.UtcNow.Date)
                 {
                     validationMessages.Add(localizer.GetString("ErrorEventStartDateInvalid"));
                 }

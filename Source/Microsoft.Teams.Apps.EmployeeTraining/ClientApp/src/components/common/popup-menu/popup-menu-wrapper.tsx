@@ -8,6 +8,7 @@ import { ChevronDownIcon } from "@fluentui/react-icons-northstar";
 import PopupMenuCheckboxesContent from "./popup-menu-checkboxes-content";
 import PopupMenuRadiogroupContent from "./popup-menu-radiogroup-content";
 import { ICheckBoxItem } from "../../../models/ICheckBoxItem";
+import { LanguageDirection } from "../../../models/language-direction";
 
 import "./popup-menu.css";
 
@@ -17,10 +18,11 @@ interface IPopupMenuWrapperProps {
     title: string,
     selectedSortBy?: number,
     showSearchBar?: boolean,
-    selectedCount: number;
+    selectedCount: number,
     onCheckboxStateChange: (typeState: Array<any>) => void,
     onRadiogroupStateChange: (selectedValue: number) => void,
-    onOpenChange: (isOpen: boolean) => void
+    onOpenChange: (isOpen: boolean) => void,
+    dir: LanguageDirection
 }
 
 const PopupMenuWrapper: React.FunctionComponent<IPopupMenuWrapperProps> = props => {
@@ -56,8 +58,8 @@ const PopupMenuWrapper: React.FunctionComponent<IPopupMenuWrapperProps> = props 
                 align="end"
                 position="below"
                 onOpenChange={(e, { open }: any) => onPopupOpenChange(open)}
-                trigger={<Button data-testid={props.checkboxes.length > 0 ? props.checkboxes[0].title + "_CheckboxButton" : "dummyTitle_CheckboxButton"} className = "filter-button" onClick = {() => onFilterClick()} content = {< Text content = { props.title } />} iconPosition = "after" icon = {< ChevronDownIcon />} text />}
-                content={<PopupMenuCheckboxesContent disableClear={disableClear} selectedCount={props.selectedCount} showSearchBar={props.showSearchBar!} content={{ checkboxes: props.checkboxes, title: props.title }} onCheckboxStateChange={props.onCheckboxStateChange} />}
+                trigger={<Button data-testid={props.checkboxes.length > 0 ? props.checkboxes[0].title + "_CheckboxButton" : "dummyTitle_CheckboxButton"} className="filter-button" onClick={() => onFilterClick()} content={< Text content={props.title} className={props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}/>} iconPosition="after" icon = {< ChevronDownIcon />} text />}
+                content={<PopupMenuCheckboxesContent dir={props.dir} disableClear={disableClear} selectedCount={props.selectedCount} showSearchBar={props.showSearchBar!} content={{ checkboxes: props.checkboxes, title: props.title }} onCheckboxStateChange={props.onCheckboxStateChange} />}
                 trapFocus
             />
         );
@@ -69,8 +71,8 @@ const PopupMenuWrapper: React.FunctionComponent<IPopupMenuWrapperProps> = props 
                 align="end"
                 position="below"
                 onOpenChange={(e, { open }: any) => onPopupOpenChange(open)}
-                trigger={<Button data-testid={props.radioGroup.length > 0 ? props.radioGroup[0].name + "_RadioGroupButton" : "dummyName_RadioGroupButton"} icon = {< ChevronDownIcon />} className = "filter-button" iconPosition = "after" content = {< Text content = { props.title } />} text />}
-                content={<PopupMenuRadiogroupContent selectedValue={props.selectedSortBy!} content={{ radioGroupItems: props.radioGroup, title: props.title }} onRadiogroupStateChange={props.onRadiogroupStateChange} />}
+                trigger={<Button data-testid={props.radioGroup.length > 0 ? props.radioGroup[0].name + "_RadioGroupButton" : "dummyName_RadioGroupButton"} icon={< ChevronDownIcon />} className="filter-button" iconPosition="after" content={< Text content={props.title} className={props.dir === LanguageDirection.Rtl ? "rtl-left-margin-small" : ""}/>} text />}
+                content={<PopupMenuRadiogroupContent dir={props.dir} selectedValue={props.selectedSortBy!} content={{ radioGroupItems: props.radioGroup, title: props.title }} onRadiogroupStateChange={props.onRadiogroupStateChange} />}
                 trapFocus
             />
         );

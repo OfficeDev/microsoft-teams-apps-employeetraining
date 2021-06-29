@@ -7,6 +7,8 @@ import { Flex, Input, Button, Provider, Divider, Checkbox } from "@fluentui/reac
 import { CloseIcon, SearchIcon } from "@fluentui/react-icons-northstar";
 import { useTranslation } from 'react-i18next';
 import { ICheckBoxItem } from "../../../models/ICheckBoxItem";
+import { LanguageDirection } from "../../../models/language-direction";
+import { Fabric } from "@fluentui/react";
 
 import "./popup-menu.css";
 
@@ -14,8 +16,9 @@ interface IPopupMenuCheckboxesContentProps {
     showSearchBar: boolean,
     content: any,
     disableClear: boolean,
-    selectedCount: number;
-    onCheckboxStateChange: (checkboxState: Array<ICheckBoxItem>) => void
+    selectedCount: number,
+    onCheckboxStateChange: (checkboxState: Array<ICheckBoxItem>) => void,
+    dir: LanguageDirection
 }
 
 const MaxItemsToShowInFilter: number = 50;
@@ -127,35 +130,37 @@ const PopupMenuCheckboxesContent: React.FunctionComponent<IPopupMenuCheckboxesCo
     }
 
     return (
-        <Provider>
-            <div className="content-items-wrapper">
-                {props.showSearchBar && <div className="content-items-headerfooter">
-                    <Input icon={<SearchIcon />} placeholder={localize("searchPlaceholder")} value={searchedString} fluid onChange={(event: any) => onSearchChange(event.target.value)} />
-                </div>}
-                <Divider className="filter-popup-menu-divider" />
-                <div className="content-items-headerfooter">
-                    <Flex gap="gap.small" vAlign="center" hAlign="end">
-                        <Flex.Item push>
-                            <div></div>
-                        </Flex.Item>
-                        <Button disabled={checkBoxClicked ? disableClear : props.disableClear} className={props.selectedCount === 0 ? "clear-button ": "clear-button enable-clear"} size="small" text onClick={() => deSelectAll()} content={props.selectedCount > 0 ? localize("clear") + "(" + getSelectedCountString() + ")" : localize("clear") } />
-                    </Flex>
+        <Fabric dir={props.dir}>
+            <Provider>
+                <div className="content-items-wrapper">
+                    {props.showSearchBar && <div className="content-items-headerfooter">
+                        <Input icon={<SearchIcon />} iconPosition={props.dir === "rtl" ? "start" : "end" } placeholder={localize("searchPlaceholder")} value={searchedString} fluid onChange={(event: any) => onSearchChange(event.target.value)} />
+                    </div>}
+                    <Divider className="filter-popup-menu-divider" />
+                    <div className="content-items-headerfooter">
+                        <Flex gap="gap.small" vAlign="center" hAlign="end">
+                            <Flex.Item push>
+                                <div></div>
+                            </Flex.Item>
+                            <Button disabled={checkBoxClicked ? disableClear : props.disableClear} className={props.selectedCount === 0 ? "clear-button ": "clear-button enable-clear"} size="small" text onClick={() => deSelectAll()} content={props.selectedCount > 0 ? localize("clear") + "(" + getSelectedCountString() + ")" : localize("clear") } />
+                        </Flex>
+                    </div>
+                    <div className="content-items-body">
+                        {
+                            filteredCheckboxes.map((checkbox: ICheckBoxItem) => {
+                                if (checkbox.title.trim().length) {
+                                    return (
+                                        <Flex gap="gap.small">
+                                            <Checkbox data-testid={checkbox.key + "_categoryCheckbox_item"} className="checkbox-wrapper" label={checkbox.checkboxLabel} key={checkbox.key} checked={checkbox.isChecked} onChange={(key, data: any) => onCheckboxValueChange(checkbox.key, data.checked)} />
+                                        </Flex>
+                                    );
+                                }
+                            })
+                        }
+                    </div>
                 </div>
-                <div className="content-items-body">
-                    {
-                        filteredCheckboxes.map((checkbox: ICheckBoxItem) => {
-                            if (checkbox.title.trim().length) {
-                                return (
-                                    <Flex gap="gap.small">
-                                        <Checkbox data-testid={checkbox.key + "_categoryCheckbox_item"} className="checkbox-wrapper" label={checkbox.checkboxLabel} key={checkbox.key} checked={checkbox.isChecked} onChange={(key, data: any) => onCheckboxValueChange(checkbox.key, data.checked)} />
-                                    </Flex>
-                                );
-                            }
-                        })
-                    }
-                </div>
-            </div>
-        </Provider>
+            </Provider>
+        </Fabric>
     );
 }
 

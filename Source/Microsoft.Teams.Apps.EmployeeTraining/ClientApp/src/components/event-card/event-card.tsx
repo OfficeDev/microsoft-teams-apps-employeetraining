@@ -17,10 +17,11 @@ import { EventAudience } from "../../models/event-audience";
 import { formatEventDayAndTimeToShort } from "../../helpers/event-helper";
 import EventImage from "../event-image/event-image";
 import { EventType } from "../../models/event-type";
+import withContext, { IWithContext } from "../../providers/context-provider";
 
 import "../event-card/event-card.css";
 
-interface IEventCardProps extends WithTranslation {
+interface IEventCardProps extends WithTranslation, IWithContext {
     eventDetails: IEvent,
     onClick: () => void
 }
@@ -112,9 +113,9 @@ const EventCard: React.FunctionComponent<IEventCardProps> = props => {
                         <Text content={moment.utc(props.eventDetails.startDate).local().format("MMM")} size="medium" weight="semibold" />
                     </Flex>
                     <Flex className="event-details" column vAlign="center" fill>
-                        <Text className="event-category" truncated content={props.eventDetails.categoryName} weight="bold" size="smaller" />
-                        <Text truncated content={props.eventDetails.name} title={props.eventDetails.name} weight="bold" size="medium" />
-                        <Flex className="event-date-and-venue" vAlign="center">
+                        <Text align={props.dir === "rtl" ? "end" : undefined} className={props.dir === "rtl" ? "event-category rtl-right-margin-small" : "event-category"} truncated content={props.eventDetails.categoryName} weight="bold" size="smaller" />
+                        <Text align={props.dir === "rtl" ? "end" : undefined} className={props.dir === "rtl" ? "rtl-right-margin-small" : ""} truncated content={props.eventDetails.name} title={props.eventDetails.name} weight="bold" size="medium" />
+                        <Flex className={props.dir === "rtl" ? "event-date-and-venue-rtl event-date-and-venue" : "event-date-and-venue"} vAlign="center">
                             <Icon iconName="Clock" />
                             <Flex.Item shrink={false}>
                                 <Text weight="semibold" size="small" content={formatEventDayAndTimeToShort(props.eventDetails.startDate, props.eventDetails.startTime!, props.eventDetails.endTime!)} />
@@ -134,4 +135,4 @@ const EventCard: React.FunctionComponent<IEventCardProps> = props => {
     );
 }
 
-export default withTranslation()(EventCard);
+export default withTranslation()(withContext(EventCard));

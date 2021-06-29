@@ -17,12 +17,12 @@ import "./date-picker.css";
 initializeIcons();
 
 interface IDateePickerProps {
-    selectedDate: Date;
+    selectedDate: Date,
     onDateSelect: (startDate: Date) => void,
     theme: string,
     screenWidth: number,
-    minDate: Date;
-    disableSelectionForPastDate:boolean
+    minDate: Date,
+    disableSelectionForPastDate: boolean
 }
 
 const StartDate: React.FC<IDateePickerProps> = props => {
@@ -71,7 +71,7 @@ const StartDate: React.FC<IDateePickerProps> = props => {
         <>
             {
                 <Flex gap="gap.small">
-                    <Fabric className="full-width">
+                    <Fabric className="full-width" dir="ltr">
                         <Customizer {...datePickerTheme}>
                             <DatePicker
                                 className={bgcolor}

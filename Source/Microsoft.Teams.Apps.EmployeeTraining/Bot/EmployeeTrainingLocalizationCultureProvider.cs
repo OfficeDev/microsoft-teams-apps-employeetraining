@@ -33,7 +33,7 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
         /// <returns>A Task resolving to the culture info if found, null otherwise.</returns>
 #pragma warning disable UseAsyncSuffix // Interface method doesn't have Async suffix.
         public async Task<ProviderCultureResult> DetermineProviderCultureResult(HttpContext httpContext)
-#pragma warning restore UseAsyncSuffix
+        #pragma warning restore UseAsyncSuffix
         {
             if (httpContext?.Request?.Body?.CanRead != true)
             {
@@ -74,9 +74,9 @@ namespace Microsoft.Teams.Apps.EmployeeTraining
                     }
                 }
             }
-#pragma warning disable CA1031 // part of the middleware pipeline, better to use default locale then fail the request.
+            #pragma warning disable CA1031 // part of the middleware pipeline, better to use default locale then fail the request.
             catch (Exception)
-#pragma warning restore CA1031
+            #pragma warning restore CA1031
             {
                 return null;
             }

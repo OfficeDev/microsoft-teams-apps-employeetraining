@@ -15,6 +15,10 @@ import { getEventAsync } from "../../api/common-api";
 import { getUserProfiles } from "../../api/user-group-api"
 import { registerToEventAsync, removeEventAsync } from "../../api/user-events-api";
 import EventDetails from "../event-operation-task-module/event-details";
+import withContext, { IWithContext } from "../../providers/context-provider";
+
+interface IRegisterRemoveEventProps extends IWithContext, WithTranslation {
+}
 
 interface IRegisterRemoveEventState {
     isLoading: boolean,
@@ -26,7 +30,7 @@ interface IRegisterRemoveEventState {
     eventOperationType: EventOperationType
 }
 
-class RegisterRemoveEvent extends React.Component<WithTranslation, IRegisterRemoveEventState> {
+class RegisterRemoveEvent extends React.Component<IRegisterRemoveEventProps, IRegisterRemoveEventState> {
     readonly localize: TFunction;
     isMobileView: boolean;
 
@@ -132,6 +136,7 @@ class RegisterRemoveEvent extends React.Component<WithTranslation, IRegisterRemo
     render() {
         return (
             <EventDetails
+                dir={this.props.dir}
                 eventDetails={this.state.eventDetails}
                 eventCreatedByName={this.state.eventCreatedBy}
                 eventOperationType={this.state.eventOperationType}
@@ -146,4 +151,4 @@ class RegisterRemoveEvent extends React.Component<WithTranslation, IRegisterRemo
     }
 }
 
-export default withTranslation()(RegisterRemoveEvent);
+export default withTranslation()(withContext(RegisterRemoveEvent));

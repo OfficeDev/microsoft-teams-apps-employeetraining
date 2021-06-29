@@ -124,7 +124,8 @@ class DeleteCategory extends React.Component<IDeleteCategoryProps, IDeleteCatego
                 <Text content={this.localize("deleteCategoryConfirmation")} weight="semibold" />
                 {this.renderCategories()}
                 <ManageCategoriesOperationFooter
-                    backButtonContent={this.localize("Back")}
+                    dir={this.props.dir}
+                    backButtonContent={this.localize("back")}
                     submitButtonContent={this.localize("delete")}
                     isSubmitButtonDisabled={this.state.isDeleting}
                     isOperationInProgress={this.state.isDeleting}

@@ -1,0 +1,10 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.7/MicrosoftTeams.Localization.schema.json",
+  "name.short": "员工培训 (L&D 团队) ",
+  "name.full": "员工培训 (L&D 团队) ",
+  "description.short": "L&D 团队可以轻松创建和管理事件以吸引员工参与。",
+  "description.full": "让你的员工接受培训，使他们可以在 Microsoft Teams 中度过大部分时间。你的学习和发展团队可以创建新的培训事件，指定哪些人可以参加以及该事件是否为必须参加的事件，并在人满后立即关闭注册。内置提醒功能可确保大家不致错过事件。",
+  "staticTabs[0].name": "管理事件",
+  "bots[0].commandLists[0].commands[0].title": "添加事件",
+  "bots[0].commandLists[0].commands[0].description": "为用户添加事件"
+}

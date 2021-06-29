@@ -23,6 +23,8 @@ import ToastNotification from "../toast-notification/toast-notification";
 import { ActivityStatus } from "../../models/activity-status";
 import { EventOperationType } from "../../models/event-operation-type";
 import withContext, { IWithContext } from "../../providers/context-provider";
+import { Fabric } from "@fluentui/react";
+import { LanguageDirection } from "../../models/language-direction";
 
 import "../manage-events/manage-events.css";
 
@@ -675,6 +677,7 @@ class ManageEvents extends React.Component<IManageEventsProps, IManageEventsStat
                                                     onExportDetails={this.onExportDetails}
                                                     onSendReminder={this.onSendReminder}
                                                     onDeleteDraftEvent={this.onDeleteDraftEvent}
+                                                    dir={this.props.dir}
                                                 />
                                         }
                                     </Flex.Item>
@@ -732,6 +735,7 @@ class ManageEvents extends React.Component<IManageEventsProps, IManageEventsStat
                                         onExportDetails={this.onExportDetails}
                                         onSendReminder={this.onSendReminder}
                                         onDeleteDraftEvent={this.onDeleteDraftEvent}
+                                        dir={this.props.dir}
                                     />,
                                 design: { minWidth: "5vw", maxWidth: "5vw" }
                             }
@@ -821,12 +825,13 @@ class ManageEvents extends React.Component<IManageEventsProps, IManageEventsStat
                         activeTabIndex={this.state.activeTabIndex!}
                         onTabIndexChange={this.onTabMenuIndexChange}
                     />
-                    <Flex.Item push>
+                    <Flex.Item push={this.props.dir === LanguageDirection.Ltr}>
                         <Flex gap="gap.medium" vAlign="center">
                             <Input
                                 inverted
                                 value={this.state.searchText}
                                 icon={<SearchIcon />}
+                                iconPosition={this.props.dir === LanguageDirection.Rtl ? "start" : "end"}
                                 placeholder={this.localize("searchForEventsPlaceholder")}
                                 input={{ design: { minWidth: "20rem", maxWidth: "20rem" } }}
                                 onKeyUp={this.onSearchEvents}
@@ -834,7 +839,13 @@ class ManageEvents extends React.Component<IManageEventsProps, IManageEventsStat
                             />
                             <Flex gap="gap.small">
                                 <Button content={this.localize("manageCategories")} onClick={this.onManageCategoriesClick} />
-                                <Button icon={<AddIcon />} primary content={this.localize("createEvent")} onClick={this.onCreateEventsClick} />
+                                <Button
+                                    className={this.props.dir === LanguageDirection.Rtl ? "rtl-right-margin-medium" : ""}
+                                    icon={<AddIcon />}
+                                    primary
+                                    content={<Text className={this.props.dir === LanguageDirection.Rtl ? "rtl-right-margin-small" : ""} content={this.localize("createEvent")} />}
+                                    onClick={this.onCreateEventsClick}
+                                />
                             </Flex>
                         </Flex>
                     </Flex.Item>
@@ -862,10 +873,12 @@ class ManageEvents extends React.Component<IManageEventsProps, IManageEventsStat
     /** Renders component */
     render() {
         return (
-            <div className="container-div">
-                { this.state.isMobileView ? this.renderMobileView() : this.renderDesktopView()}
-                <ToastNotification notification={this.state.notification} />
-            </div>
+            <Fabric dir={this.props.dir}>
+                <div className="container-div">
+                    { this.state.isMobileView ? this.renderMobileView() : this.renderDesktopView()}
+                    <ToastNotification dir={this.props.dir} notification={this.state.notification} />
+                </div>
+            </Fabric>
         );
     }
 }
