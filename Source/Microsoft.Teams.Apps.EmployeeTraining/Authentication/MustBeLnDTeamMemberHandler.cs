@@ -85,8 +85,8 @@ namespace Microsoft.Teams.Apps.EmployeeTraining.Authentication
             {
                 // Check for query string parameter 'teamId'
                 var requestQuery = httpContext.Request.Query;
-                teamId = requestQuery.Where(queryData => queryData.Key == "teamId")
-                    .Select(queryData => queryData.Value.ToString()).FirstOrDefault();
+                //teamId = requestQuery.Where(queryData => queryData.Key == "teamId").Select(queryData => queryData.Value.ToString()).FirstOrDefault();
+                teamdId= "6bc16b06-25e0-4c59-be76-35c69e614299";
             }
             else
             {
