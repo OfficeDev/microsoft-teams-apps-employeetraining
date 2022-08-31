@@ -26,7 +26,7 @@
     "i18next-http-backend": "^1.0.21",
     "i18next-xhr-backend": "3.2.2",
     "moment": "^2.27.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "node-sass": "^6.0.1",
     "pretty": "^2.0.0",
     "react": "^16.10.2",
